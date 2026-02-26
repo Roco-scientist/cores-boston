@@ -1,0 +1,355 @@
+/* Base Variables & Reset */
+:root {
+  --primary-color: #2d6a4f; /* Deep Green */
+  --primary-light: #40916c;
+  --secondary-color: #1b4332; /* Darker Green */
+  --accent-color: #d8f3dc; /* Light Green */
+  --text-dark: #2b2b2b;
+  --text-light: #f4f4f4;
+  --bg-main: #ffffff;
+  --bg-light: #f8f9fa;
+  --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--bg-main);
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+.bg-dark {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+p {
+  margin-bottom: 1rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons & Badges */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-outline {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-color);
+  color: var(--secondary-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Header & Nav */
+.site-header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo h1 {
+  margin-bottom: 0;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+.logo p {
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.main-nav a {
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: var(--primary-light);
+}
+.btn-nav {
+  background: var(--primary-color);
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* Mobile Menu Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobile-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 6rem 0;
+  background: linear-gradient(to bottom, #ffffff, var(--bg-light));
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #555;
+}
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+.about-highlight {
+  background: white;
+  padding: 2rem;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Principles Section */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid var(--primary-light);
+}
+.card h4 {
+  color: var(--primary-color);
+}
+
+/* Petition / Form */
+.petition-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.clean-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  color: var(--text-dark);
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.checkbox-group input {
+  width: auto;
+}
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.hidden {
+  display: none;
+}
+#form-message {
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Footer */
+.site-footer {
+  background: #111;
+  color: #888;
+  padding: 3rem 0;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2rem;
+}
+.footer-info h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.footer-links a {
+  margin-left: 1.5rem;
+  color: #bbb;
+}
+.footer-links a:hover {
+  color: white;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: flex;
+  }
+  .main-nav {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+  }
+  .main-nav.active {
+    display: block;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .about-grid,
+  .petition-container {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .footer-links a {
+    margin: 0 0.5rem;
+  }
+}

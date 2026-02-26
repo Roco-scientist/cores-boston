@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORES – Coalition for Region-wide Services</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <h1>CORES</h1>
+          <p>Coalition for Region-wide Services</p>
+        </a>
+
+        <button
+          class="mobile-toggle"
+          id="mobile-toggle"
+          aria-label="Toggle Menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li><a href="#about">Our Mission</a></li>
+            <li><a href="#principles">EJ Principles</a></li>
+            <li><a href="#get-involved">Join the Coalition</a></li>
+            <li><a href="#get-involved" class="btn-nav">Get Involved</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero-section section-padding">
+        <div class="container hero-content">
+          <span class="badge victory-badge"
+            >Update: BMC Plan Terminated by the State</span
+          >
+          <h2 class="hero-title">
+            The fight for Franklin Park is entering a new chapter.
+          </h2>
+          <p class="hero-subtitle">
+            The state has stopped the previous proposal. Now, we must ensure the
+            future of this historic green space is guided by
+            <strong>Environmental Justice</strong> and a fully
+            <strong>community-led process</strong>.
+          </p>
+          <div class="hero-actions">
+            <a href="#get-involved" class="btn btn-primary"
+              >Join the Coalition</a
+            >
+            <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about-section section-padding bg-light">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-text">
+              <h3>Moving Forward Together</h3>
+              <p>
+                CORES is a citizen-formed coalition of residents who live near
+                and rely on Franklin Park. We successfully fought for
+                transparency, leading the state to terminate the previous plans
+                that lacked community input.
+              </p>
+              <p>
+                Our work doesn't stop here. Franklin Park was designed to be a
+                sanctuary for the health and wellness of all Boston residents.
+                Any future redevelopment must honor this original intent and be
+                driven directly by the communities most impacted by these
+                decisions.
+              </p>
+            </div>
+            <div class="about-highlight">
+              <h4>Our Demand:</h4>
+              <p>
+                <strong>Nothing about us, without us.</strong> We demand the
+                city and state commit to a transparent planning process that
+                centers the voices of surrounding neighborhoods and adheres
+                strictly to Environmental Justice standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Principles Section -->
+      <section id="principles" class="principles-section section-padding">
+        <div class="container">
+          <h3 class="section-title">Our Guiding Principles</h3>
+          <div class="card-grid">
+            <div class="card">
+              <h4>Environmental Justice</h4>
+              <p>
+                We believe marginalized communities deserve equal protection
+                from environmental burdens and equitable access to vital green
+                spaces. Franklin Park must remain an ecological asset, not an
+                afterthought.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Community-Led Design</h4>
+              <p>
+                Top-down development has failed our neighborhoods. Future plans
+                must start with grass-roots community visioning, ensuring
+                residents have the final say in what is built in their backyard.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Health & Wellness</h4>
+              <p>
+                We support honoring Frederick Law Olmsted’s original vision:
+                preserving the park as a refuge for physical and mental health,
+                recreation, and community connection for all Bostonians.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Petition / Get Involved Section -->
+      <section
+        id="get-involved"
+        class="petition-section section-padding bg-dark"
+      >
+        <div class="container petition-container">
+          <div class="petition-text">
+            <h3>Join the Coalition</h3>
+            <p>
+              Add your name to demand that the state and city establish a
+              community oversight board for all future Franklin Park
+              redevelopment projects.
+            </p>
+          </div>
+
+          <form id="involved-form" class="clean-form">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" required placeholder="Jane Doe" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="jane@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="zip">Zip Code *</label>
+              <input
+                type="text"
+                id="zip"
+                required
+                placeholder="02119"
+                pattern="[0-9]*"
+                maxlength="5"
+              />
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="volunteer" />
+              <label for="volunteer"
+                >I want to volunteer / help organize.</label
+              >
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Sign & Support
+            </button>
+            <div id="form-message" class="hidden">
+              Thank you for standing with CORES!
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-container">
+        <div class="footer-info">
+          <h4>CORES</h4>
+          <p>
+            Advocating for Environmental Justice and Community-Led Development
+            in Franklin Park.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
