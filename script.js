@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
     const originalText = submitBtn.textContent;
     submitBtn.textContent = "Submitting…";
     submitBtn.disabled = true;
