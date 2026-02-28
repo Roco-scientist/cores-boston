@@ -1174,7 +1174,9 @@
       -->
           <div class="field-group full">
             <div class="field" id="field-street" style="position: relative">
-              <label for="street">Street Address</label>
+              <label for="street"
+                >Street Address <span class="req">*</span></label
+              >
               <input
                 type="text"
                 id="street"
@@ -1183,6 +1185,7 @@
                 autocomplete="street-address"
                 autocapitalize="words"
               />
+              <div class="error-msg">Please enter your street address.</div>
               <!-- Boston-neighborhood-aware suggestion dropdown (built-in, no API key) -->
               <div class="autocomplete-list" id="streetDropdown"></div>
             </div>
@@ -2299,6 +2302,7 @@
         [
           { id: "first_name", msg: "Please enter your first name." },
           { id: "last_name", msg: "Please enter your last name." },
+          { id: "street", msg: "Please enter your street address." },
           {
             id: "email",
             msg: "Please enter a valid email address.",
