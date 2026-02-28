@@ -191,21 +191,9 @@
 
           <!-- Column 2: The Action Form -->
           <div class="form-column">
-            <form
-              id="petition-form"
-              class="clean-form sticky-form"
-              action="https://formsubmit.co/coffeyrt@gmail.com"
-              method="POST"
-            >
-              <input
-                type="hidden"
-                name="_subject"
-                value="Constituent Letter: Balanced Development for Franklin Park"
-              />
-              <input type="hidden" name="_cc" value="stonybrookdad@gmail.com" />
-              <input type="hidden" name="_template" value="table" />
-
-              <span class="eyebrow">Take Action Now</span>
+            <!-- We removed action and method; we'll use id for the script -->
+            <div id="petition-form" class="clean-form sticky-form">
+              <span class="eyebrow">Direct Action</span>
               <h3
                 style="
                   font-family: var(--font-display);
@@ -213,7 +201,7 @@
                   margin-bottom: 1.5rem;
                 "
               >
-                Send Your Letter
+                Email Your Representatives
               </h3>
 
               <div class="form-group">
@@ -221,7 +209,6 @@
                 <input
                   type="text"
                   id="fname"
-                  name="First Name"
                   required
                   placeholder="Jane"
                   oninput="updateSignature()"
@@ -233,30 +220,18 @@
                 <input
                   type="text"
                   id="lname"
-                  name="Last Name"
                   required
                   placeholder="Doe"
                   oninput="updateSignature()"
                 />
               </div>
 
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="Email"
-                  required
-                  placeholder="jane@example.com"
-                />
-              </div>
-
+              <!-- Added Street Address Field -->
               <div class="form-group">
                 <label for="address">Street Address *</label>
                 <input
                   type="text"
                   id="address"
-                  name="Street Address"
                   required
                   placeholder="123 Franklin St"
                   oninput="updateSignature()"
@@ -268,7 +243,6 @@
                 <input
                   type="text"
                   id="zip"
-                  name="Zip Code"
                   required
                   placeholder="02119"
                   pattern="[0-9]{5}"
@@ -282,25 +256,18 @@
                 >
                 <textarea
                   id="suggestions"
-                  name="User Suggestions"
                   rows="5"
                   placeholder="Which services or amenities would you like to see on the 13-acre site?"
                 ></textarea>
-                <p
-                  style="
-                    font-size: 0.7rem;
-                    color: var(--leaf);
-                    margin-top: 0.5rem;
-                    font-style: italic;
-                  "
-                >
-                  Note: Your suggestions allow for a nuanced message that
-                  reflects what you want to see built.
-                </p>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block">
-                Send Letter to Officials
+              <!-- This button now triggers the JavaScript function -->
+              <button
+                type="button"
+                onclick="sendEmail()"
+                class="btn btn-primary btn-block"
+              >
+                Open My Email & Send Letter
               </button>
 
               <p
@@ -311,11 +278,11 @@
                   line-height: 1.4;
                 "
               >
-                By clicking "Send Letter," your contact information and the
-                letter on the left (including your address and specific
-                suggestions) will be emailed to your representatives.
+                <strong>How it works:</strong> Clicking this will open your
+                default email app (Gmail, Outlook, etc.) with the pre-written
+                letter and your suggestions ready to send.
               </p>
-            </form>
+            </div>
           </div>
         </div>
       </section>
@@ -334,6 +301,7 @@
     </footer>
 
     <script>
+      // Updates the visual signature on the left
       function updateSignature() {
         const fname = document.getElementById("fname").value;
         const lname = document.getElementById("lname").value;
@@ -348,6 +316,50 @@
         document.getElementById("sig-location").innerText = zip
           ? "Boston, MA " + zip
           : "[Zip Code]";
+      }
+
+      // The function that actually "sends" the email
+      function sendEmail() {
+        // 1. Define Recipients
+        const to = "governorhelley@mass.gov"; // Replace with actual lead rep
+        const cc =
+          "mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com";
+
+        // 2. Collect Data
+        const fname = document.getElementById("fname").value;
+        const lname = document.getElementById("lname").value;
+        const address = document.getElementById("address").value;
+        const zip = document.getElementById("zip").value;
+        const suggestions = document.getElementById("suggestions").value;
+
+        if (!fname || !lname || !address || !zip) {
+          alert("Please fill out your name, address, and zip code first.");
+          return;
+        }
+
+        // 3. Build the Email Body
+        const subject = encodeURIComponent(
+          "Constituent Letter: Balanced Development for Franklin Park",
+        );
+
+        let bodyText = `To: Governor Healey, Mayor Wu, and Secretary Walsh\n\n`;
+        bodyText += `As a resident and stakeholder in the communities surrounding Franklin Park, I am writing to urge a more balanced and equitable approach to the redevelopment of the Shattuck Hospital site.\n\n`;
+        bodyText += `We recognize the importance of clinical and social services, but Environmental Justice requires that these services be distributed fairly across the region. Currently, the Franklin Park Corridor carries nearly five times the density of SUD supportive housing compared to the rest of the city.\n\n`;
+
+        if (suggestions) {
+          bodyText += `MY SUGGESTIONS FOR THE SITE:\n"${suggestions}"\n\n`;
+        }
+
+        bodyText += `I stand with CORES in advocating for Community-Led Visioning, Geographic Equity, and Park Restoration.\n\n`;
+        bodyText += `Sincerely,\n\n`;
+        bodyText += `${fname} ${lname}\n`;
+        bodyText += `${address}\n`;
+        bodyText += `Boston, MA ${zip}`;
+
+        const mailtoLink = `mailto:${to}?cc=${cc}&subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+
+        // 4. Trigger the Email Client
+        window.location.href = mailtoLink;
       }
     </script>
   </body>
