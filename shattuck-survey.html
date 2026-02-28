@@ -1675,10 +1675,88 @@
           </div>
         </div>
 
+        <div class="card">
+          <div class="card-title">
+            <span class="num">6</span> Future Planning Process
+          </div>
+
+          <div class="field" style="margin-bottom: 22px">
+            <label
+              >How would you prefer to participate in the planning process
+              moving forward?
+              <span class="lnote">(select all that apply)</span>
+            </label>
+            <div class="check-group" style="margin-top: 8px">
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p1"
+                  name="process_pref[]"
+                  value="In-person meetings"
+                /><label for="p1">In-person meetings</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p2"
+                  name="process_pref[]"
+                  value="Virtual/Zoom meetings"
+                /><label for="p2">Virtual (Zoom) meetings</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p3"
+                  name="process_pref[]"
+                  value="Smaller community conversations"
+                /><label for="p3">Small neighborhood groups</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p4"
+                  name="process_pref[]"
+                  value="Community Advisory Board (CAB)"
+                /><label for="p4">Community Advisory Board (CAB)</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p5"
+                  name="process_pref[]"
+                  value="Site walk-throughs"
+                /><label for="p5">On-site walk-throughs</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p6"
+                  name="process_pref[]"
+                  value="Digital surveys/polls"
+                /><label for="p6">Digital surveys & polls</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="process_comments"
+              >Do you have specific suggestions for how the State should engage
+              the community?</label
+            >
+            <textarea
+              id="process_comments"
+              name="process_comments"
+              style="min-height: 100px"
+              placeholder="e.g. 'Meetings should be held on weekends,' 'People who should represent the community,' 'Need translation services,' 'Transparency on CAB selection'..."
+              autocomplete="off"
+            ></textarea>
+          </div>
+        </div>
+
         <!-- ══ 6. Stay Connected ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">6</span> Stay Connected
+            <span class="num">7</span> Stay Connected
           </div>
 
           <div class="toggle-field">
@@ -1830,9 +1908,10 @@
       // PRIORITY ITEMS
       // ═══════════════════════════════════════════════════════════════
       const ALL_ITEMS = [
-        "Return land to Franklin Park (green space)",
+        "Return land to Franklin Park (Nature trails, nature center, visitor center)",
         "24-hour pharmacy",
         "Veterans services",
+        "Health & Wellness Center (Pool, recreation center, meditation space)",
         "Senior housing",
         "Veterans housing",
         "Assisted living facility",
