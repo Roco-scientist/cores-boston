@@ -1299,8 +1299,18 @@
                 <option>Man</option>
                 <option>Non-binary / gender non-conforming</option>
                 <option>Transgender</option>
-                <option>Self-describe</option>
+                <option value="self-describe">Self-describe</option>
               </select>
+              <div class="self-describe-wrap" id="genderDescribeWrap">
+                <input
+                  type="text"
+                  id="gender_self_describe"
+                  name="gender_self_describe"
+                  placeholder="Please describe your gender identity…"
+                  autocomplete="off"
+                  autocapitalize="sentences"
+                />
+              </div>
             </div>
           </div>
 
@@ -2145,6 +2155,21 @@
             input.value = "";
           }
         });
+
+      // ═══════════════════════════════════════════════════════════════
+      // GENDER SELF-DESCRIBE REVEAL
+      // ═══════════════════════════════════════════════════════════════
+      document.getElementById("gender").addEventListener("change", function () {
+        const wrap = document.getElementById("genderDescribeWrap");
+        const input = document.getElementById("gender_self_describe");
+        if (this.value === "self-describe") {
+          wrap.classList.add("open");
+          input.focus();
+        } else {
+          wrap.classList.remove("open");
+          input.value = "";
+        }
+      });
 
       // ═══════════════════════════════════════════════════════════════
       // CONNECTION "OTHER" REVEAL
