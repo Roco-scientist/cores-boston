@@ -879,3 +879,151 @@ em {
     gap: 1.5rem;
   }
 }
+.petition-hero {
+  background: var(--cream);
+  text-align: left;
+  border-bottom: 1px solid var(--mist);
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 5rem;
+  padding: 4rem 0 8rem;
+  align-items: start;
+}
+
+.letter-header {
+  margin-bottom: 2rem;
+}
+
+.letter-header h3 {
+  font-size: 2rem;
+  color: var(--forest);
+  border-bottom: 2px solid var(--leaf);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.letter-body p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--bark);
+}
+
+.demand-list {
+  list-style: none;
+  margin: 2rem 0;
+}
+
+.demand-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.demand-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--leaf);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.demand-list strong {
+  color: var(--forest);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* Form Styles */
+.sticky-form {
+  position: sticky;
+  top: 120px; /* Adjust based on header height */
+}
+
+.form-disclaimer {
+  font-size: 0.75rem;
+  color: var(--soil);
+  margin-top: 1.5rem;
+  line-height: 1.4;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(74, 140, 92, 0.3);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--white);
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--leaf);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+  .action-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .sticky-form {
+    position: static;
+  }
+}
+.form-group textarea {
+  border: 1.5px solid rgba(74, 140, 92, 0.4);
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea:focus {
+  border-color: var(--canopy);
+  box-shadow: 0 0 8px rgba(45, 90, 61, 0.1);
+}
+
+.form-disclaimer {
+  background: var(--mist);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  border-left: 4px solid var(--leaf);
+}
+
+.form-disclaimer p {
+  font-size: 0.75rem;
+  color: var(--forest);
+  margin: 0;
+}
+.corridor-box {
+  background-color: var(--parchment);
+  border: 1px solid var(--mist);
+  border-left: 4px solid var(--sage);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.corridor-box h5 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--leaf);
+  margin-bottom: 0.5rem;
+}
+
+.corridor-box p {
+  font-size: 0.9rem !important;
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+  color: var(--soil);
+}
