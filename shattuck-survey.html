@@ -1,0 +1,2499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Franklin Park — Shattuck Campus Community Survey</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a3a2a'/><text y='72' x='50' text-anchor='middle' font-size='62'>🌳</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest: #1a3a2a;
+        --moss: #2d5a3d;
+        --sage: #4a7c59;
+        --meadow: #a8c5a0;
+        --mist: #e8f0e4;
+        --stone: #8a9178;
+        --cream: #f5f0e8;
+        --gold: #c8a84b;
+        --accent: #d4644a;
+        --text-dark: #1a2418;
+        --text-mid: #3d4f38;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--forest);
+        color: var(--text-dark);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 15% 20%,
+            rgba(74, 124, 89, 0.3) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 80% at 85% 70%,
+            rgba(29, 58, 42, 0.5) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .bg-leaves {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.07;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      /* ── Header ── */
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        animation: fadeDown 0.8s ease both;
+      }
+      .park-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(168, 197, 160, 0.15);
+        border: 1px solid rgba(168, 197, 160, 0.3);
+        border-radius: 40px;
+        padding: 8px 20px;
+        margin-bottom: 20px;
+        color: var(--meadow);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+      h1 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .header-sub {
+        color: var(--meadow);
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 540px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+      .divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 24px auto;
+      }
+
+      /* ── Site info panel ── */
+      .site-info {
+        background: #f0ede5;
+        border: 1px solid rgba(74, 124, 89, 0.25);
+        border-radius: 20px;
+        padding: 32px;
+        margin-bottom: 28px;
+        animation: fadeUp 0.6s ease both;
+      }
+      .site-info-inner {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: 28px;
+        align-items: start;
+      }
+      .site-info h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: var(--forest);
+        margin-bottom: 12px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+      .site-info p {
+        font-size: 0.87rem;
+        color: #2e3e2a;
+        line-height: 1.7;
+        margin-bottom: 10px;
+        font-weight: 400;
+      }
+      .site-info p:last-child {
+        margin-bottom: 0;
+      }
+      .site-info strong {
+        color: var(--forest);
+        font-weight: 600;
+      }
+      .site-info em {
+        color: var(--moss);
+        font-style: italic;
+      }
+      .info-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .info-tag {
+        background: rgba(74, 124, 89, 0.12);
+        border: 1px solid rgba(74, 124, 89, 0.25);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 0.72rem;
+        color: #1e4a2e;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+      }
+      .map-wrap {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid rgba(168, 197, 160, 0.2);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        flex-shrink: 0;
+      }
+      .map-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 200px;
+        border: none;
+      }
+      .map-caption {
+        font-size: 0.72rem;
+        color: var(--stone);
+        text-align: center;
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: var(--cream);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 24px;
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.3),
+          0 4px 20px rgba(0, 0, 0, 0.2);
+        animation: fadeUp 0.6s ease both;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--sage),
+          var(--gold),
+          var(--sage)
+        );
+      }
+      .card-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: var(--forest);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .card-title .num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--forest);
+        color: var(--gold);
+        border-radius: 50%;
+        font-size: 0.85rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+
+      /* ── Form fields ── */
+      .field-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .field-group.full {
+        grid-template-columns: 1fr;
+      }
+      .field-group.triple {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+      }
+
+      label {
+        font-size: 0.78rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--moss);
+      }
+      label .req {
+        color: var(--accent);
+      }
+      .lnote {
+        font-size: 0.72rem;
+        font-weight: 300;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--stone);
+        margin-left: 4px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid rgba(45, 90, 61, 0.2);
+        border-radius: 10px;
+        background: white;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        outline: none;
+        -webkit-appearance: none;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--sage);
+        box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.12);
+      }
+      select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232d5a3d' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+        cursor: pointer;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      /* Address autocomplete dropdown */
+      .autocomplete-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: white;
+        border: 2px solid rgba(45, 90, 61, 0.2);
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        max-height: 220px;
+        overflow-y: auto;
+        display: none;
+      }
+      .autocomplete-list.open {
+        display: block;
+      }
+      .ac-item {
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        border-bottom: 1px solid rgba(45, 90, 61, 0.08);
+        transition: background 0.1s;
+      }
+      .ac-item:last-child {
+        border-bottom: none;
+      }
+      .ac-item:hover,
+      .ac-item.active {
+        background: var(--mist);
+      }
+      .ac-item .ac-main {
+        font-weight: 500;
+      }
+      .ac-item .ac-sub {
+        font-size: 0.78rem;
+        color: var(--stone);
+      }
+
+      /* ── Pills ── */
+      .radio-group,
+      .check-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .radio-pill,
+      .check-pill {
+        position: relative;
+      }
+      .radio-pill input,
+      .check-pill input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .radio-pill label,
+      .check-pill label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: white;
+        border: 2px solid rgba(45, 90, 61, 0.2);
+        border-radius: 40px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--text-mid);
+        transition: all 0.15s;
+        user-select: none;
+      }
+      .radio-pill input:checked + label,
+      .check-pill input:checked + label {
+        background: var(--forest);
+        border-color: var(--forest);
+        color: var(--cream);
+      }
+      .radio-pill label:hover,
+      .check-pill label:hover {
+        border-color: var(--sage);
+        background: var(--mist);
+      }
+      .radio-pill input:checked + label:hover,
+      .check-pill input:checked + label:hover {
+        background: var(--forest);
+      }
+
+      /* ── Reveal fields (race, connection-other, park-use-other) ── */
+      .self-describe-wrap,
+      .connection-other-wrap,
+      .park-use-other-wrap {
+        margin-top: 10px;
+        display: none;
+        animation: fadeUp 0.2s ease both;
+      }
+      .self-describe-wrap.open,
+      .connection-other-wrap.open,
+      .park-use-other-wrap.open {
+        display: block;
+      }
+      .self-describe-wrap input,
+      .connection-other-wrap input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+      }
+      .connection-other-wrap textarea {
+        min-height: 70px;
+        font-size: 0.9rem;
+      }
+
+      /* ── Two-panel priority picker ── */
+      .priority-intro {
+        font-size: 0.88rem;
+        color: var(--stone);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        background: rgba(74, 124, 89, 0.08);
+        padding: 14px 16px;
+        border-radius: 10px;
+        border-left: 3px solid var(--sage);
+      }
+      .priority-intro strong {
+        color: var(--moss);
+      }
+      .priority-panels {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      .panel-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--stone);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .panel-badge {
+        background: var(--mist);
+        border-radius: 20px;
+        padding: 2px 8px;
+        font-size: 0.68rem;
+        color: var(--sage);
+        font-weight: 500;
+      }
+      .available-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-height: 40px;
+      }
+      .avail-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: white;
+        border: 2px solid rgba(45, 90, 61, 0.15);
+        border-radius: 10px;
+        padding: 10px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+        user-select: none;
+      }
+      .avail-item:hover {
+        border-color: var(--sage);
+        background: var(--mist);
+        transform: translateX(3px);
+      }
+      .avail-label {
+        flex: 1;
+        font-size: 0.87rem;
+        color: var(--text-mid);
+        line-height: 1.3;
+      }
+      .add-icon {
+        font-size: 1.1rem;
+        color: var(--sage);
+        flex-shrink: 0;
+      }
+      .ranked-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-height: 60px;
+      }
+      .ranked-empty {
+        border: 2px dashed rgba(45, 90, 61, 0.2);
+        border-radius: 10px;
+        padding: 22px 16px;
+        text-align: center;
+        color: var(--stone);
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+      .rank-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        background: white;
+        border: 2px solid rgba(45, 90, 61, 0.2);
+        border-radius: 10px;
+        padding: 10px 12px;
+        transition: all 0.15s;
+        cursor: grab;
+      }
+      .rank-item:active {
+        cursor: grabbing;
+      }
+      .rank-item.dragging {
+        opacity: 0.4;
+        transform: scale(0.97);
+      }
+      .rank-item.drag-over {
+        border-color: var(--sage);
+        background: var(--mist);
+        transform: scale(1.015);
+      }
+      .rank-num {
+        min-width: 26px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--forest);
+        color: var(--gold);
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .drag-handle {
+        color: rgba(45, 90, 61, 0.3);
+        font-size: 15px;
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+      .rank-content {
+        flex: 1;
+      }
+      .rank-item-label {
+        font-size: 0.87rem;
+        color: var(--text-mid);
+        line-height: 1.3;
+      }
+      .rank-other-input {
+        margin-top: 6px;
+        padding: 6px 10px !important;
+        font-size: 0.83rem !important;
+        border-radius: 7px !important;
+        min-height: unset !important;
+      }
+      .remove-btn {
+        background: none;
+        border: none;
+        color: rgba(212, 100, 74, 0.4);
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 3px;
+        transition: color 0.15s;
+      }
+      .remove-btn:hover {
+        color: var(--accent);
+      }
+      .drag-hint {
+        font-size: 0.72rem;
+        color: var(--stone);
+        text-align: center;
+        margin-top: 8px;
+        display: none;
+      }
+
+      /* ── Toggle ── */
+      .toggle-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: white;
+        border: 2px solid rgba(45, 90, 61, 0.2);
+        border-radius: 12px;
+        padding: 14px 18px;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .toggle-text {
+        font-size: 0.92rem;
+        color: var(--text-mid);
+        line-height: 1.4;
+      }
+      .toggle-switch {
+        position: relative;
+        width: 52px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+      .toggle-slider {
+        position: absolute;
+        inset: 0;
+        background: rgba(45, 90, 61, 0.2);
+        border-radius: 28px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .toggle-slider::before {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.2s;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      }
+      .toggle-switch input:checked + .toggle-slider {
+        background: var(--moss);
+      }
+      .toggle-switch input:checked + .toggle-slider::before {
+        transform: translateX(24px);
+      }
+
+      /* ── CAPTCHA ── */
+      .captcha-area {
+        background: rgba(74, 124, 89, 0.08);
+        border: 2px solid rgba(74, 124, 89, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 16px;
+      }
+      .captcha-label {
+        font-size: 0.85rem;
+        color: var(--moss);
+        margin-bottom: 14px;
+        font-weight: 500;
+      }
+      .math-challenge {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: var(--forest);
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+      .captcha-input {
+        width: 100px !important;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+      }
+      .captcha-refresh {
+        background: none;
+        border: none;
+        color: var(--sage);
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin: 10px auto 0;
+        font-family: "DM Sans", sans-serif;
+        text-decoration: underline;
+        display: block;
+      }
+
+      /* ── Consent ── */
+      .consent-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: rgba(200, 168, 75, 0.08);
+        border: 2px solid rgba(200, 168, 75, 0.3);
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .consent-box input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        margin-top: 2px;
+        accent-color: var(--forest);
+        cursor: pointer;
+      }
+      .consent-text {
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        line-height: 1.55;
+      }
+      .consent-text strong {
+        color: var(--moss);
+      }
+
+      /* ── Submit ── */
+      .submit-btn {
+        width: 100%;
+        padding: 18px 32px;
+        background: linear-gradient(135deg, var(--forest), var(--moss));
+        color: var(--cream);
+        border: none;
+        border-radius: 14px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        box-shadow: 0 8px 30px rgba(26, 58, 42, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+      .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(200, 168, 75, 0.15),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(26, 58, 42, 0.5);
+      }
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .privacy-note {
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--meadow);
+        margin-top: 16px;
+        line-height: 1.5;
+      }
+
+      /* ── Errors ── */
+      .error-msg {
+        color: var(--accent);
+        font-size: 0.8rem;
+        margin-top: 4px;
+        display: none;
+      }
+      .field-error input,
+      .field-error select,
+      .field-error textarea {
+        border-color: var(--accent) !important;
+      }
+      .form-error-banner {
+        background: rgba(212, 100, 74, 0.1);
+        border: 2px solid var(--accent);
+        border-radius: 10px;
+        padding: 12px 18px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        margin-bottom: 16px;
+        display: none;
+      }
+
+      /* ── Success ── */
+      .success-screen {
+        display: none;
+        text-align: center;
+        padding: 60px 40px;
+        background: var(--cream);
+        border-radius: 20px;
+        animation: fadeUp 0.6s ease both;
+      }
+      .success-screen.visible {
+        display: block;
+      }
+      .success-icon {
+        font-size: 56px;
+        margin-bottom: 20px;
+      }
+      .success-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: var(--forest);
+        margin-bottom: 12px;
+      }
+      .success-msg {
+        color: var(--stone);
+        line-height: 1.6;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      /* ── Misc ── */
+      .honeypot {
+        display: none !important;
+      }
+      .tablet-hint {
+        background: rgba(200, 168, 75, 0.15);
+        border: 1px solid rgba(200, 168, 75, 0.3);
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        color: var(--gold);
+        text-align: center;
+        margin-bottom: 24px;
+        animation: fadeDown 1s ease 0.5s both;
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .field-group {
+          grid-template-columns: 1fr;
+        }
+        .field-group.triple {
+          grid-template-columns: 1fr 1fr;
+        }
+        .priority-panels {
+          grid-template-columns: 1fr;
+        }
+        .site-info-inner {
+          grid-template-columns: 1fr;
+        }
+        .card {
+          padding: 24px 18px;
+        }
+        .site-info {
+          padding: 24px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      class="bg-leaves"
+      viewBox="0 0 1200 800"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <g fill="#a8c5a0">
+        <ellipse
+          cx="80"
+          cy="120"
+          rx="60"
+          ry="25"
+          transform="rotate(-30 80 120)"
+        />
+        <ellipse
+          cx="200"
+          cy="80"
+          rx="45"
+          ry="18"
+          transform="rotate(15 200 80)"
+        />
+        <ellipse
+          cx="1100"
+          cy="200"
+          rx="70"
+          ry="28"
+          transform="rotate(40 1100 200)"
+        />
+        <ellipse
+          cx="950"
+          cy="100"
+          rx="50"
+          ry="20"
+          transform="rotate(-20 950 100)"
+        />
+        <ellipse
+          cx="50"
+          cy="700"
+          rx="80"
+          ry="30"
+          transform="rotate(25 50 700)"
+        />
+        <ellipse
+          cx="1150"
+          cy="650"
+          rx="65"
+          ry="26"
+          transform="rotate(-35 1150 650)"
+        />
+        <ellipse
+          cx="600"
+          cy="30"
+          rx="55"
+          ry="22"
+          transform="rotate(10 600 30)"
+        />
+        <ellipse
+          cx="300"
+          cy="780"
+          rx="75"
+          ry="28"
+          transform="rotate(-15 300 780)"
+        />
+        <ellipse
+          cx="900"
+          cy="760"
+          rx="60"
+          ry="24"
+          transform="rotate(30 900 760)"
+        />
+      </g>
+    </svg>
+
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="park-badge">
+          <svg
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 2L8 8H4l4 6H6l6 8 6-8h-2l4-6h-4L12 2z" />
+          </svg>
+          Franklin Park · Roxbury / Jamaica Plain, Boston
+        </div>
+        <h1>Shape the Future of<br /><em>Shattuck Campus</em></h1>
+        <div class="divider"></div>
+        <p class="header-sub">
+          Your voice matters. Tell us what you'd like to see on these 13 acres —
+          a once-in-a-generation opportunity to reimagine this land for our
+          community.
+        </p>
+      </div>
+
+      <!-- Site Info + Map -->
+      <div class="site-info">
+        <div class="site-info-inner">
+          <div>
+            <h2>About the Shattuck Campus</h2>
+            <p>
+              The <strong>Lemuel Shattuck Hospital campus</strong> sits on
+              <strong>13.3 acres</strong> at 170 Morton Street, deep within
+              Frederick Law Olmsted's Franklin Park — Boston's largest park and
+              the crown jewel of the Emerald Necklace.
+            </p>
+            <p>
+              In <strong>1949</strong>, the City of Boston conveyed this
+              parkland — then a scenic meadow called <em>Heathfield</em> — to
+              the Commonwealth specifically for healthcare purposes. The
+              hospital, built in the early 1950s, has served the region for over
+              70 years, providing care for respiratory illness, cancer, HIV,
+              psychiatric services, corrections inmates, and substance use
+              disorder (SUD) treatment. Today, several nonprofits operate on the
+              campus, including a men's shelter and structured, supervised
+              in-patient SUD programs.
+            </p>
+            <p>
+              The aging building cannot be cost-effectively renovated.
+              <strong
+                >Hospital services are relocating to Boston Medical Center's
+                South End campus</strong
+              >, likely by 2026. This creates a rare decision point: the State
+              holds the site under a deed restriction requiring health use —
+              <em>or it can be returned to the City for parkland</em>. The
+              community's input will help shape what comes next.
+            </p>
+            <div class="info-tags">
+              <span class="info-tag">📍 170 Morton St, Jamaica Plain</span>
+              <span class="info-tag">🌳 13.3 Acres</span>
+              <span class="info-tag"
+                >🏥 State-owned, health deed restriction</span
+              >
+              <span class="info-tag"
+                >🚌 Routes 16, 21, 31 · Forest Hills MBTA</span
+              >
+            </div>
+          </div>
+          <div>
+            <div class="map-wrap">
+              <!-- OpenStreetMap embed — no API key needed, free to use -->
+              <!-- bbox: west,south,east,north  |  zoom ~14 shows full Franklin Park -->
+              <!-- Shattuck Hospital: 42.3008°N, 71.1108°W — south edge of park near Forest Hills -->
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-71.1350%2C42.2880%2C-71.0780%2C42.3200&layer=mapnik&marker=42.29978387533078%2C-71.10195994372876"
+                allowfullscreen
+                loading="lazy"
+                title="Shattuck Campus location map"
+              >
+              </iframe>
+            </div>
+            <p class="map-caption">
+              📍 Shattuck Campus, 170 Morton St<br />South edge of Franklin
+              Park, Jamaica Plain
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tablet-hint">
+        📋 Canvassing with a tablet? Each submission is recorded individually —
+        tap "Submit Another Response" to start fresh for the next person.
+      </div>
+
+      <form id="surveyForm" novalidate>
+        <!-- Honeypot -->
+        <div class="honeypot" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          <input
+            type="text"
+            name="phone_confirm"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- ══ 1. Contact ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">1</span> Contact Information
+          </div>
+
+          <div class="field-group">
+            <div class="field" id="field-first_name">
+              <!--
+            autocomplete="given-name" → browser fills first name automatically.
+            Browsers map this to whatever the user has saved in their profile.
+          -->
+              <label for="first_name"
+                >First Name <span class="req">*</span></label
+              >
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                placeholder="Jane"
+                autocomplete="given-name"
+                autocapitalize="words"
+                autocorrect="off"
+              />
+              <div class="error-msg">Please enter your first name.</div>
+            </div>
+            <div class="field" id="field-last_name">
+              <label for="last_name"
+                >Last Name <span class="req">*</span></label
+              >
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                placeholder="Smith"
+                autocomplete="family-name"
+                autocapitalize="words"
+                autocorrect="off"
+              />
+              <div class="error-msg">Please enter your last name.</div>
+            </div>
+          </div>
+
+          <div class="field-group full">
+            <div class="field" id="field-email">
+              <label for="email"
+                >Email Address <span class="req">*</span></label
+              >
+              <!--
+            autocomplete="email" + inputmode="email" → keyboard switches to email layout on mobile,
+            browser offers saved email addresses.
+          -->
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jane@example.com"
+                autocomplete="email"
+                inputmode="email"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+              />
+              <div class="error-msg">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <!--
+        ADDRESS STRATEGY:
+        - autocomplete="street-address" triggers browser/OS autofill for the full street line.
+        - We also wire up the Google Places Autocomplete API (biased to Boston metro)
+          in the JS below. If the API is unavailable, the field still works normally.
+        - On iOS/Android, the native keyboard will suggest saved addresses.
+        - The Boston neighborhood suggestions appear in the dropdown when the user starts typing.
+      -->
+          <div class="field-group full">
+            <div class="field" id="field-street" style="position: relative">
+              <label for="street">Street Address</label>
+              <input
+                type="text"
+                id="street"
+                name="street"
+                placeholder="123 Main St"
+                autocomplete="street-address"
+                autocapitalize="words"
+              />
+              <!-- Boston-neighborhood-aware suggestion dropdown (built-in, no API key) -->
+              <div class="autocomplete-list" id="streetDropdown"></div>
+            </div>
+          </div>
+
+          <div class="field-group triple">
+            <div class="field" id="field-city" style="position: relative">
+              <label for="city">City / Town</label>
+              <!--
+            autocomplete="address-level2" = city.
+            We pre-populate with Boston and show a Boston-area dropdown on focus.
+          -->
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Boston"
+                autocomplete="address-level2"
+                autocapitalize="words"
+              />
+              <div class="autocomplete-list" id="cityDropdown"></div>
+            </div>
+            <div class="field">
+              <label for="state">State</label>
+              <select id="state" name="state" autocomplete="address-level1">
+                <option value="MA" selected>MA</option>
+                <option value="CT">CT</option>
+                <option value="ME">ME</option>
+                <option value="NH">NH</option>
+                <option value="RI">RI</option>
+                <option value="VT">VT</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zip">ZIP Code</label>
+              <!--
+            autocomplete="postal-code" + inputmode="numeric" → numeric keyboard on mobile,
+            browser fills ZIP from saved address.
+          -->
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                placeholder="02120"
+                maxlength="5"
+                inputmode="numeric"
+                autocomplete="postal-code"
+                pattern="[0-9]{5}"
+              />
+            </div>
+          </div>
+
+          <!-- Neighborhood: free text, no autofill (too granular for OS autofill) -->
+          <div class="field-group full">
+            <div class="field" style="position: relative">
+              <label for="neighborhood"
+                >Neighborhood <span class="lnote">(optional)</span></label
+              >
+              <input
+                type="text"
+                id="neighborhood"
+                name="neighborhood"
+                placeholder="e.g. Roxbury, Jamaica Plain, Dorchester…"
+                autocomplete="off"
+                autocapitalize="words"
+              />
+              <div class="autocomplete-list" id="neighborhoodDropdown"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 2. About You ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">2</span> About You
+            <span
+              style="
+                font-family: &quot;DM Sans&quot;;
+                font-size: 0.72rem;
+                font-weight: 300;
+                color: var(--stone);
+                text-transform: none;
+                letter-spacing: 0;
+                margin-left: 4px;
+              "
+              >(optional — helps us understand who we're hearing from)</span
+            >
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label for="age_range">Age Range</label>
+              <select id="age_range" name="age_range" autocomplete="off">
+                <option value="">Prefer not to say</option>
+                <option>Under 18</option>
+                <option>18–24</option>
+                <option>25–34</option>
+                <option>35–44</option>
+                <option>45–54</option>
+                <option>55–64</option>
+                <option>65–74</option>
+                <option>75+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="gender">Gender Identity</label>
+              <select id="gender" name="gender" autocomplete="off">
+                <option value="">Prefer not to say</option>
+                <option>Woman</option>
+                <option>Man</option>
+                <option>Non-binary / gender non-conforming</option>
+                <option>Transgender</option>
+                <option>Self-describe</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field">
+              <label for="race_ethnicity">Race / Ethnicity</label>
+              <select
+                id="race_ethnicity"
+                name="race_ethnicity"
+                autocomplete="off"
+              >
+                <option value="">Prefer not to say</option>
+                <option>Black or African American</option>
+                <option>Hispanic or Latino/a/x</option>
+                <option>White / Caucasian</option>
+                <option>Asian or Pacific Islander</option>
+                <option>Native American or Alaska Native</option>
+                <option>Multiracial</option>
+                <option value="self-describe">Other / Self-describe</option>
+              </select>
+              <!-- Revealed when "Other / Self-describe" is selected -->
+              <div class="self-describe-wrap" id="raceDescribeWrap">
+                <input
+                  type="text"
+                  id="race_self_describe"
+                  name="race_self_describe"
+                  placeholder="Please describe your identity…"
+                  autocomplete="off"
+                  autocapitalize="sentences"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="income">Household Income</label>
+              <select id="income" name="income" autocomplete="off">
+                <option value="">Prefer not to say</option>
+                <option>Under $25,000</option>
+                <option>$25,000–$49,999</option>
+                <option>$50,000–$74,999</option>
+                <option>$75,000–$99,999</option>
+                <option>$100,000–$149,999</option>
+                <option>$150,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Connection to Area -->
+          <div class="field">
+            <label
+              >Connection to the Area
+              <span class="lnote">(select all that apply)</span></label
+            >
+            <div class="check-group" style="margin-top: 8px">
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c1"
+                  name="connection[]"
+                  value="Abutter (adjacent property)"
+                /><label for="c1">Abutter</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c2"
+                  name="connection[]"
+                  value="Park advocate"
+                /><label for="c2">Park Advocate</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c3"
+                  name="connection[]"
+                  value="Housing advocate"
+                /><label for="c3">Housing Advocate</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c4"
+                  name="connection[]"
+                  value="SUD services advocate"
+                /><label for="c4">SUD Services Advocate</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c5"
+                  name="connection[]"
+                  value="Works nearby"
+                /><label for="c5">Works nearby</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c6"
+                  name="connection[]"
+                  value="Current or former patient"
+                /><label for="c6">Current / former patient</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c7"
+                  name="connection[]"
+                  value="Park visitor"
+                /><label for="c7">Park visitor</label>
+              </div>
+              <!--
+            "Other" catch-all — covers: goes to school nearby, attends church, visits family,
+            shops in the area, uses transit through here, etc. without needing an exhaustive list.
+          -->
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="c8"
+                  name="connection[]"
+                  value="Other community connection"
+                  id="c8_cb"
+                /><label for="c8">Other connection</label>
+              </div>
+            </div>
+            <!-- Revealed when "Other connection" is checked -->
+            <div class="connection-other-wrap" id="connectionOtherWrap">
+              <input
+                type="text"
+                id="connection_other_text"
+                name="connection_other"
+                placeholder="e.g. attend school or church nearby, visit family, shop in the area…"
+                autocomplete="off"
+                autocapitalize="sentences"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 3. Park Use ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">3</span> Franklin Park Usage
+          </div>
+
+          <div class="field" style="margin-bottom: 22px">
+            <label
+              >How often do you visit Franklin Park?
+              <span class="req">*</span></label
+            >
+            <div
+              class="radio-group"
+              style="margin-top: 8px"
+              id="group-park_freq"
+            >
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f1"
+                  name="park_freq"
+                  value="Daily"
+                /><label for="f1">Daily</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f2"
+                  name="park_freq"
+                  value="Several times a week"
+                /><label for="f2">Several times/week</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f3"
+                  name="park_freq"
+                  value="Weekly"
+                /><label for="f3">Weekly</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f4"
+                  name="park_freq"
+                  value="Monthly"
+                /><label for="f4">Monthly</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f5"
+                  name="park_freq"
+                  value="A few times a year"
+                /><label for="f5">A few times/year</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f6"
+                  name="park_freq"
+                  value="Rarely or never"
+                /><label for="f6">Rarely / never</label>
+              </div>
+            </div>
+            <div class="error-msg" id="err-park_freq">
+              Please select a visit frequency.
+            </div>
+          </div>
+
+          <div class="field">
+            <label
+              >What do you use Franklin Park for?
+              <span class="lnote">(select all that apply)</span></label
+            >
+            <div class="check-group" style="margin-top: 8px">
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u1"
+                  name="park_use[]"
+                  value="Walking or running"
+                /><label for="u1">Walking / Running</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u2"
+                  name="park_use[]"
+                  value="Dog walking"
+                /><label for="u2">Dog walking</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u3"
+                  name="park_use[]"
+                  value="Sports and recreation"
+                /><label for="u3">Sports &amp; recreation</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u4"
+                  name="park_use[]"
+                  value="Nature and birding"
+                /><label for="u4">Nature &amp; birding</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u5"
+                  name="park_use[]"
+                  value="Picnicking"
+                /><label for="u5">Picnicking</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u6"
+                  name="park_use[]"
+                  value="Golf course"
+                /><label for="u6">Golf course</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u7"
+                  name="park_use[]"
+                  value="Youth programs"
+                /><label for="u7">Youth programs</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u8"
+                  name="park_use[]"
+                  value="Attending events"
+                /><label for="u8">Attending events</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u9"
+                  name="park_use[]"
+                  value="Cutting through or transit"
+                /><label for="u9">Cutting through / transit</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u10"
+                  name="park_use[]"
+                  value="Zoo visit"
+                /><label for="u10">Zoo visit</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u_other"
+                  name="park_use[]"
+                  value="Other park use"
+                />
+                <label for="u_other">Other…</label>
+              </div>
+            </div>
+            <div class="park-use-other-wrap" id="parkUseOtherWrap">
+              <input
+                type="text"
+                id="park_use_other_text"
+                name="park_use_other"
+                placeholder="Please describe how else you use Franklin Park…"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 4. Priorities ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">4</span> What Should Be on the Shattuck Campus?
+          </div>
+
+          <div class="priority-intro">
+            <strong>Step 1 —</strong> Click any option on the left to add it to
+            your list.<br />
+            <strong>Step 2 —</strong> Drag items on the right to rank them in
+            order of priority (most important at top).<br />
+            Select as many or as few as you like. Click ✕ to remove an item.
+          </div>
+
+          <div class="priority-panels">
+            <div>
+              <div class="panel-label">
+                Available options
+                <span class="panel-badge" id="avail-count">13</span>
+              </div>
+              <div class="available-list" id="availableList"></div>
+            </div>
+            <div>
+              <div class="panel-label">
+                Your priorities
+                <span class="panel-badge" id="ranked-count">0 selected</span>
+              </div>
+              <div class="ranked-list" id="rankedList">
+                <div class="ranked-empty" id="rankedEmpty">
+                  ← Click items to add &amp; rank them here.
+                </div>
+              </div>
+              <p class="drag-hint" id="dragHint">⋮⋮ Drag rows to reorder</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 5. Opposition ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">5</span> Concerns &amp; Opposition
+          </div>
+          <div class="field-group full">
+            <div class="field">
+              <label for="opposition"
+                >Is there anything you would strongly oppose on this
+                site?</label
+              >
+              <textarea
+                id="opposition"
+                name="opposition"
+                style="min-height: 100px"
+                placeholder="Please describe any uses or outcomes you would find unacceptable for the Shattuck Campus…"
+                autocomplete="off"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 6. Stay Connected ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">6</span> Stay Connected
+          </div>
+
+          <div class="toggle-field">
+            <div class="toggle-text">
+              <strong>Receive updates</strong> about the Shattuck Campus
+              process, public meetings, and ways to stay involved.
+            </div>
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="receive_updates"
+                name="receive_updates"
+                value="yes"
+              />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="field" style="margin-bottom: 16px">
+            <label for="referral_source"
+              >How did you hear about this survey?
+              <span class="lnote">(optional)</span></label
+            >
+            <select
+              id="referral_source"
+              name="referral_source"
+              autocomplete="off"
+            >
+              <option value="">— Select one —</option>
+              <option>Community canvasser / tablet</option>
+              <option>Neighbor or friend</option>
+              <option>Community meeting or event</option>
+              <option>Flyer or printed material</option>
+              <option>Social media (Facebook, Instagram, etc.)</option>
+              <option>Email or newsletter</option>
+              <option>News article</option>
+              <option>City or State website</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field-group full">
+            <div class="field">
+              <label for="additional_comments"
+                >Additional Comments
+                <span class="lnote">(optional)</span></label
+              >
+              <textarea
+                id="additional_comments"
+                name="additional_comments"
+                placeholder="Anything else you'd like us to know…"
+                autocomplete="off"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- CAPTCHA -->
+          <div class="captcha-area">
+            <div class="captcha-label">
+              🌿 Quick verification — please solve:
+            </div>
+            <div class="math-challenge" id="mathChallenge"></div>
+            <input
+              type="number"
+              id="captchaAnswer"
+              name="captcha_answer"
+              class="captcha-input"
+              placeholder="?"
+              inputmode="numeric"
+              autocomplete="off"
+            />
+            <div class="error-msg" id="err-captcha" style="text-align: center">
+              Incorrect — please try again.
+            </div>
+            <button
+              type="button"
+              class="captcha-refresh"
+              onclick="newChallenge()"
+            >
+              ↻ Different question
+            </button>
+          </div>
+
+          <!-- Consent -->
+          <label class="consent-box" for="consent_check">
+            <input
+              type="checkbox"
+              id="consent_check"
+              name="consent"
+              value="yes"
+            />
+            <span class="consent-text">
+              <strong>I confirm</strong> this is my own individual response,
+              submitted voluntarily. I have not been directed to submit multiple
+              responses, and I understand this information will be used to
+              inform planning decisions for the Shattuck Campus.
+            </span>
+          </label>
+          <div class="error-msg" id="err-consent" style="margin-top: 6px">
+            Please confirm your response before submitting.
+          </div>
+        </div>
+
+        <div class="form-error-banner" id="formErrorBanner">
+          Please review the highlighted fields above and try again.
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Submit My Response →
+        </button>
+        <p class="privacy-note">
+          🔒 Responses collected securely. IP address and approximate location
+          recorded to maintain survey integrity.<br />
+          Personal information will not be shared publicly or used for
+          commercial purposes.
+        </p>
+      </form>
+
+      <!-- Success -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">🌳</div>
+        <div class="success-title">Thank You!</div>
+        <p class="success-msg">
+          Your response has been recorded and will help shape the future of the
+          Shattuck Campus in Franklin Park. We appreciate you taking the time to
+          share your vision for this community.
+        </p>
+        <div class="divider"></div>
+        <button
+          onclick="resetForm()"
+          style="
+            margin-top: 20px;
+            padding: 12px 32px;
+            background: var(--forest);
+            color: var(--cream);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: &quot;DM Sans&quot;, sans-serif;
+            font-size: 0.95rem;
+          "
+        >
+          Submit Another Response
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // ═══════════════════════════════════════════════════════════════
+      // PRIORITY ITEMS
+      // ═══════════════════════════════════════════════════════════════
+      const ALL_ITEMS = [
+        "24-hour pharmacy",
+        "Veterans services",
+        "Assisted living facility",
+        "Return land to Franklin Park (green space)",
+        "Senior housing",
+        "Veterans housing",
+        "Current in-patient substance use disorder (SUD) services",
+        "Substance use disorder housing (no sobriety requirement)",
+        "Sober housing",
+        "In-patient SUD services + sober housing",
+        "In-patient SUD services + SUD housing (no sobriety requirement)",
+        "Urgent care clinic",
+        "Other",
+      ];
+
+      let availableItems = [...ALL_ITEMS];
+      let rankedItems = [];
+      let dragSrc = null;
+      let captchaAnswer = 0;
+
+      // ═══════════════════════════════════════════════════════════════
+      // BOSTON-AREA ADDRESS HINTS
+      // These power the lightweight local autocomplete dropdowns.
+      // No external API key required. Works offline.
+      // ═══════════════════════════════════════════════════════════════
+      const BOSTON_NEIGHBORHOODS = [
+        "Roxbury",
+        "Jamaica Plain",
+        "Dorchester",
+        "Mattapan",
+        "Mission Hill",
+        "Hyde Park",
+        "Roslindale",
+        "West Roxbury",
+        "Forest Hills",
+        "Fenway",
+        "South End",
+        "Back Bay",
+        "Allston",
+        "Brighton",
+        "East Boston",
+        "Charlestown",
+        "North End",
+        "South Boston",
+        "Beacon Hill",
+        "Chinatown",
+        "Nubian Square",
+        "Grove Hall",
+        "Egleston Square",
+        "Four Corners",
+      ];
+
+      const BOSTON_CITIES = [
+        "Boston",
+        "Roxbury",
+        "Jamaica Plain",
+        "Dorchester",
+        "Mattapan",
+        "Hyde Park",
+        "Roslindale",
+        "West Roxbury",
+        "Brookline",
+        "Newton",
+        "Cambridge",
+        "Somerville",
+        "Quincy",
+        "Milton",
+        "Dedham",
+        "Needham",
+        "Waltham",
+        "Medford",
+        "Malden",
+        "Revere",
+      ];
+
+      // Common Boston-area street name fragments for autocomplete hints
+      const BOSTON_STREETS = [
+        "Morton Street",
+        "Blue Hill Avenue",
+        "Washington Street",
+        "Columbus Avenue",
+        "American Legion Highway",
+        "Hyde Park Avenue",
+        "Centre Street",
+        "South Street",
+        "Walk Hill Street",
+        "Canterbury Street",
+        "Seaver Street",
+        "Circuit Drive",
+        "Forest Hills Street",
+        "Lamartine Street",
+        "Green Street",
+        "South Huntington Ave",
+        "Jamaicaway",
+        "Arborway",
+        "Harvard Street",
+        "Warren Street",
+        "Dudley Street",
+        "Melnea Cass Boulevard",
+        "Massachusetts Avenue",
+        "Tremont Street",
+        "Shawmut Avenue",
+      ];
+
+      function setupLocalAutocomplete(
+        inputId,
+        dropdownId,
+        suggestions,
+        extractFn,
+      ) {
+        const input = document.getElementById(inputId);
+        const list = document.getElementById(dropdownId);
+        if (!input || !list) return;
+
+        let activeIdx = -1;
+
+        function filterAndShow(val) {
+          const q = val.toLowerCase().trim();
+          if (!q || q.length < 2) {
+            list.classList.remove("open");
+            return;
+          }
+          const matches = suggestions
+            .filter((s) => s.toLowerCase().includes(q))
+            .slice(0, 8);
+          if (!matches.length) {
+            list.classList.remove("open");
+            return;
+          }
+          list.innerHTML = matches
+            .map(
+              (m, i) =>
+                `<div class="ac-item" data-idx="${i}" data-val="${m}">
+        <div class="ac-main">${m}</div>
+      </div>`,
+            )
+            .join("");
+          activeIdx = -1;
+          list.classList.add("open");
+          list.querySelectorAll(".ac-item").forEach((item) => {
+            item.addEventListener("mousedown", (e) => {
+              e.preventDefault();
+              input.value = extractFn
+                ? extractFn(item.dataset.val)
+                : item.dataset.val;
+              list.classList.remove("open");
+              input.dispatchEvent(new Event("change"));
+            });
+          });
+        }
+
+        input.addEventListener("input", () => filterAndShow(input.value));
+        input.addEventListener("focus", () => {
+          if (input.value.length >= 2) filterAndShow(input.value);
+        });
+        input.addEventListener("blur", () =>
+          setTimeout(() => list.classList.remove("open"), 150),
+        );
+
+        input.addEventListener("keydown", (e) => {
+          const items = list.querySelectorAll(".ac-item");
+          if (!items.length) return;
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            activeIdx = Math.min(activeIdx + 1, items.length - 1);
+            items.forEach((el, i) =>
+              el.classList.toggle("active", i === activeIdx),
+            );
+          } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            activeIdx = Math.max(activeIdx - 1, 0);
+            items.forEach((el, i) =>
+              el.classList.toggle("active", i === activeIdx),
+            );
+          } else if (e.key === "Enter" && activeIdx >= 0) {
+            e.preventDefault();
+            input.value = items[activeIdx].dataset.val;
+            list.classList.remove("open");
+          } else if (e.key === "Escape") {
+            list.classList.remove("open");
+          }
+        });
+      }
+
+      // Zip → city helper (Boston area common ZIPs pre-mapped for convenience)
+      const ZIP_CITY_MAP = {
+        "02119": "Roxbury",
+        "02130": "Jamaica Plain",
+        "02121": "Dorchester",
+        "02126": "Mattapan",
+        "02136": "Hyde Park",
+        "02131": "Roslindale",
+        "02132": "West Roxbury",
+        "02120": "Mission Hill",
+        "02467": "Chestnut Hill",
+        "02215": "Fenway",
+        "02118": "South End",
+        "02116": "Back Bay",
+        "02134": "Allston",
+        "02135": "Brighton",
+        "02128": "East Boston",
+        "02445": "Brookline",
+        "02446": "Brookline",
+        "02138": "Cambridge",
+        "02139": "Cambridge",
+        "02143": "Somerville",
+        "02169": "Quincy",
+        "02186": "Milton",
+        "02026": "Dedham",
+      };
+
+      document.getElementById("zip")?.addEventListener("input", function () {
+        if (this.value.length === 5 && ZIP_CITY_MAP[this.value]) {
+          const cityInput = document.getElementById("city");
+          if (cityInput && !cityInput.value) {
+            cityInput.value = ZIP_CITY_MAP[this.value];
+          }
+        }
+      });
+
+      // ═══════════════════════════════════════════════════════════════
+      // RACE SELF-DESCRIBE REVEAL
+      // ═══════════════════════════════════════════════════════════════
+      document
+        .getElementById("race_ethnicity")
+        .addEventListener("change", function () {
+          const wrap = document.getElementById("raceDescribeWrap");
+          const input = document.getElementById("race_self_describe");
+          if (this.value === "self-describe") {
+            wrap.classList.add("open");
+            input.focus();
+          } else {
+            wrap.classList.remove("open");
+            input.value = "";
+          }
+        });
+
+      // ═══════════════════════════════════════════════════════════════
+      // CONNECTION "OTHER" REVEAL
+      // ═══════════════════════════════════════════════════════════════
+      document.getElementById("c8").addEventListener("change", function () {
+        const wrap = document.getElementById("connectionOtherWrap");
+        if (this.checked) {
+          wrap.classList.add("open");
+          document.getElementById("connection_other_text").focus();
+        } else {
+          wrap.classList.remove("open");
+          document.getElementById("connection_other_text").value = "";
+        }
+      });
+
+      // ═══════════════════════════════════════════════════════════════
+      // PARK USE "OTHER" REVEAL
+      // ═══════════════════════════════════════════════════════════════
+      document
+        .getElementById("u_other")
+        .addEventListener("change", function () {
+          const wrap = document.getElementById("parkUseOtherWrap");
+          if (this.checked) {
+            wrap.classList.add("open");
+            document.getElementById("park_use_other_text").focus();
+          } else {
+            wrap.classList.remove("open");
+            document.getElementById("park_use_other_text").value = "";
+          }
+        });
+
+      // ═══════════════════════════════════════════════════════════════
+      // PRIORITY PICKER
+      // ═══════════════════════════════════════════════════════════════
+      function buildAvailable() {
+        const ul = document.getElementById("availableList");
+        ul.innerHTML = "";
+        if (availableItems.length === 0) {
+          ul.innerHTML =
+            '<div style="font-size:0.82rem;color:var(--stone);padding:12px;text-align:center;">All options added ✓</div>';
+        } else {
+          availableItems.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "avail-item";
+            div.dataset.item = item;
+            div.innerHTML = `<span class="avail-label">${item}</span><span class="add-icon">＋</span>`;
+            div.addEventListener("click", () => addToRanked(item));
+            ul.appendChild(div);
+          });
+        }
+        document.getElementById("avail-count").textContent =
+          availableItems.length;
+      }
+
+      function buildRanked() {
+        const container = document.getElementById("rankedList");
+        const empty = document.getElementById("rankedEmpty");
+        const hint = document.getElementById("dragHint");
+        container.querySelectorAll(".rank-item").forEach((el) => el.remove());
+
+        const n = rankedItems.length;
+        document.getElementById("ranked-count").textContent =
+          n === 0 ? "0 selected" : `${n} selected`;
+
+        if (n === 0) {
+          empty.style.display = "";
+          hint.style.display = "none";
+          return;
+        }
+        empty.style.display = "none";
+        hint.style.display = n > 1 ? "block" : "none";
+
+        rankedItems.forEach((item, i) => {
+          const div = document.createElement("div");
+          div.className = "rank-item";
+          div.draggable = true;
+          div.dataset.item = item;
+
+          const isOther = item === "Other";
+          div.innerHTML = `
+      <span class="drag-handle">⋮⋮</span>
+      <span class="rank-num">${i + 1}</span>
+      <div class="rank-content">
+        <div class="rank-item-label">${item}</div>
+        ${isOther ? `<textarea class="rank-other-input" name="other_specify" placeholder="Please describe your idea…" rows="2" autocomplete="off"></textarea>` : ""}
+      </div>
+      <button type="button" class="remove-btn" title="Remove">✕</button>
+    `;
+
+          div.querySelector(".remove-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            removeFromRanked(item);
+          });
+
+          div.addEventListener("dragstart", (e) => {
+            dragSrc = div;
+            div.classList.add("dragging");
+            e.dataTransfer.effectAllowed = "move";
+          });
+          div.addEventListener("dragend", () => {
+            div.classList.remove("dragging");
+            document
+              .querySelectorAll(".rank-item")
+              .forEach((el) => el.classList.remove("drag-over"));
+            syncFromDOM();
+          });
+          div.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            if (div !== dragSrc) div.classList.add("drag-over");
+          });
+          div.addEventListener("dragleave", () =>
+            div.classList.remove("drag-over"),
+          );
+          div.addEventListener("drop", (e) => {
+            e.preventDefault();
+            if (dragSrc && dragSrc !== div) {
+              const nodes = [...container.querySelectorAll(".rank-item")];
+              const si = nodes.indexOf(dragSrc),
+                di = nodes.indexOf(div);
+              if (si < di) container.insertBefore(dragSrc, div.nextSibling);
+              else container.insertBefore(dragSrc, div);
+            }
+            div.classList.remove("drag-over");
+          });
+
+          container.appendChild(div);
+        });
+        updateNumbers();
+      }
+
+      function syncFromDOM() {
+        rankedItems = [
+          ...document.querySelectorAll("#rankedList .rank-item"),
+        ].map((el) => el.dataset.item);
+        updateNumbers();
+      }
+      function updateNumbers() {
+        document
+          .querySelectorAll("#rankedList .rank-num")
+          .forEach((el, i) => (el.textContent = i + 1));
+      }
+      function addToRanked(item) {
+        availableItems = availableItems.filter((x) => x !== item);
+        rankedItems.push(item);
+        buildAvailable();
+        buildRanked();
+      }
+      function removeFromRanked(item) {
+        rankedItems = rankedItems.filter((x) => x !== item);
+        availableItems.push(item);
+        buildAvailable();
+        buildRanked();
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // CAPTCHA
+      // ═══════════════════════════════════════════════════════════════
+      function newChallenge() {
+        const ops = ["+", "+", "-", "×"];
+        const op = ops[Math.floor(Math.random() * ops.length)];
+        let a, b;
+        if (op === "-") {
+          a = Math.floor(Math.random() * 15) + 5;
+          b = Math.floor(Math.random() * a);
+          captchaAnswer = a - b;
+        } else if (op === "×") {
+          a = Math.floor(Math.random() * 7) + 2;
+          b = Math.floor(Math.random() * 7) + 2;
+          captchaAnswer = a * b;
+        } else {
+          a = Math.floor(Math.random() * 20) + 1;
+          b = Math.floor(Math.random() * 20) + 1;
+          captchaAnswer = a + b;
+        }
+        document.getElementById("mathChallenge").textContent =
+          `${a} ${op} ${b} = ?`;
+        document.getElementById("captchaAnswer").value = "";
+        document.getElementById("err-captcha").style.display = "none";
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // GEO / IP
+      // ═══════════════════════════════════════════════════════════════
+      let geoData = { ip: "", lat: "", lng: "", city: "", country: "" };
+      async function captureGeo() {
+        try {
+          const r = await fetch("https://ipapi.co/json/", {
+            signal: AbortSignal.timeout(4000),
+          });
+          if (r.ok) {
+            const d = await r.json();
+            geoData = {
+              ip: d.ip || "",
+              lat: d.latitude || "",
+              lng: d.longitude || "",
+              city: d.city || "",
+              country: d.country_name || "",
+            };
+          }
+        } catch (_) {}
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (p) => {
+              geoData.lat = p.coords.latitude;
+              geoData.lng = p.coords.longitude;
+            },
+            () => {},
+            { timeout: 5000, maximumAge: 60000 },
+          );
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // RATE LIMITING
+      // ═══════════════════════════════════════════════════════════════
+      const RATE_KEY = "shattuck_last_sub";
+      const RATE_MS = 60 * 1000;
+      function isRateLimited() {
+        return (
+          Date.now() - parseInt(sessionStorage.getItem(RATE_KEY) || "0") <
+          RATE_MS
+        );
+      }
+      function markSubmitted() {
+        sessionStorage.setItem(RATE_KEY, Date.now());
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // VALIDATION
+      // ═══════════════════════════════════════════════════════════════
+      function validateForm() {
+        let valid = true;
+
+        [
+          { id: "first_name", msg: "Please enter your first name." },
+          { id: "last_name", msg: "Please enter your last name." },
+          {
+            id: "email",
+            msg: "Please enter a valid email address.",
+            extra: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+          },
+        ].forEach(({ id, msg, extra }) => {
+          const el = document.getElementById(id);
+          const wrap = document.getElementById("field-" + id);
+          const err = wrap?.querySelector(".error-msg");
+          const val = el.value.trim();
+          const ok = val && (!extra || extra(val));
+          wrap?.classList.toggle("field-error", !ok);
+          if (err) {
+            err.textContent = msg;
+            err.style.display = ok ? "none" : "block";
+          }
+          if (!ok) valid = false;
+        });
+
+        if (!document.querySelector('input[name="park_freq"]:checked')) {
+          document.getElementById("err-park_freq").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("err-park_freq").style.display = "none";
+        }
+
+        const ua = parseInt(document.getElementById("captchaAnswer").value);
+        const ce = document.getElementById("err-captcha");
+        if (isNaN(ua) || ua !== captchaAnswer) {
+          ce.style.display = "block";
+          valid = false;
+          newChallenge();
+        } else ce.style.display = "none";
+
+        const cc = document.getElementById("consent_check");
+        const cce = document.getElementById("err-consent");
+        if (!cc.checked) {
+          cce.style.display = "block";
+          valid = false;
+        } else cce.style.display = "none";
+
+        if (
+          document.querySelector('[name="website"]').value ||
+          document.querySelector('[name="phone_confirm"]').value
+        )
+          return false;
+
+        return valid;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // DATA COLLECTION
+      // ═══════════════════════════════════════════════════════════════
+      function collectData() {
+        const fd = new FormData(document.getElementById("surveyForm"));
+        const data = {};
+        fd.forEach((v, k) => {
+          if (k.endsWith("[]")) {
+            const key = k.replace("[]", "");
+            if (!data[key]) data[key] = [];
+            data[key].push(v);
+          } else {
+            data[k] = v;
+          }
+        });
+
+        // Ranked priorities
+        data.ranked_priorities = [
+          ...document.querySelectorAll("#rankedList .rank-item"),
+        ].map((el, i) => {
+          const label = el.dataset.item;
+          const otherText = el.querySelector("textarea")?.value?.trim() || "";
+          return {
+            rank: i + 1,
+            item:
+              label === "Other" && otherText ? `Other: ${otherText}` : label,
+          };
+        });
+
+        // Append "Other connection" text to connection array if present
+        const conOther = document
+          .getElementById("connection_other_text")
+          ?.value?.trim();
+        if (conOther) {
+          if (!data.connection) data.connection = [];
+          data.connection = data.connection.map((v) =>
+            v === "Other community connection" ? `Other: ${conOther}` : v,
+          );
+        }
+
+        data.geo = geoData;
+        data.submitted_at = new Date().toISOString();
+        data.user_agent = navigator.userAgent;
+
+        delete data.captcha_answer;
+        delete data.website;
+        delete data.phone_confirm;
+        delete data.consent;
+
+        return data;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // SUBMIT
+      // ═══════════════════════════════════════════════════════════════
+      document
+        .getElementById("surveyForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const banner = document.getElementById("formErrorBanner");
+          banner.style.display = "none";
+
+          if (isRateLimited()) {
+            banner.textContent =
+              "Please wait a moment before submitting another response.";
+            banner.style.display = "block";
+            return;
+          }
+
+          if (!validateForm()) {
+            banner.textContent =
+              "Please review the highlighted fields above and try again.";
+            banner.style.display = "block";
+            (
+              document.querySelector(".field-error") ||
+              document.querySelector('.error-msg[style*="block"]')
+            )?.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+          }
+
+          const btn = document.getElementById("submitBtn");
+          btn.disabled = true;
+          btn.textContent = "Submitting…";
+
+          const payload = collectData();
+          console.log("Survey payload:", JSON.stringify(payload, null, 2));
+
+          // ── CONNECT YOUR BACKEND ──────────────────────────────────────
+          // const ENDPOINT = 'https://YOUR-API.execute-api.us-east-1.amazonaws.com/prod/survey';
+          // try {
+          //   const res = await fetch(ENDPOINT, {
+          //     method: 'POST',
+          //     headers: { 'Content-Type': 'application/json' },
+          //     body: JSON.stringify(payload)
+          //   });
+          //   if (!res.ok) throw new Error('Server error');
+          // } catch(err) {
+          //   btn.disabled = false; btn.textContent = 'Submit My Response →';
+          //   banner.textContent = 'Submission failed — please try again.';
+          //   banner.style.display = 'block'; return;
+          // }
+          // ─────────────────────────────────────────────────────────────
+
+          await new Promise((r) => setTimeout(r, 700)); // remove when live
+          markSubmitted();
+
+          document.getElementById("surveyForm").style.display = "none";
+          document.getElementById("successScreen").classList.add("visible");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+      // ═══════════════════════════════════════════════════════════════
+      // RESET (for tablet canvassing)
+      // ═══════════════════════════════════════════════════════════════
+      function resetForm() {
+        document.getElementById("surveyForm").reset();
+        document.getElementById("raceDescribeWrap").classList.remove("open");
+        document.getElementById("connectionOtherWrap").classList.remove("open");
+        document.getElementById("parkUseOtherWrap").classList.remove("open");
+        document.getElementById("surveyForm").style.display = "block";
+        document.getElementById("successScreen").classList.remove("visible");
+        availableItems = [...ALL_ITEMS];
+        rankedItems = [];
+        buildAvailable();
+        buildRanked();
+        newChallenge();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // INIT
+      // ═══════════════════════════════════════════════════════════════
+      buildAvailable();
+      buildRanked();
+      newChallenge();
+      captureGeo();
+
+      // Wire up local autocomplete dropdowns (Boston-biased, no API key)
+      setupLocalAutocomplete("street", "streetDropdown", BOSTON_STREETS);
+      setupLocalAutocomplete("city", "cityDropdown", BOSTON_CITIES);
+      setupLocalAutocomplete(
+        "neighborhood",
+        "neighborhoodDropdown",
+        BOSTON_NEIGHBORHOODS,
+      );
+    </script>
+  </body>
+</html>
