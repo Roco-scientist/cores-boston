@@ -191,7 +191,6 @@
 
           <!-- Column 2: The Action Form -->
           <div class="form-column">
-            <!-- We removed action and method; we'll use id for the script -->
             <div id="petition-form" class="clean-form sticky-form">
               <span class="eyebrow">Direct Action</span>
               <h3
@@ -261,13 +260,22 @@
                 ></textarea>
               </div>
 
-              <!-- This button now triggers the JavaScript function -->
-              <button
-                type="button"
-                onclick="sendEmail()"
-                class="btn btn-primary btn-block"
-              >
-                Open My Email & Send Letter
+              <button type="button" onclick="sendEmail()" class="btn btn-primary btn-block">Generate & Send Email</button>
+              
+              <!-- NEW: Non-technical User Guidance -->
+              <div id="help-area" style="margin-top: 1.5rem; display: none; background: #fff; padding: 1rem; border: 1px solid var(--mist); border-radius: 4px;">
+                <p style="font-size: 0.85rem; color: var(--forest); font-weight: bold; margin-bottom: 0.5rem;">Didn't see your email app open?</p>
+                <p style="font-size: 0.8rem; color: var(--soil); margin-bottom: 1rem;">
+                  Some browsers block email apps from opening. You can manually copy the text below and paste it into a new email to <strong>governor@mass.gov</strong>.
+                </p>
+                <button type="button" onclick="copyToClipboard()" class="btn btn-outline" style="color: var(--canopy); border-color: var(--canopy); width: 100%; font-size: 0.8rem;">Copy Letter to Clipboard</button>
+              </div>
+
+              <p style="font-size: 0.7rem; color: var(--soil); margin-top: 1.5rem; line-height: 1.4;">
+                <strong>Note:</strong> This tool will attempt to open your default email program (like Gmail, Outlook, or Apple Mail).
+              </p>
+            </div>
+          </div>
               </button>
 
               <p
@@ -301,53 +309,47 @@
     </footer>
 
     <script>
-      // Updates the visual signature on the left
-      function updateSignature() {
-        const fname = document.getElementById("fname").value;
-        const lname = document.getElementById("lname").value;
-        const address = document.getElementById("address").value;
-        const zip = document.getElementById("zip").value;
+      // Global variable to store the letter for the copy-paste fallback
+      let generatedLetter = "";
 
-        document.getElementById("sig-name").innerText =
-          fname || lname ? fname + " " + lname : "[Your Name]";
-        document.getElementById("sig-address").innerText = address
-          ? address
-          : "[Your Address]";
-        document.getElementById("sig-location").innerText = zip
-          ? "Boston, MA " + zip
-          : "[Zip Code]";
+      function updateSignature() {
+        const fname = document.getElementById('fname').value;
+        const lname = document.getElementById('lname').value;
+        const address = document.getElementById('address').value;
+        const zip = document.getElementById('zip').value;
+
+        document.getElementById('sig-name').innerText = (fname || lname) ? (fname + ' ' + lname) : '[Your Name]';
+        document.getElementById('sig-address').innerText = address ? address : '[Your Address]';
+        document.getElementById('sig-location').innerText = zip ? 'Boston, MA ' + zip : '[Zip Code]';
       }
 
-      // The function that actually "sends" the email
       function sendEmail() {
-        // 1. Define Recipients
-        const to = "governorhelley@mass.gov"; // Replace with actual lead rep
-        const cc =
-          "mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com";
+        const to = "governorhelley@mass.gov"; 
+        const cc = "mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com";
+        
+        const fname = document.getElementById('fname').value;
+        const lname = document.getElementById('lname').value;
+        const address = document.getElementById('address').value;
+        const zip = document.getElementById('zip').value;
+        const suggestions = document.getElementById('suggestions').value;
 
-        // 2. Collect Data
-        const fname = document.getElementById("fname").value;
-        const lname = document.getElementById("lname").value;
-        const address = document.getElementById("address").value;
-        const zip = document.getElementById("zip").value;
-        const suggestions = document.getElementById("suggestions").value;
-
-        if (!fname || !lname || !address || !zip) {
-          alert("Please fill out your name, address, and zip code first.");
-          return;
+        if(!fname || !lname || !address || !zip) {
+            alert("Please fill out your name, address, and zip code.");
+            return;
         }
 
-        // 3. Build the Email Body
-        const subject = encodeURIComponent(
-          "Constituent Letter: Balanced Development for Franklin Park",
-        );
-
+        // --- ENHANCED EMAIL BODY ---
+        const subject = "Constituent Letter: Balanced Development for Franklin Park";
+        
         let bodyText = `To: Governor Healey, Mayor Wu, and Secretary Walsh\n\n`;
         bodyText += `As a resident and stakeholder in the communities surrounding Franklin Park, I am writing to urge a more balanced and equitable approach to the redevelopment of the Shattuck Hospital site.\n\n`;
-        bodyText += `We recognize the importance of clinical and social services, but Environmental Justice requires that these services be distributed fairly across the region. Currently, the Franklin Park Corridor carries nearly five times the density of SUD supportive housing compared to the rest of the city.\n\n`;
-
-        if (suggestions) {
-          bodyText += `MY SUGGESTIONS FOR THE SITE:\n"${suggestions}"\n\n`;
+        
+        // THE CORRIDOR EXPLANATION
+        bodyText += `THE FRANKLIN PARK CORRIDOR:\n`;
+        bodyText += `The "Corridor" is a region encompassing the ten wards surrounding the park (Wards 8, 9, 11-17, 19). While this area is home to 74% non-white residents, analysis shows it carries nearly 5x the density of SUD supportive housing (5.55 sites per 10k residents) compared to the rest of the city (1.17). Environmental Justice demands that we stop this hyper-concentration.\n\n`;
+        
+        if(suggestions) {
+            bodyText += `MY SUGGESTIONS FOR THE SITE:\n"${suggestions}"\n\n`;
         }
 
         bodyText += `I stand with CORES in advocating for Community-Led Visioning, Geographic Equity, and Park Restoration.\n\n`;
@@ -356,10 +358,25 @@
         bodyText += `${address}\n`;
         bodyText += `Boston, MA ${zip}`;
 
-        const mailtoLink = `mailto:${to}?cc=${cc}&subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+        generatedLetter = bodyText; // Save for the fallback copy button
 
-        // 4. Trigger the Email Client
+        // Show the help/fallback area in case the mailto fails
+        document.getElementById('help-area').style.display = 'block';
+
+        // Trigger the email client
+        const mailtoLink = `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         window.location.href = mailtoLink;
+      }
+
+      // Fallback function for non-technical users
+      function copyToClipboard() {
+        if(!generatedLetter) {
+            alert("Please fill out the form and click 'Generate' first.");
+            return;
+        }
+        navigator.clipboard.writeText(generatedLetter).then(() => {
+            alert("Letter copied to clipboard! You can now paste it into your email.");
+        });
       }
     </script>
   </body>
