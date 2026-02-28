@@ -3,81 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Take Action: A Balanced Future for Franklin Park – CORES</title>
+    <title>Take Action: Letter to Representatives – CORES</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>">
+
     <style>
+      :root {
+        --forest: #1a3a2a;
+        --canopy: #2d5a3d;
+        --leaf: #4a8c5c;
+        --sage: #7eb88a;
+        --mist: #c8dfc9;
+        --parchment: #f5f0e8;
+        --bark: #3d2b1f;
+        --soil: #6b4e37;
+        --cream: #faf7f2;
+        --white: #ffffff;
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-body: "DM Sans", system-ui, sans-serif;
+        --shadow-soft: 0 4px 24px rgba(26, 58, 42, 0.1);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: var(--font-body);
+        color: var(--bark);
+        background: var(--cream);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+      .container { width: 90%; max-width: 1150px; margin: 0 auto; }
+      .section-padding { padding: 4rem 0; }
+
+      h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; }
+      .badge {
+        display: inline-block; background: var(--mist); color: var(--forest);
+        padding: 0.45rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 500;
+      }
+
+      /* HEADER */
+      .site-header { background: var(--cream); border-bottom: 1px solid rgba(74,140,92,0.18); padding: 1rem 0; }
+      .logo-mark { font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; color: var(--forest); display: block; }
+      .logo-sub { font-size: 0.7rem; color: var(--soil); text-transform: uppercase; letter-spacing: 0.05em; }
+
+      /* HERO */
+      .hero-title { font-size: 2.8rem; color: var(--forest); margin-top: 1rem; }
+
+      /* STEP LABELS */
+      .step-label {
+        display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem;
+      }
+      .step-num {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 30px; height: 30px; border-radius: 50%;
+        font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+      }
+      .step-num-form   { background: var(--canopy); color: var(--white); }
+      .step-num-letter { background: var(--mist); color: var(--forest); }
+      .step-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--leaf); }
+
+      /* GRID */
       .action-grid {
         display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 4rem;
-        padding-top: 3rem;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 3.5rem;
         align-items: start;
       }
-      .letter-body {
+
+      /* ── LEFT: FORM ── */
+      .form-card {
         background: var(--white);
-        padding: 2.5rem;
-        border-radius: 4px;
+        border-radius: 6px;
         box-shadow: var(--shadow-soft);
-        border-left: 4px solid var(--leaf);
+        border-top: 4px solid var(--canopy);
+        padding: 2rem 2rem 1.5rem;
+        position: sticky;
+        top: 20px;
       }
-      .demand-list {
-        list-style: none;
-        margin: 1.5rem 0;
+      .form-group { margin-bottom: 1.1rem; }
+      .form-group label { display: block; font-size: 0.83rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--forest); }
+      .form-group input, .form-group textarea {
+        width: 100%; padding: 0.65rem 0.75rem;
+        border: 1.5px solid rgba(74,140,92,0.3);
+        border-radius: 3px; font-family: var(--font-body); font-size: 0.95rem; color: var(--bark);
+        background: var(--cream);
+        transition: border-color 0.15s;
       }
-      .demand-list li {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-        position: relative;
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none; border-color: var(--leaf); background: var(--white);
+      }
+
+      .btn {
+        display: block; width: 100%; padding: 0.85rem; border-radius: 3px;
+        font-family: var(--font-body); font-weight: 500; cursor: pointer;
+        text-align: center; border: 2px solid transparent; transition: background 0.2s;
         font-size: 0.95rem;
       }
-      .demand-list li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--leaf);
-        font-weight: bold;
+      .btn-primary { background: var(--canopy); color: var(--white); }
+      .btn-primary:hover { background: var(--forest); }
+      .how-it-works { font-size: 0.72rem; color: var(--soil); margin-top: 1rem; line-height: 1.5; text-align: center; }
+
+      /* ── RIGHT: LETTER ── */
+
+      /* Recipients dark bar */
+      .recipients-bar {
+        background: var(--forest);
+        border-radius: 4px 4px 0 0;
+        padding: 0.8rem 1.1rem;
+        color: var(--white);
       }
-      .signature-block {
-        margin-top: 2.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--mist);
-        font-family: var(--font-body);
-        color: var(--forest);
+      .rec-header {
+        font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+        color: var(--sage); margin-bottom: 0.55rem;
+        display: flex; align-items: center; gap: 0.4rem;
       }
-      .signature-block p {
-        margin: 0;
-        line-height: 1.4;
+      .recipients-table { width: 100%; border-collapse: collapse; }
+      .recipients-table tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .recipients-table tr:last-child { border-bottom: none; }
+      .recipients-table td { padding: 0.3rem 0.25rem; font-size: 0.8rem; vertical-align: middle; }
+      .td-type  { color: var(--sage); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; width: 30px; }
+      .td-name  { color: var(--white); font-weight: 500; width: 36%; }
+      .td-email { color: var(--mist); font-size: 0.75rem; }
+      .td-copy  { text-align: right; width: 70px; }
+      .copy-addr-btn {
+        display: inline-flex; align-items: center; gap: 0.3rem;
+        background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+        color: var(--white); border-radius: 3px; padding: 0.2rem 0.5rem;
+        font-size: 0.68rem; font-weight: 500; cursor: pointer;
+        font-family: var(--font-body); transition: background 0.15s;
+        white-space: nowrap;
       }
-      .sticky-form {
-        position: sticky;
-        top: 40px;
+      .copy-addr-btn:hover { background: rgba(255,255,255,0.2); }
+      .copy-addr-btn.copied { background: var(--leaf); border-color: var(--leaf); }
+
+      /* Copy-all addresses bar */
+      .copy-all-bar {
+        display: flex; align-items: center; justify-content: space-between;
+        background: var(--canopy); padding: 0.5rem 1.1rem;
+        font-size: 0.75rem; color: rgba(255,255,255,0.8);
       }
-      @media (max-width: 992px) {
-        .action-grid {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-        .sticky-form {
-          position: static;
-        }
+      .copy-all-btn {
+        display: inline-flex; align-items: center; gap: 0.35rem;
+        background: var(--sage); border: none; color: var(--forest);
+        border-radius: 3px; padding: 0.3rem 0.7rem;
+        font-size: 0.72rem; font-weight: 600; cursor: pointer;
+        font-family: var(--font-body); transition: background 0.15s;
+      }
+      .copy-all-btn:hover { background: var(--mist); }
+
+      /* Copy-letter bar */
+      .letter-copy-bar {
+        display: flex; align-items: center; justify-content: space-between;
+        background: var(--leaf); padding: 0.55rem 1.1rem;
+        font-size: 0.75rem; color: var(--white);
+      }
+      .letter-copy-bar span { opacity: 0.85; }
+      .copy-letter-btn {
+        display: inline-flex; align-items: center; gap: 0.35rem;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+        color: var(--white); border-radius: 3px; padding: 0.28rem 0.65rem;
+        font-size: 0.72rem; font-weight: 600; cursor: pointer;
+        font-family: var(--font-body); transition: background 0.15s;
+      }
+      .copy-letter-btn:hover { background: rgba(255,255,255,0.3); }
+      .copy-letter-btn.copied { background: var(--forest); border-color: var(--forest); }
+
+      /* Letter body */
+      .letter-body {
+        background: var(--white);
+        padding: 2rem 2.2rem;
+        border-radius: 0 0 4px 4px;
+        box-shadow: var(--shadow-soft);
+        border-left: 4px solid var(--leaf);
+        cursor: text;
+        user-select: text;
+        -webkit-user-select: text;
+      }
+      .letter-body p { margin-bottom: 1.1rem; font-size: 1rem; }
+      .letter-body p:last-child { margin-bottom: 0; }
+
+      .corridor-box {
+        background-color: var(--parchment);
+        border: 1px solid var(--mist);
+        border-left: 4px solid var(--sage);
+        padding: 1rem 1.1rem;
+        margin: 1.2rem 0;
+      }
+      .corridor-box h5 { font-size: 0.78rem; text-transform: uppercase; color: var(--leaf); margin-bottom: 0.4rem; font-family: var(--font-body); }
+      .corridor-box p { font-size: 0.88rem !important; margin-bottom: 0 !important; color: var(--soil); }
+
+      .demand-list { list-style: none; margin: 1.1rem 0; }
+      .demand-list li { padding-left: 1.4rem; position: relative; margin-bottom: 0.65rem; font-size: 0.95rem; }
+      .demand-list li::before { content: "•"; position: absolute; left: 0; color: var(--leaf); font-weight: bold; }
+
+      .signature-block { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--mist); }
+      .signature-block p { margin: 0 0 0.2rem; line-height: 1.4; font-size: 0.95rem; }
+      .sig-placeholder { color: var(--sage); font-style: italic; }
+
+      /* ── FALLBACK SECTION ── */
+      .fallback-section {
+        margin-top: 3rem;
+        border: 2px dashed var(--mist);
+        border-radius: 6px;
+        padding: 2rem;
+        background: var(--parchment);
+      }
+      .fallback-badge {
+        display: inline-block;
+        background: var(--soil); color: var(--white);
+        font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+        border-radius: 100px; padding: 0.25rem 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .fallback-section h3 { font-size: 1.3rem; color: var(--forest); margin-bottom: 0.5rem; }
+      .fallback-section > p { font-size: 0.85rem; color: var(--soil); line-height: 1.6; }
+      .fallback-steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+      .fallback-step {
+        background: var(--white);
+        border-radius: 4px;
+        padding: 1rem;
+        border-top: 3px solid var(--sage);
+        font-size: 0.82rem; color: var(--bark); line-height: 1.5;
+      }
+      .fallback-step .fs-num {
+        font-size: 1.1rem; font-weight: 900; color: var(--leaf);
+        font-family: var(--font-display); display: block; margin-bottom: 0.3rem;
+      }
+      .fallback-step strong { color: var(--forest); display: block; margin-bottom: 0.25rem; }
+
+      /* FOOTER */
+      .site-footer { background: var(--forest); color: var(--mist); padding: 3rem 0; text-align: center; margin-top: 4rem; }
+      .footer-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; color: var(--white); display: block; margin-bottom: 0.5rem; }
+
+      @media (max-width: 960px) {
+        .action-grid { grid-template-columns: 1fr; }
+        .form-card { position: static; }
+        .hero-title { font-size: 2.1rem; }
+        .fallback-steps { grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
-    <!-- Header & Navigation -->
+
     <header class="site-header">
-      <div class="container nav-container">
-        <a href="index.html" class="logo">
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+        <a href="index.html" style="text-decoration:none;">
           <span class="logo-mark">CORES</span>
           <span class="logo-sub">Coalition for Region-wide Services</span>
         </a>
@@ -85,299 +263,323 @@
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section
-        class="section-padding"
-        style="
-          background: var(--parchment);
-          border-bottom: 1px solid var(--mist);
-        "
-      >
+
+      <!-- Hero -->
+      <section class="section-padding" style="background:var(--parchment);border-bottom:1px solid var(--mist);">
         <div class="container">
           <span class="badge">Equity • Balance • Community</span>
-          <h1 class="hero-title" style="color: var(--forest); margin-top: 1rem">
-            Advocating for a<br />Balanced Franklin Park.
-          </h1>
-          <p class="hero-subtitle" style="color: var(--soil); margin-bottom: 0">
-            Help us ensure that future redevelopment of the Shattuck site is
-            guided by regional equity, community vision, and Environmental
-            Justice.
+          <h1 class="hero-title">Advocating for a<br />Balanced Franklin Park.</h1>
+          <p style="color:var(--soil);margin-top:0.75rem;margin-bottom:0;">
+            Help us ensure that future redevelopment of the Shattuck site is guided by regional equity, community vision, and Environmental Justice.
           </p>
         </div>
       </section>
 
-      <!-- Action Content -->
+      <!-- Main Action Section -->
       <section class="section-padding">
-        <div class="container action-grid">
-          <!-- Column 1: The Formal Letter Text -->
-          <div class="letter-column">
-            <span class="eyebrow">The Collective Message</span>
-            <h2
-              style="
-                font-family: var(--font-display);
-                color: var(--forest);
-                margin-bottom: 1.5rem;
-              "
-            >
-              To: Governor Healey, Mayor Wu, and Secretary Walsh
-            </h2>
+        <div class="container">
 
-            <div class="letter-body">
-              <p>
-                As a resident and stakeholder in the communities surrounding
-                Franklin Park, I am writing to urge a more balanced and
-                equitable approach to the redevelopment of the Shattuck Hospital
-                site.
+          <div class="action-grid">
+
+            <!-- ══ LEFT: FORM ══ -->
+            <div>
+              <div class="step-label">
+                <span class="step-num step-num-form">1</span>
+                <span class="step-title">Fill In Your Details</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--soil);margin-bottom:1.25rem;">
+                As you type, your information fills into the letter on the right. When ready, click <strong>Send Email</strong> to open your email app with everything pre-addressed and pre-filled.
               </p>
 
-              <p>
-                We recognize the importance of clinical and social services, but
-                Environmental Justice requires that these services be
-                distributed fairly across the region. Currently, the Franklin
-                Park Corridor carries
-                <strong>nearly five times the density</strong> of SUD supportive
-                housing compared to the rest of the city. We believe that true
-                equity means no single neighborhood is over-saturated, ensuring
-                the park remains a balanced sanctuary for all.
-              </p>
-              <div class="corridor-box">
-                <h5>What is the Franklin Park Corridor?</h5>
-                <p>
-                  The "Corridor" is a data-defined region comprising the ten
-                  wards immediately surrounding the park (Wards 8, 9, 11–17, and
-                  19). While these neighborhoods are home to 74% non-white
-                  residents, they host a vastly disproportionate 5.28 SUD
-                  housing sites per 10k residents, compared to just 1.16 in the
-                  rest of Boston.
+              <div class="form-card">
+                <div class="form-group">
+                  <label for="fname">First Name *</label>
+                  <input type="text" id="fname" required placeholder="Jane" oninput="updateLetter()" />
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name *</label>
+                  <input type="text" id="lname" required placeholder="Doe" oninput="updateLetter()" />
+                </div>
+                <div class="form-group">
+                  <label for="address">Street Address *</label>
+                  <input type="text" id="address" required placeholder="123 Franklin St" oninput="updateLetter()" />
+                </div>
+                <div class="form-group">
+                  <label for="zip">Zip Code *</label>
+                  <input type="text" id="zip" required placeholder="02119" pattern="[0-9]{5}" oninput="updateLetter()" />
+                </div>
+                <div class="form-group">
+                  <label for="suggestions">My Suggestions for the Park &amp; Shattuck Site:</label>
+                  <textarea id="suggestions" rows="4" placeholder="Which services or amenities would you like to see on the 13-acre site?" oninput="updateLetter()"></textarea>
+                </div>
+
+                <button type="button" onclick="sendEmail()" class="btn btn-primary">
+                  ✉&nbsp;&nbsp;Generate &amp; Send Email
+                </button>
+                <p class="how-it-works">
+                  Opens your email app (Gmail, Outlook, Apple Mail, etc.) with the letter and all recipients pre-filled.
                 </p>
               </div>
+            </div>
 
-              <p><strong>I stand with CORES in advocating for:</strong></p>
-              <ul class="demand-list">
-                <li>
-                  <strong>Community-Led Visioning:</strong> A process that
-                  centers the voices of local residents to determine the mix of
-                  uses that best serves the neighborhood's needs.
-                </li>
-                <li>
-                  <strong>Geographic Equity:</strong> A regional strategy that
-                  partners with all municipalities to provide recovery services,
-                  rather than concentrating them in one demographic corridor.
-                </li>
-                <li>
-                  <strong>Park Restoration:</strong> Prioritizing Frederick Law
-                  Olmsted’s vision of the park as a vital regional asset for
-                  public health, recreation, and open space.
-                </li>
-              </ul>
-
-              <p>
-                Nothing about us, without us. I look forward to working together
-                toward a planning process that respects our community's needs
-                and protects our historic green space.
+            <!-- ══ RIGHT: LETTER ══ -->
+            <div>
+              <div class="step-label">
+                <span class="step-num step-num-letter">2</span>
+                <span class="step-title">Review Your Letter</span>
+              </div>
+              <p style="font-size:0.82rem;color:var(--soil);margin-bottom:1.1rem;">
+                Your details appear here as you type. The letter will be sent to all four recipients below.
               </p>
 
-              <!-- Impactful Signature Block -->
-              <div class="signature-block">
-                <p>Sincerely,</p>
-                <p style="margin-top: 10px">
-                  <strong id="sig-name">[Your Name]</strong>
-                </p>
-                <p id="sig-address">[Your Address]</p>
-                <p id="sig-location">[Zip Code]</p>
+              <!-- Recipients -->
+              <div class="recipients-bar">
+                <div class="rec-header">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Recipients — click any address to copy it
+                </div>
+                <table class="recipients-table">
+                  <tr>
+                    <td class="td-type">To</td>
+                    <td class="td-name">Governor Healey</td>
+                    <td class="td-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="53343c2536213d3c213b363f3f362a133e3220207d343c25">[email&#160;protected]</a></td>
+                    <td class="td-copy"><button class="copy-addr-btn" onclick="copyAddr(this,'governorhelley@mass.gov')">Copy</button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-type">CC</td>
+                    <td class="td-name">Mayor Wu</td>
+                    <td class="td-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f69b978f99848183b6949985829998d8919980">[email&#160;protected]</a></td>
+                    <td class="td-copy"><button class="copy-addr-btn" onclick="copyAddr(this,'mayorwu@boston.gov')">Copy</button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-type">CC</td>
+                    <td class="td-name">Secretary Walsh</td>
+                    <td class="td-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b584e48594e5f4a59525c4a4758436b464a5858054c445d">[email&#160;protected]</a></td>
+                    <td class="td-copy"><button class="copy-addr-btn" onclick="copyAddr(this,'secretarywalsh@mass.gov')">Copy</button></td>
+                  </tr>
+                  <tr>
+                    <td class="td-type">CC</td>
+                    <td class="td-name">CORES</td>
+                    <td class="td-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9bea1a6baacb9a8bba2afb989aea4a8a0a5e7aaa6a4">[email&#160;protected]</a></td>
+                    <td class="td-copy"><button class="copy-addr-btn" onclick="copyAddr(this,'whoseparkfp@gmail.com')">Copy</button></td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Copy-all bar -->
+              <div class="copy-all-bar">
+                <span>Need all addresses at once?</span>
+                <button class="copy-all-btn" onclick="copyAllAddrs(this)">Copy All Addresses</button>
+              </div>
+
+              <!-- Copy-letter bar -->
+              <div class="letter-copy-bar">
+                <span>Letter text — read below, then copy →</span>
+                <button class="copy-letter-btn" onclick="copyLetterText(this)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  Copy Full Letter
+                </button>
+              </div>
+
+              <!-- Letter body -->
+              <div class="letter-body" id="letter-text-block">
+                <p>As a resident and stakeholder in the communities surrounding Franklin Park, I am writing to urge a more balanced and equitable approach to the redevelopment of the Shattuck Hospital site.</p>
+                <p>We recognize the importance of clinical and social services, but Environmental Justice requires that these services be distributed fairly across the region. Currently, the Franklin Park Corridor carries <strong>nearly five times the density</strong> of SUD supportive housing compared to the rest of the city. We believe that true equity means no single neighborhood is over-saturated, ensuring the park remains a balanced sanctuary for all.</p>
+
+                <div class="corridor-box">
+                  <h5>What is the Franklin Park Corridor?</h5>
+                  <p>The "Corridor" is a data-defined region comprising the ten wards immediately surrounding the park (Wards 8, 9, 11–17, and 19). While these neighborhoods are home to 74% non-white residents, they host a vastly disproportionate 5.28 SUD housing sites per 10k residents, compared to just 1.16 in the rest of Boston.</p>
+                </div>
+
+                <p><strong>I stand with CORES in advocating for:</strong></p>
+                <ul class="demand-list">
+                  <li><strong>Community-Led Visioning:</strong> A process that centers the voices of local residents to determine the mix of uses that best serves the neighborhood's needs.</li>
+                  <li><strong>Geographic Equity:</strong> A regional strategy that partners with all municipalities to provide recovery services, rather than concentrating them in one demographic corridor.</li>
+                  <li><strong>Park Restoration:</strong> Prioritizing Frederick Law Olmsted's vision of the park as a vital regional asset for public health, recreation, and open space.</li>
+                </ul>
+
+                <!-- Live suggestions, shown only when user types something -->
+                <p id="letter-suggestions" style="display:none;font-style:italic;border-left:3px solid var(--sage);padding-left:0.9rem;color:var(--soil);margin-top:1rem;"></p>
+
+                <p>Nothing about us, without us. I look forward to working together toward a planning process that respects our community's needs and protects our historic green space.</p>
+
+                <div class="signature-block">
+                  <p>Sincerely,</p>
+                  <p style="margin-top:0.75rem;"><strong id="sig-name" class="sig-placeholder">[Your Name]</strong></p>
+                  <p id="sig-address" class="sig-placeholder">[Your Address]</p>
+                  <p id="sig-location" class="sig-placeholder">[Zip Code]</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /action-grid -->
+
+          <!-- ══ FALLBACK SECTION ══ -->
+          <div class="fallback-section" id="fallback-section">
+            <span class="fallback-badge">⚠ If the automatic email didn't open</span>
+            <h3>Send the Letter Manually Instead</h3>
+            <p>Some browsers block email apps from opening automatically — that's okay. Follow these three steps to send the letter yourself using any email service.</p>
+
+            <div class="fallback-steps">
+              <div class="fallback-step">
+                <span class="fs-num">1</span>
+                <strong>Copy the addresses</strong>
+                Click <em>"Copy All Addresses"</em> in the recipients bar above the letter, then paste into the <strong>To</strong> field of a new email in Gmail, Outlook, or wherever you use email.
+              </div>
+              <div class="fallback-step">
+                <span class="fs-num">2</span>
+                <strong>Copy the letter</strong>
+                Click <em>"Copy Full Letter"</em> above the letter text — it will include your name and details if you filled the form. Paste it into the email body.
+              </div>
+              <div class="fallback-step">
+                <span class="fs-num">3</span>
+                <strong>Add the subject &amp; send</strong>
+                Use this subject line:
+                <br /><em style="color:var(--forest);font-weight:500;display:inline-block;margin-top:0.3rem;">"Constituent Letter: Balanced Development for Franklin Park"</em>
+                <br />Then hit Send!
               </div>
             </div>
           </div>
 
-          <!-- Column 2: The Action Form -->
-          <div class="form-column">
-            <div id="petition-form" class="clean-form sticky-form">
-              <span class="eyebrow">Direct Action</span>
-              <h3
-                style="
-                  font-family: var(--font-display);
-                  color: var(--forest);
-                  margin-bottom: 1.5rem;
-                "
-              >
-                Email Your Representatives
-              </h3>
-
-              <div class="form-group">
-                <label for="fname">First Name *</label>
-                <input
-                  type="text"
-                  id="fname"
-                  required
-                  placeholder="Jane"
-                  oninput="updateSignature()"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="lname">Last Name *</label>
-                <input
-                  type="text"
-                  id="lname"
-                  required
-                  placeholder="Doe"
-                  oninput="updateSignature()"
-                />
-              </div>
-
-              <!-- Added Street Address Field -->
-              <div class="form-group">
-                <label for="address">Street Address *</label>
-                <input
-                  type="text"
-                  id="address"
-                  required
-                  placeholder="123 Franklin St"
-                  oninput="updateSignature()"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="zip">Zip Code *</label>
-                <input
-                  type="text"
-                  id="zip"
-                  required
-                  placeholder="02119"
-                  pattern="[0-9]{5}"
-                  oninput="updateSignature()"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="suggestions"
-                  >My Suggestions for the Park & Shattuck Site:</label
-                >
-                <textarea
-                  id="suggestions"
-                  rows="5"
-                  placeholder="Which services or amenities would you like to see on the 13-acre site?"
-                ></textarea>
-              </div>
-
-              <button type="button" onclick="sendEmail()" class="btn btn-primary btn-block">Generate & Send Email</button>
-              
-              <!-- NEW: Non-technical User Guidance -->
-              <div id="help-area" style="margin-top: 1.5rem; display: none; background: #fff; padding: 1rem; border: 1px solid var(--mist); border-radius: 4px;">
-                <p style="font-size: 0.85rem; color: var(--forest); font-weight: bold; margin-bottom: 0.5rem;">Didn't see your email app open?</p>
-                <p style="font-size: 0.8rem; color: var(--soil); margin-bottom: 1rem;">
-                  Some browsers block email apps from opening. You can manually copy the text below and paste it into a new email to <strong>governor@mass.gov</strong>.
-                </p>
-                <button type="button" onclick="copyToClipboard()" class="btn btn-outline" style="color: var(--canopy); border-color: var(--canopy); width: 100%; font-size: 0.8rem;">Copy Letter to Clipboard</button>
-              </div>
-
-              <p style="font-size: 0.7rem; color: var(--soil); margin-top: 1.5rem; line-height: 1.4;">
-                <strong>Note:</strong> This tool will attempt to open your default email program (like Gmail, Outlook, or Apple Mail).
-              </p>
-            </div>
-          </div>
-              </button>
-
-              <p
-                style="
-                  font-size: 0.7rem;
-                  color: var(--soil);
-                  margin-top: 1.5rem;
-                  line-height: 1.4;
-                "
-              >
-                <strong>How it works:</strong> Clicking this will open your
-                default email app (Gmail, Outlook, etc.) with the pre-written
-                letter and your suggestions ready to send.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-container">
-        <div class="footer-info">
-          <span class="footer-logo">CORES</span>
-          <p>
-            © 2025 CORES – Coalition for Region-wide Services. All rights
-            reserved.
-          </p>
-        </div>
+      <div class="container">
+        <span class="footer-logo">CORES</span>
+        <p>© 2025 CORES – Coalition for Region-wide Services. All rights reserved.</p>
       </div>
     </footer>
 
     <script>
-      // Global variable to store the letter for the copy-paste fallback
-      let generatedLetter = "";
+      const ALL_ADDRESSES = "governorhelley@mass.gov, mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com";
 
-      function updateSignature() {
-        const fname = document.getElementById('fname').value;
-        const lname = document.getElementById('lname').value;
-        const address = document.getElementById('address').value;
-        const zip = document.getElementById('zip').value;
+      function updateLetter() {
+        const fname       = document.getElementById('fname').value.trim();
+        const lname       = document.getElementById('lname').value.trim();
+        const address     = document.getElementById('address').value.trim();
+        const zip         = document.getElementById('zip').value.trim();
+        const suggestions = document.getElementById('suggestions').value.trim();
 
-        document.getElementById('sig-name').innerText = (fname || lname) ? (fname + ' ' + lname) : '[Your Name]';
-        document.getElementById('sig-address').innerText = address ? address : '[Your Address]';
-        document.getElementById('sig-location').innerText = zip ? 'Boston, MA ' + zip : '[Zip Code]';
+        const sigName = document.getElementById('sig-name');
+        const sigAddr = document.getElementById('sig-address');
+        const sigLoc  = document.getElementById('sig-location');
+        const sugP    = document.getElementById('letter-suggestions');
+
+        if (fname || lname) {
+          sigName.textContent = (fname + ' ' + lname).trim();
+          sigName.classList.remove('sig-placeholder');
+        } else {
+          sigName.textContent = '[Your Name]';
+          sigName.classList.add('sig-placeholder');
+        }
+
+        if (address) {
+          sigAddr.textContent = address;
+          sigAddr.classList.remove('sig-placeholder');
+        } else {
+          sigAddr.textContent = '[Your Address]';
+          sigAddr.classList.add('sig-placeholder');
+        }
+
+        if (zip) {
+          sigLoc.textContent = 'Boston, MA ' + zip;
+          sigLoc.classList.remove('sig-placeholder');
+        } else {
+          sigLoc.textContent = '[Zip Code]';
+          sigLoc.classList.add('sig-placeholder');
+        }
+
+        if (suggestions) {
+          sugP.style.display = 'block';
+          sugP.innerHTML = '<strong style="display:block;font-style:normal;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--leaf);margin-bottom:0.3rem;">My Suggestions for the Site:</strong>"' + suggestions + '"';
+        } else {
+          sugP.style.display = 'none';
+        }
+      }
+
+      function buildEmailBody() {
+        const fname       = document.getElementById('fname').value.trim();
+        const lname       = document.getElementById('lname').value.trim();
+        const address     = document.getElementById('address').value.trim();
+        const zip         = document.getElementById('zip').value.trim();
+        const suggestions = document.getElementById('suggestions').value.trim();
+
+        let body = `To: Governor Healey, Mayor Wu, and Secretary Walsh\n\n`;
+        body += `As a resident and stakeholder in the communities surrounding Franklin Park, I am writing to urge a more balanced and equitable approach to the redevelopment of the Shattuck Hospital site.\n\n`;
+        body += `We recognize the importance of clinical and social services, but Environmental Justice requires that these services be distributed fairly across the region. Currently, the Franklin Park Corridor carries nearly five times the density of SUD supportive housing compared to the rest of the city. We believe that true equity means no single neighborhood is over-saturated, ensuring the park remains a balanced sanctuary for all.\n\n`;
+        body += `WHAT IS THE FRANKLIN PARK CORRIDOR?\n`;
+        body += `The "Corridor" is a data-defined region comprising the ten wards immediately surrounding the park (Wards 8, 9, 11–17, and 19). While these neighborhoods are home to 74% non-white residents, they host a vastly disproportionate 5.28 SUD housing sites per 10k residents, compared to just 1.16 in the rest of Boston.\n\n`;
+        body += `I stand with CORES in advocating for:\n`;
+        body += `• Community-Led Visioning: A process that centers the voices of local residents to determine the mix of uses that best serves the neighborhood's needs.\n`;
+        body += `• Geographic Equity: A regional strategy that partners with all municipalities to provide recovery services, rather than concentrating them in one demographic corridor.\n`;
+        body += `• Park Restoration: Prioritizing Frederick Law Olmsted's vision of the park as a vital regional asset for public health, recreation, and open space.\n\n`;
+        if (suggestions) {
+          body += `MY SUGGESTIONS FOR THE SITE:\n"${suggestions}"\n\n`;
+        }
+        body += `Nothing about us, without us. I look forward to working together toward a planning process that respects our community's needs and protects our historic green space.\n\n`;
+        body += `Sincerely,\n\n${fname} ${lname}\n${address}\nBoston, MA ${zip}`;
+        return body;
       }
 
       function sendEmail() {
-        const to = "governorhelley@mass.gov"; 
-        const cc = "mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com";
-        
-        const fname = document.getElementById('fname').value;
-        const lname = document.getElementById('lname').value;
-        const address = document.getElementById('address').value;
-        const zip = document.getElementById('zip').value;
-        const suggestions = document.getElementById('suggestions').value;
+        const fname   = document.getElementById('fname').value.trim();
+        const lname   = document.getElementById('lname').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const zip     = document.getElementById('zip').value.trim();
 
-        if(!fname || !lname || !address || !zip) {
-            alert("Please fill out your name, address, and zip code.");
-            return;
+        if (!fname || !lname || !address || !zip) {
+          alert("Please fill out your name, address, and zip code first.");
+          return;
         }
 
-        // --- ENHANCED EMAIL BODY ---
         const subject = "Constituent Letter: Balanced Development for Franklin Park";
-        
-        let bodyText = `To: Governor Healey, Mayor Wu, and Secretary Walsh\n\n`;
-        bodyText += `As a resident and stakeholder in the communities surrounding Franklin Park, I am writing to urge a more balanced and equitable approach to the redevelopment of the Shattuck Hospital site.\n\n`;
-        
-        // THE CORRIDOR EXPLANATION
-        bodyText += `THE FRANKLIN PARK CORRIDOR:\n`;
-        bodyText += `The "Corridor" is a region encompassing the ten wards surrounding the park (Wards 8, 9, 11-17, 19). While this area is home to 74% non-white residents, analysis shows it carries nearly 5x the density of SUD supportive housing (5.55 sites per 10k residents) compared to the rest of the city (1.17). Environmental Justice demands that we stop this hyper-concentration.\n\n`;
-        
-        if(suggestions) {
-            bodyText += `MY SUGGESTIONS FOR THE SITE:\n"${suggestions}"\n\n`;
-        }
+        const body    = buildEmailBody();
+        const mailto  = `mailto:governorhelley@mass.gov?cc=${encodeURIComponent("mayorwu@boston.gov, secretarywalsh@mass.gov, whoseparkfp@gmail.com")}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
 
-        bodyText += `I stand with CORES in advocating for Community-Led Visioning, Geographic Equity, and Park Restoration.\n\n`;
-        bodyText += `Sincerely,\n\n`;
-        bodyText += `${fname} ${lname}\n`;
-        bodyText += `${address}\n`;
-        bodyText += `Boston, MA ${zip}`;
-
-        generatedLetter = bodyText; // Save for the fallback copy button
-
-        // Show the help/fallback area in case the mailto fails
-        document.getElementById('help-area').style.display = 'block';
-
-        // Trigger the email client
-        const mailtoLink = `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-        window.location.href = mailtoLink;
+        // Scroll gently to the fallback after a short delay in case the email app didn't open
+        setTimeout(() => {
+          document.getElementById('fallback-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 1800);
       }
 
-      // Fallback function for non-technical users
-      function copyToClipboard() {
-        if(!generatedLetter) {
-            alert("Please fill out the form and click 'Generate' first.");
-            return;
-        }
-        navigator.clipboard.writeText(generatedLetter).then(() => {
-            alert("Letter copied to clipboard! You can now paste it into your email.");
+      function copyAddr(btn, addr) {
+        navigator.clipboard.writeText(addr).then(() => {
+          btn.textContent = '✓ Copied';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+        }).catch(() => { prompt("Copy this address:", addr); });
+      }
+
+      function copyAllAddrs(btn) {
+        navigator.clipboard.writeText(ALL_ADDRESSES).then(() => {
+          btn.textContent = '✓ All Copied!';
+          setTimeout(() => { btn.textContent = 'Copy All Addresses'; }, 2500);
+        }).catch(() => { prompt("Copy all addresses:", ALL_ADDRESSES); });
+      }
+
+      function copyLetterText(btn) {
+        const fname   = document.getElementById('fname').value.trim();
+        const lname   = document.getElementById('lname').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const zip     = document.getElementById('zip').value.trim();
+
+        const text = (fname || lname || address || zip) ? buildEmailBody() : document.getElementById('letter-text-block').innerText;
+
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = '✓ Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Full Letter`;
+            btn.classList.remove('copied');
+          }, 2500);
+        }).catch(() => {
+          alert("Couldn't auto-copy. Click inside the letter text and use Ctrl+C / Cmd+C.");
         });
       }
     </script>
+
   </body>
 </html>
