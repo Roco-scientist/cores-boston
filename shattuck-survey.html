@@ -171,6 +171,34 @@
         color: var(--moss);
         font-style: italic;
       }
+      .site-info-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          user-select: none;
+          margin-bottom: 0;
+      }
+      .site-info-toggle h2 { margin-bottom: 0; }
+      .site-info-chevron {
+          font-size: 0.85rem;
+          color: var(--stone);
+          transition: transform 0.25s ease;
+          flex-shrink: 0;
+      }
+      .site-info.collapsed .site-info-chevron {
+          transform: rotate(-90deg);
+      }
+      .site-info-body {
+          overflow: hidden;
+          transition: max-height 0.35s ease, opacity 0.25s ease;
+          max-height: 600px;
+          opacity: 1;
+      }
+      .site-info.collapsed .site-info-body {
+          max-height: 0;
+          opacity: 0;
+      }
       .info-tags {
         display: flex;
         flex-wrap: wrap;
@@ -1037,64 +1065,69 @@
       </div>
 
       <!-- Site Info + Map -->
-      <div class="site-info">
-        <div class="site-info-inner">
-          <div>
-            <h2 data-i18n="about_title">About the Shattuck Campus</h2>
-            <p data-i18n="about_p1">
-              The <strong>Lemuel Shattuck Hospital campus</strong> sits on
-              <strong>13.3 acres</strong> at 170 Morton Street, deep within
-              Frederick Law Olmsted's Franklin Park — Boston's largest park and
-              the crown jewel of the Emerald Necklace.
-            </p>
-            <p data-i18n="about_p2">
-              In <strong>1949</strong>, the City of Boston conveyed this
-              parkland — then a scenic meadow called <em>Heathfield</em> — to
-              the Commonwealth specifically for public health purposes. The
-              hospital, built in the early 1950s, has served the region for over
-              70 years, providing care for respiratory illness, cancer, HIV,
-              psychiatric services, corrections inmates, and substance use
-              disorder (SUD) treatment. Today, several nonprofits operate on the
-              campus, including a men's shelter and structured, supervised
-              in-patient SUD programs.
-            </p>
-            <p data-i18n="about_p3">
-              The aging building cannot be cost-effectively renovated.
-              <strong
-                >Hospital services are relocating to Boston Medical Center's
-                South End campus</strong
-              >, likely by 2026. This creates a rare decision point: the State
-              holds the site under a deed restriction requiring health use —
-              <em>or it can be returned to the City for parkland</em>. The
-              community's input will help shape what comes next.
-            </p>
-            <div class="info-tags">
-              <span class="info-tag">📍 170 Morton St</span>
-              <span class="info-tag">🌳 13.3 Acres</span>
-              <span class="info-tag"
-                >🏥 State-owned, health deed restriction</span
-              >
-              <span class="info-tag"
-                >🚌 Routes 16, 21, 31 · Forest Hills MBTA</span
-              >
+      <div class="site-info" id="siteInfoPanel">
+        <div class="site-info-toggle" onclick="toggleSiteInfo()" role="button" aria-expanded="true" aria-controls="siteInfoBody">
+          <h2 data-i18n="about_title">About the Shattuck Campus</h2>
+          <span class="site-info-chevron">▼</span>
+        </div>
+        <div class="site-info-body" id="siteInfoBody">
+          <div class="site-info-inner" style="margin-top: 20px;">
+            <div>
+              <p data-i18n="about_p1">
+                The <strong>Lemuel Shattuck Hospital campus</strong> sits on
+                <strong>13.3 acres</strong> at 170 Morton Street, deep within
+                Frederick Law Olmsted's Franklin Park — Boston's largest park and
+                the crown jewel of the Emerald Necklace.
+              </p>
+              <p data-i18n="about_p2">
+                In <strong>1949</strong>, the City of Boston conveyed this
+                parkland — then a scenic meadow called <em>Heathfield</em> — to
+                the Commonwealth specifically for public health purposes. The
+                hospital, built in the early 1950s, has served the region for over
+                70 years, providing care for respiratory illness, cancer, HIV,
+                psychiatric services, corrections inmates, and substance use
+                disorder (SUD) treatment. Today, several nonprofits operate on the
+                campus, including a men's shelter and structured, supervised
+                in-patient SUD programs.
+              </p>
+              <p data-i18n="about_p3">
+                The aging building cannot be cost-effectively renovated.
+                <strong
+                  >Hospital services are relocating to Boston Medical Center's
+                  South End campus</strong
+                >, likely by 2026. This creates a rare decision point: the State
+                holds the site under a deed restriction requiring health use —
+                <em>or it can be returned to the City for parkland</em>. The
+                community's input will help shape what comes next.
+              </p>
+              <div class="info-tags">
+                <span class="info-tag">📍 170 Morton St</span>
+                <span class="info-tag">🌳 13.3 Acres</span>
+                <span class="info-tag"
+                  >🏥 State-owned, health deed restriction</span
+                >
+                <span class="info-tag"
+                  >🚌 Routes 16, 21, 31 · Forest Hills MBTA</span
+                >
+              </div>
             </div>
-          </div>
-          <div>
-            <div class="map-wrap">
-              <!-- OpenStreetMap embed — no API key needed, free to use -->
-              <!-- bbox: west,south,east,north  |  zoom ~14 shows full Franklin Park -->
-              <!-- Shattuck Hospital: 42.3008°N, 71.1108°W — south edge of park near Forest Hills -->
-              <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-71.1350%2C42.2880%2C-71.0780%2C42.3200&layer=mapnik&marker=42.29978387533078%2C-71.10195994372876"
-                allowfullscreen
-                loading="lazy"
-                title="Shattuck Campus location map"
-              >
-              </iframe>
+            <div>
+              <div class="map-wrap">
+                <!-- OpenStreetMap embed — no API key needed, free to use -->
+                <!-- bbox: west,south,east,north  |  zoom ~14 shows full Franklin Park -->
+                <!-- Shattuck Hospital: 42.3008°N, 71.1108°W — south edge of park near Forest Hills -->
+                <iframe
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-71.1350%2C42.2880%2C-71.0780%2C42.3200&layer=mapnik&marker=42.29978387533078%2C-71.10195994372876"
+                  allowfullscreen
+                  loading="lazy"
+                  title="Shattuck Campus location map"
+                >
+                </iframe>
+              </div>
+              <p class="map-caption">
+                📍 Shattuck Campus, 170 Morton St<br />South edge of Franklin Park
+              </p>
             </div>
-            <p class="map-caption">
-              📍 Shattuck Campus, 170 Morton St<br />South edge of Franklin Park
-            </p>
           </div>
         </div>
       </div>
@@ -1466,6 +1499,19 @@
             <strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).
           </div>
 
+          <div style="
+              font-size: 0.78rem;
+              color: var(--stone);
+              background: rgba(200, 168, 75, 0.08);
+              border: 1px solid rgba(200, 168, 75, 0.2);
+              border-radius: 8px;
+              padding: 10px 14px;
+              margin-bottom: 18px;
+              line-height: 1.5;
+          " data-i18n="priority_source_note">
+              💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use "Other" to add your own.
+          </div>
+
           <div class="priority-panels">
             <div>
               <div class="panel-label">
@@ -1704,6 +1750,14 @@
                   name="connection[]"
                   value="Abutter (adjacent property)"
                 /><label for="c1" data-i18n="conn_abutter">Abutter</label>
+              </div>
+              <div class="check-pill">
+                  <input
+                      type="checkbox"
+                      id="c9"
+                      name="connection[]"
+                      value="Lives nearby"
+                  /><label for="c9" data-i18n="conn_lives_nearby">Lives nearby</label>
               </div>
               <div class="check-pill">
                 <input
@@ -2065,6 +2119,8 @@
           placeholder_park_other: "Please describe how else you use Franklin Park…",
           placeholder_process: "e.g. Meetings on weekends, translation services, transparency on CAB selection...",
           tablet_hint: "📋 Canvassing with a tablet? Each submission is recorded individually — tap 'Submit Another Response' to start fresh for the next person.",
+          conn_lives_nearby: "Lives nearby",
+          priority_source_note: "💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use \"Other\" to add your own.",
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
@@ -2196,7 +2252,9 @@
           placeholder_conn_other: "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
           placeholder_park_other: "Describa de qué otra manera usa Franklin Park…",
           placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción, transparencia en la selección del CAB...",
-          tablet_hint: "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona."
+          tablet_hint: "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona.",
+          conn_lives_nearby: "Vive cerca",
+          priority_source_note: "💬 Las siguientes ideas han surgido en conversaciones comunitarias sobre el futuro de este sitio. No está limitado a estas opciones — use \"Otro\" para agregar la suya.",
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
@@ -2329,6 +2387,8 @@
           placeholder_park_other: "Tanpri dekri kijan ou itilize Franklin Park ankò…",
           placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon, transparans sou seleksyon CAB...",
           tablet_hint: "📋 Èske w ap fè sondaj ak yon tablèt? Chak repons anrejistre separeman — tape 'Soumèt yon lòt repons' pou kòmanse yon lòt pou pwochen moun nan.",
+          conn_lives_nearby: "Rete toupre",
+          priority_source_note: "💬 Ide ki annapre yo te sijere nan diskisyon kominotè sou lavni sit sa a. Ou pa oblije chwazi nan yo sèlman — itilize \"Lòt\" pou ajoute pa ou.",
         }
       };
       // ═══════════════════════════════════════════════════════════════
@@ -3040,6 +3100,12 @@
         rebuildBoth();
         newChallenge();
         window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function toggleSiteInfo() {
+          const panel = document.getElementById('siteInfoPanel');
+          const isCollapsed = panel.classList.toggle('collapsed');
+          panel.querySelector('.site-info-toggle').setAttribute('aria-expanded', !isCollapsed);
       }
 
       function checkCanvasserMode() {
