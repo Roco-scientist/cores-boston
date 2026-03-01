@@ -2458,10 +2458,8 @@
         });
 
         // Reset and rebuild Priorities in new language
-        availableItems = I18N[lang].priorities.map(p => ({ ...p }));
-        rankedItems = []; 
-        buildAvailable();
-        buildRanked(); 
+        rankedItems = [];
+        rebuildBoth();
       }
 
 
@@ -2762,16 +2760,18 @@
           .forEach((el, i) => (el.textContent = i + 1));
       }
       function addToRanked(item) {
-        availableItems = availableItems.filter((x) => x.label !== item.label);
         rankedItems.push(item);
-        buildAvailable();
-        buildRanked();
+        rebuildBoth();
       }
       function removeFromRanked(item) {
         rankedItems = rankedItems.filter((x) => x.label !== item.label);
-        availableItems.push(item);
-        buildAvailable();
-        buildRanked();
+        rebuildBoth();
+      }
+      function rebuildBoth() {
+          const rankedLabels = new Set(rankedItems.map(x => x.label));
+          availableItems = I18N[currentLang].priorities.filter(p => !rankedLabels.has(p.label));
+          buildAvailable();
+          buildRanked();
       }
 
       // ═══════════════════════════════════════════════════════════════
@@ -3036,10 +3036,8 @@
         document.getElementById("surveyForm").style.display = "block";
         document.getElementById("successScreen").classList.remove("visible");
         document.getElementById("genderDescribeWrap").classList.remove("open");
-        availableItems = [...ALL_ITEMS];
         rankedItems = [];
-        buildAvailable();
-        buildRanked();
+        rebuildBoth();
         newChallenge();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
