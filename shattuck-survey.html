@@ -1912,9 +1912,9 @@
         </p>
         <div class="divider"></div>
         <button
+          id="btnAnother"
           onclick="resetForm()"
           style="
-            display: none;
             margin-top: 20px;
             padding: 12px 32px;
             background: var(--forest);
@@ -1974,7 +1974,6 @@
           ranked_empty: "Click items to add & rank them here.",
           label_available: "Available Options",
           label_your_picks: "Your Priorities",
-          label_opposition: "Is there anything you would strongly oppose on this site?",
           placeholder_oppose: "Please describe any uses you find unacceptable...",
           btn_submit: "Submit My Response →",
           success_title: "Thank You!",
@@ -2032,15 +2031,11 @@
           pref_walkthrough: "On-site walk-throughs",
           pref_digital: "Digital surveys & polls",
           label_process_comments: "Do you have specific suggestions for how the State should engage the community?",
-          placeholder_process: "e.g. Meetings on weekends, translation services...",
-          sec_stay_connected: "Stay Connected",
           label_income: "Household Income",
           inc_under_25: "Under $25,000",
           sec_opposition: "Concerns & Opposition",
           label_opposition: "Is there anything you would strongly oppose on this site?",
           placeholder_oppose: "Please describe any uses you find unacceptable...",
-          label_process_comments: "Do you have specific suggestions for how the State should engage the community?",
-          placeholder_process: "e.g. Meetings on weekends, translation services, etc.",
           sec_stay_connected: "Stay Connected",
           label_updates: "<strong>Receive updates</strong> about the Shattuck Campus process, public meetings, and ways to stay involved.",
           label_referral: "How did you hear about this survey?",
@@ -2103,7 +2098,6 @@
           ranked_empty: "Haga clic en los elementos para agregarlos y clasificarlos aquí.",
           label_available: "Opciones Disponibles",
           label_your_picks: "Sus Prioridades",
-          label_opposition: "¿Hay algo a lo que se opondría firmemente en este sitio?",
           placeholder_oppose: "Describa cualquier uso que considere inaceptable...",
           btn_submit: "Enviar mi respuesta →",
           success_title: "¡Gracias!",
@@ -2161,15 +2155,11 @@
           pref_walkthrough: "Recorridos en el sitio",
           pref_digital: "Encuestas y sondeos digitales",
           label_process_comments: "¿Sugerencias específicas para la participación comunitaria?",
-          placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción...",
-          sec_stay_connected: "Manténgase Conectado",
           label_income: "Ingresos del Hogar",
           inc_under_25: "Menos de $25,000",
           sec_opposition: "Preocupaciones y Oposición",
           label_opposition: "¿Hay algo a lo que se opondría firmemente en este sitio?",
           placeholder_oppose: "Describa cualquier uso que considere inaceptable...",
-          label_process_comments: "¿Tiene sugerencias específicas sobre cómo el Estado debería involucrar a la comunidad?",
-          placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción, etc.",
           sec_stay_connected: "Manténgase Conectado",
           label_updates: "<strong>Recibir actualizaciones</strong> sobre el proceso del Campus Shattuck, reuniones públicas y formas de participar.",
           label_referral: "¿Cómo se enteró de esta encuesta?",
@@ -2232,7 +2222,6 @@
           ranked_empty: "Klike sou eleman yo pou ajoute ak klase yo isit la.",
           label_available: "Opsyon ki Disponib",
           label_your_picks: "Priyorite Ou Yo",
-          label_opposition: "Èske gen yon bagay ou pa ta vle wè ditou sou sit sa a?",
           placeholder_oppose: "Tanpri dekri nenpòt itilizasyon ou pa ta aksepte...",
           btn_submit: "Soumèt Repons Mwen →",
           success_title: "Mèsi!",
@@ -2290,15 +2279,11 @@
           pref_walkthrough: "Vizit sou plas la",
           pref_digital: "Sondaj nimerik",
           label_process_comments: "Sijesyon espesifik pou angajman kominote a?",
-          placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon...",
-          sec_stay_connected: "Rete Konekte",
           label_income: "Revni Kay la",
           inc_under_25: "Mwens pase $25,000",
           sec_opposition: "Enkyetid ak Opizisyon",
           label_opposition: "Èske gen nenpòt bagay ou ta opoze fòman sou sit sa a?",
           placeholder_oppose: "Tanpri dekri nenpòt itilizasyon ou ta jwenn inakseptab...",
-          label_process_comments: "Èske ou gen sijesyon espesifik sou jan Leta ta dwe angaje kominote a?",
-          placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon, elatriye.",
           sec_stay_connected: "Rete Konekte",
           label_updates: "<strong>Resevwa dènye nouvèl</strong> sou pwosesis Campus Shattuck la, reyinyon piblik yo, ak fason pou w rete enplike.",
           label_referral: "Kijan ou te tande pale de sondaj sa a?",
@@ -3001,7 +2986,6 @@
           }
           // ─────────────────────────────────────────────────────────────
 
-          await new Promise((r) => setTimeout(r, 700)); // remove when live
           markSubmitted();
 
           document.getElementById("surveyForm").style.display = "none";
@@ -3019,6 +3003,7 @@
         document.getElementById("parkUseOtherWrap").classList.remove("open");
         document.getElementById("surveyForm").style.display = "block";
         document.getElementById("successScreen").classList.remove("visible");
+        document.getElementById("genderDescribeWrap").classList.remove("open");
         availableItems = [...ALL_ITEMS];
         rankedItems = [];
         buildAvailable();
