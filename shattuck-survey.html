@@ -1995,6 +1995,14 @@
               { label: "In-patient SUD services + SUD housing (no sobriety requirement)",            category: "SUD Services & Housing" },
               { label: "Other",                                                                       category: "Other" },
           ],
+          categories: {
+              "Parkland":             "Parkland",
+              "Health Services":      "Health Services",
+              "Veterans":             "Veterans",
+              "Housing":              "Housing",
+              "SUD Services & Housing": "SUD Services & Housing",
+              "Other":                "Other",
+          },
           label_race: "Race / Ethnicity",
           opt_black: "Black or African American",
           opt_hispanic: "Hispanic or Latino/a/x",
@@ -2119,6 +2127,14 @@
               { label: "Servicios de internado SUD + vivienda SUD (sin requisito de sobriedad)",            category: "SUD Services & Housing" },
               { label: "Otro",                                                                       category: "Other" },
           ],
+          categories: {
+              "Parkland":             "Terreno del Parque",
+              "Health Services":      "Servicios de Salud",
+              "Veterans":             "Veteranos",
+              "Housing":              "Vivienda",
+              "SUD Services & Housing": "Servicios y Vivienda para SUD",
+              "Other":                "Otro",
+          },
           label_race: "Raza / Etnia",
           opt_black: "Negro o Afroamericano",
           opt_hispanic: "Hispano o Latino/a/x",
@@ -2243,6 +2259,14 @@
               { label: "Sèvis tretman entèn SUD + lojman SUD (san kondisyon pou moun pa nan bweson)",            category: "SUD Services & Housing" },
               { label: "Lòt",                                                                       category: "Other" },
           ],
+          categories: {
+              "Parkland":             "Tè Pak",
+              "Health Services":      "Sèvis Sante",
+              "Veterans":             "Veteran",
+              "Housing":              "Lojman",
+              "SUD Services & Housing": "Sèvis ak Lojman SUD",
+              "Other":                "Lòt",
+          },
           label_race: "Ras / Etisite",
           opt_black: "Nwa oswa Afro-Ameriken",
           opt_hispanic: "Ispanik oswa Latino/a/x",
@@ -2634,7 +2658,7 @@
                       lastCategory = item.category;
                       const header = document.createElement("div");
                       header.style.cssText = "font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--stone);padding:10px 14px 4px;opacity:0.7;";
-                      header.textContent = item.category;
+                      header.textContent = I18N[currentLang].categories[item.category];
                       ul.appendChild(header);
                   }
                   const div = document.createElement("div");
@@ -2916,7 +2940,7 @@
           return {
               rank: i + 1,
               item: (englishLabel === "Other") && otherText ? `Other: ${otherText}` : englishLabel,
-              category: el.dataset.category,
+              category: I18N['en'].categories[el.dataset.category] || el.dataset.category,
           };
         });
 
