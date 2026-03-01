@@ -1463,11 +1463,7 @@
           </div>
 
           <div class="priority-intro" data-i18n="priority_instr">
-            <strong>Step 1 —</strong> Click any option on the left to add it to
-            your list.<br />
-            <strong>Step 2 —</strong> Drag items on the right to rank them in
-            order of priority (most important at top).<br />
-            Select as many or as few as you like. Click ✕ to remove an item.
+            <strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).
           </div>
 
           <div class="priority-panels">
@@ -1484,8 +1480,8 @@
                 <span class="panel-badge" id="ranked-count">0 selected</span>
               </div>
               <div class="ranked-list" id="rankedList">
-                <div class="ranked-empty" id="rankedEmpty">
-                  ← Click items to add &amp; rank them here.
+                <div class="ranked-empty" id="rankedEmpty" data-i18n="ranked_empty">
+                  Click items to add &amp; rank them here.
                 </div>
               </div>
               <p class="drag-hint" id="dragHint">⋮⋮ Drag rows to reorder</p>
@@ -1977,7 +1973,8 @@
           conn_park_adv: "Park Advocate",
           conn_other: "Other connection",
           sec_priorities: "What Should Be on the Shattuck Campus?",
-          priority_instr: "<strong>Step 1 —</strong> Click any option on the left to add it to your list.<br /> <strong>Step 2 —</strong> Drag items on the right to rank them in order of priority (most important at top).<br /> Select as many or as few as you like. Click ✕ to remove an item.",
+          priority_instr: "<strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).",
+          ranked_empty: "Click items to add & rank them here.",
           label_available: "Available Options",
           label_your_picks: "Your Priorities",
           label_opposition: "Is there anything you would strongly oppose on this site?",
@@ -2105,7 +2102,8 @@
           conn_park_adv: "Defensor del parque",
           conn_other: "Otra conexión",
           sec_priorities: "¿Qué debería haber en el Campus Shattuck?",
-          priority_instr: "<strong>Paso 1 —</strong> Haga clic en cualquier opción a la izquierda para agregarla.<br /> <strong>Paso 2 —</strong> Arrastre los elementos a la derecha para clasificarlos por prioridad.<br /> Puede elegir tantos como desee. Haga clic en ✕ para eliminar.",
+          priority_instr: "<strong>Paso 1 —</strong> Haga clic en cualquier opción disponible para agregarla a su selección.<br /> <strong>Paso 2 —</strong> Arrastre los elementos dentro de su lista para clasificarlos por orden de prioridad (el más importante arriba).",
+          ranked_empty: "Haga clic en los elementos para agregarlos y clasificarlos aquí.",
           label_available: "Opciones Disponibles",
           label_your_picks: "Sus Prioridades",
           label_opposition: "¿Hay algo a lo que se opondría firmemente en este sitio?",
@@ -2233,7 +2231,8 @@
           conn_park_adv: "Defansè pak la",
           conn_other: "Lòt koneksyon",
           sec_priorities: "Kisa ki ta dwe sou Campus Shattuck la?",
-          priority_instr: "<strong>Etap 1 —</strong> Klike sou opsyon ki sou bò gòch pou ajoute yo.<br /> <strong>Etap 2 —</strong> Trennen yo sou bò dwat pou klase yo (sa ki pi enpòtan anlè).<br /> Chwazi kantite ou vle. Klike sou ✕ pou wete yonn.",
+          priority_instr: "<strong>Etap 1 —</strong> Klike sou nenpòt opsyon ki disponib pou ajoute li nan lis ou a.<br /> <strong>Etap 2 —</strong> Trennen eleman yo nan lis ou a pou klase yo selon priyorite (sa ki pi enpòtan an anlè).",
+          ranked_empty: "Klike sou eleman yo pou ajoute ak klase yo isit la.",
           label_available: "Opsyon ki Disponib",
           label_your_picks: "Priyorite Ou Yo",
           label_opposition: "Èske gen yon bagay ou pa ta vle wè ditou sou sit sa a?",
@@ -3037,18 +3036,30 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
+      function checkCanvasserMode() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isCanvasser = urlParams.get('mode') === 'canvas';
+        
+        const btnAnother = document.getElementById('btnAnother');
+        const tabletHint = document.querySelector('.tablet-hint');
+
+        // Logic for the "Submit Another" button
+        if (btnAnother) {
+          btnAnother.style.display = isCanvasser ? 'inline-block' : 'none';
+        }
+
+        // Logic for the Tablet Hint
+        if (tabletHint) {
+          tabletHint.style.display = isCanvasser ? 'block' : 'none';
+        }
+      }
+
+
       // ═══════════════════════════════════════════════════════════════
       // INIT
       // ═══════════════════════════════════════════════════════════════
-      // Check for Canvasser Mode in the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('mode') === 'canvas') {
-        document.getElementById('btnAnother').style.display = 'inline-block';
-        // Also show the tablet hint only for canvassers
-        document.querySelector('.tablet-hint').style.display = 'block';
-      } else {
-        document.querySelector('.tablet-hint').style.display = 'none';
-      }
+
+      checkCanvasserMode();
       setLanguage('en');
       buildAvailable();
       buildRanked();
