@@ -3133,65 +3133,54 @@
       function collectData() {
         const fd = new FormData(document.getElementById("surveyForm"));
         const data = {};
+        
         // Capture the language the user was using
         data.language_used = currentLang;
 
+        // Standard form fields
         fd.forEach((v, k) => {
-          if (k.endsWith("[]")) {
-            const key = k.replace("[]", "");
-            if (!data[key]) data[key] = [];
-            data[key].push(v);
-          } else {
-            data[k] = v;
-          }
+            if (k.endsWith("[]")) {
+                const key = k.replace("[]", "");
+                if (!data[key]) data[key] = [];
+                data[key].push(v);
+            } else {
+                data[k] = v;
+            }
         });
 
-        // --- ENGLISH PRIORITY MAPPING ---
-        const englishList = I18N['en'].priorities;
-        const currentLangList = I18N[currentLang].priorities;
-
-        data.ranked_priorities = [
-          ...document.querySelectorAll("#rankedList .rank-item"),
-        ].map((el, i) => {
-          const translatedLabel = el.dataset.item;
-          
-          // Find where this item sits in the current language's array
-          const itemIndex = currentLangList.indexOf(translatedLabel);
-          
-          // Use that index to get the English equivalent
-          const englishLabel = englishList[itemIndex] || translatedLabel;
-
-          const otherText = el.querySelector("textarea")?.value?.trim() || "";
-          
-          return {
-              rank: i + 1,
-              item: (englishLabel === "Other") && otherText ? `Other: ${otherText}` : englishLabel,
-              category: I18N['en'].categories[el.dataset.category] || el.dataset.category,
-          };
+        // We use the variables rankedCategories and rankedItems directly 
+        data.ranked_priorities = rankedCategories.map((catKey, i) => {
+            // Find all items belonging to this category
+            const itemsInThisCat = rankedItems.filter(item => item.category === catKey);
+            
+            return {
+                rank: i + 1,
+                category: catKey, // This is already the English key from I18N
+                items: itemsInThisCat.map(it => it.label)
+            };
         });
 
         // Append "Other connection" text to connection array if present
         const conOther = document.getElementById("connection_other_text")?.value?.trim();
-        if (conOther) {
-          if (!data.connection) data.connection = [];
-          // We replace the translated "Other" string with the detailed user text
-          const otherTerm = I18N[currentLang].conn_other;
-          data.connection = data.connection.map((v) =>
-            v === otherTerm ? `Other: ${conOther}` : v
-          );
+        if (conOther && (data.connection || []).includes(I18N[currentLang].conn_other)) {
+            data.connection = data.connection.map((v) =>
+                v === I18N[currentLang].conn_other ? `Other: ${conOther}` : v
+            );
         }
 
+        // Capture metadata
         data.geo = geoData;
         data.submitted_at = new Date().toISOString();
         data.user_agent = navigator.userAgent;
 
+        // Clean up internal/honeypot fields
         delete data.captcha_answer;
         delete data.website;
         delete data.phone_confirm;
         delete data.consent;
 
         return data;
-      }
+    }
 
       // ═══════════════════════════════════════════════════════════════
       // SUBMIT
