@@ -1837,7 +1837,7 @@
               <textarea
                 id="additional_comments"
                 name="additional_comments"
-                data-i18n="placeholder_additional"
+                data-i18n-placeholder="placeholder_additional"
                 placeholder="Anything else you'd like us to know…"
                 autocomplete="off"
               ></textarea>
@@ -2036,9 +2036,6 @@
           label_process_comments: "Do you have specific suggestions for how the State should engage the community?",
           placeholder_process: "e.g. Meetings on weekends, translation services...",
           sec_stay_connected: "Stay Connected",
-          label_updates: "Receive updates about the Shattuck Campus process",
-          label_referral: "How did you hear about this survey?",
-          label_additional: "Additional Comments",
           label_income: "Household Income",
           inc_under_25: "Under $25,000",
           sec_opposition: "Concerns & Opposition",
@@ -2059,7 +2056,6 @@
           ref_email: "Email or newsletter",
           ref_news: "News article",
           ref_govt: "City or State website",
-          label_additional: "Additional Comments",
           placeholder_additional: "Anything else you'd like us to know…",
           privacy_note: "🔒 Responses collected securely. IP address and approximate location recorded to maintain survey integrity.<br />Personal information will not be shared publicly or used for commercial purposes.",
           label_park_use: "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
@@ -2164,9 +2160,6 @@
           label_process_comments: "¿Sugerencias específicas para la participación comunitaria?",
           placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción...",
           sec_stay_connected: "Manténgase Conectado",
-          label_updates: "Recibir actualizaciones sobre el proceso del Campus Shattuck",
-          label_referral: "¿Cómo se enteró de esta encuesta?",
-          label_additional: "Comentarios Adicionales",
           label_income: "Ingresos del Hogar",
           inc_under_25: "Menos de $25,000",
           sec_opposition: "Preocupaciones y Oposición",
@@ -2187,7 +2180,6 @@
           ref_email: "Correo o boletín",
           ref_news: "Artículo de noticias",
           ref_govt: "Sitio web de la Ciudad o el Estado",
-          label_additional: "Comentarios Adicionales",
           placeholder_additional: "Cualquier otra cosa que le gustaría que supiéramos…",
           privacy_note: "🔒 Respuestas recopiladas de forma segura. Dirección IP y ubicación aproximada registradas para mantener la integridad de la encuesta.<br />La información personal no se compartirá públicamente ni se utilizará con fines comerciales.",
           label_park_use: "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
@@ -2292,9 +2284,6 @@
           label_process_comments: "Sijesyon espesifik pou angajman kominote a?",
           placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon...",
           sec_stay_connected: "Rete Konekte",
-          label_updates: "Resevwa dènye nouvèl sou pwosesis Campus Shattuck la",
-          label_referral: "Kijan ou te tande pale de sondaj sa a?",
-          label_additional: "Kòmantè Lòt",
           label_income: "Revni Kay la",
           inc_under_25: "Mwens pase $25,000",
           sec_opposition: "Enkyetid ak Opizisyon",
@@ -2315,7 +2304,6 @@
           ref_email: "Imèl oswa bilten",
           ref_news: "Atik nouvèl",
           ref_govt: "Sit entènèt Vil oswa Leta",
-          label_additional: "Lòt Kòmantè",
           placeholder_additional: "Nenpòt lòt bagay ou ta renmen nou konnen…",
           privacy_note: "🔒 Repons yo kolekte an sekirite. Adrès IP ak kote apwoksimatif anrejistre pou kenbe entegrite sondaj la.<br />Enfòmasyon pèsonèl yo p ap pataje piblikman oswa itilize pou rezon komèsyal.",
           label_park_use: "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
@@ -2681,7 +2669,7 @@
           div.draggable = true;
           div.dataset.item = item;
 
-          const isOther = item === "Other";
+          const isOther = item === I18N[currentLang].priorities.slice(-1)[0];
           div.innerHTML = `
       <span class="drag-handle">⋮⋮</span>
       <span class="rank-num">${i + 1}</span>
@@ -2915,7 +2903,7 @@
           return {
             rank: i + 1,
             item:
-              label === "Other" && otherText ? `Other: ${otherText}` : label,
+              label === I18N[currentLang].priorities.slice(-1)[0] && otherText ? `Other: ${otherText}` : label,
           };
         });
 
