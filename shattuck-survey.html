@@ -1277,10 +1277,326 @@
           </div>
         </div>
 
-        <!-- ══ 2. About You ══ -->
+        <!-- ══ 2. Park Use ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">2</span> <span data-i18n="sec_about_you">About You</span>
+            <span class="num">2</span> <span data-i18n="sec_park_usage">Franklin Park Usage</span>
+          </div>
+
+          <div class="field" style="margin-bottom: 22px">
+            <label data-i18n="label_visit_freq"
+              >How often do you visit Franklin Park?
+              <span class="req">*</span></label
+            >
+            <div
+              class="radio-group"
+              style="margin-top: 8px"
+              id="group-park_freq"
+            >
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f1"
+                  name="park_freq"
+                  value="Daily"
+                /><label for="f1" data-i18n="freq_daily">Daily</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f2"
+                  name="park_freq"
+                  value="Several times a week"
+                /><label for="f2" data-i18n="freq_weekly_multi">Several times/week</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f3"
+                  name="park_freq"
+                  value="Weekly"
+                /><label for="f3" data-i18n="freq_weekly">Weekly</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f4"
+                  name="park_freq"
+                  value="Monthly"
+                /><label for="f4" data-i18n="freq_monthly">Monthly</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f5"
+                  name="park_freq"
+                  value="A few times a year"
+                /><label for="f5" data-i18n="freq_yearly">A few times/year</label>
+              </div>
+              <div class="radio-pill">
+                <input
+                  type="radio"
+                  id="f6"
+                  name="park_freq"
+                  value="Rarely or never"
+                /><label for="f6" data-i18n="freq_rarely">Rarely / never</label>
+              </div>
+            </div>
+            <div class="error-msg" id="err-park_freq">
+              Please select a visit frequency.
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="label_park_use"
+              >What do you use Franklin Park for?
+              <span class="lnote">(select all that apply)</span></label
+            >
+            <div class="check-group" style="margin-top: 8px">
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u1"
+                  name="park_use[]"
+                  value="Walking or running"
+                /><label for="u1" data-i18n="act_walking">Walking / Running</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u2"
+                  name="park_use[]"
+                  value="Dog walking"
+                /><label for="u2" data-i18n="act_dog">Dog walking</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u3"
+                  name="park_use[]"
+                  value="Sports and recreation"
+                /><label for="u3" data-i18n="act_sports">Sports &amp; recreation</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u4"
+                  name="park_use[]"
+                  value="Nature and birding"
+                /><label for="u4" data-i18n="act_nature">Nature &amp; birding</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u5"
+                  name="park_use[]"
+                  value="Picnicking"
+                /><label for="u5" data-i18n="act_picnic">Picnicking</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u6"
+                  name="park_use[]"
+                  value="Golf course"
+                /><label for="u6" data-i18n="act_golf">Golf course</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u7"
+                  name="park_use[]"
+                  value="Youth programs"
+                /><label for="u7" data-i18n="act_youth">Youth programs</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u8"
+                  name="park_use[]"
+                  value="Attending events"
+                /><label for="u8" data-i18n="act_events">Attending events</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u9"
+                  name="park_use[]"
+                  value="Cutting through or transit"
+                /><label for="u9" data-i18n="act_transit">Cutting through / transit</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u10"
+                  name="park_use[]"
+                  value="Zoo visit"
+                /><label for="u10" data-i18n="act_zoo">Zoo visit</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="u_other"
+                  name="park_use[]"
+                  value="Other park use"
+                />
+                <label for="u_other" data-i18n="act_other">Other…</label>
+              </div>
+            </div>
+            <div class="park-use-other-wrap" id="parkUseOtherWrap">
+              <input
+                type="text"
+                id="park_use_other_text"
+                name="park_use_other"
+                data-i18n-placeholder="placeholder_park_other"
+                placeholder="Please describe how else you use Franklin Park…"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 3. Priorities ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">3</span> <span data-i18n="sec_priorities">What Should Be on the Shattuck Campus?</span>
+          </div>
+
+          <div class="priority-intro" data-i18n="priority_instr">
+            <strong>Step 1 —</strong> Click any option on the left to add it to
+            your list.<br />
+            <strong>Step 2 —</strong> Drag items on the right to rank them in
+            order of priority (most important at top).<br />
+            Select as many or as few as you like. Click ✕ to remove an item.
+          </div>
+
+          <div class="priority-panels">
+            <div>
+              <div class="panel-label">
+                <span data-i18n="label_available">Available options</span>
+                <span class="panel-badge" id="avail-count">13</span>
+              </div>
+              <div class="available-list" id="availableList"></div>
+            </div>
+            <div>
+              <div class="panel-label">
+                <span data-i18n="label_your_picks">Your priorities</span>
+                <span class="panel-badge" id="ranked-count">0 selected</span>
+              </div>
+              <div class="ranked-list" id="rankedList">
+                <div class="ranked-empty" id="rankedEmpty">
+                  ← Click items to add &amp; rank them here.
+                </div>
+              </div>
+              <p class="drag-hint" id="dragHint">⋮⋮ Drag rows to reorder</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ 4. Opposition ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">4</span> <span data-i18n="sec_opposition">Concerns & Opposition</span>
+          </div>
+          <div class="field-group full">
+            <div class="field">
+              <label for="opposition" data-i18n="label_opposition"
+                >Is there anything you would strongly oppose on this
+                site?</label
+              >
+              <textarea
+                id="opposition"
+                name="opposition"
+                style="min-height: 100px"
+                data-i18n-placeholder="placeholder_oppose"
+                autocomplete="off"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <span class="num">5</span> <span data-i18n="sec_planning">Future Planning Process</span>
+          </div>
+
+          <div class="field" style="margin-bottom: 22px">
+            <label data-i18n="label_participation"
+              >How would you prefer to participate in the planning process?
+              <span class="lnote">(select all that apply)</span>
+            </label>
+            <div class="check-group" style="margin-top: 8px">
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p1"
+                  name="process_pref[]"
+                  value="In-person meetings"
+                /><label for="p1" data-i18n="pref_in_person">In-person meetings</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p2"
+                  name="process_pref[]"
+                  value="Virtual/Zoom meetings"
+                /><label for="p2" data-i18n="pref_virtual">Virtual (Zoom) meetings</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p3"
+                  name="process_pref[]"
+                  value="Smaller community conversations"
+                /><label for="p3" data-i18n="pref_small_groups">Small neighborhood groups</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p4"
+                  name="process_pref[]"
+                  value="Community Advisory Board (CAB)"
+                /><label for="p4" data-i18n="pref_cab">Community Advisory Board (CAB)</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p5"
+                  name="process_pref[]"
+                  value="Site walk-throughs"
+                /><label for="p5" data-i18n="pref_walkthrough">On-site walk-throughs</label>
+              </div>
+              <div class="check-pill">
+                <input
+                  type="checkbox"
+                  id="p6"
+                  name="process_pref[]"
+                  value="Digital surveys/polls"
+                /><label for="p6" data-i18n="pref_digital">Digital surveys & polls</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="process_comments" data-i18n="label_process_comments"
+              >Do you have specific suggestions for how the State should engage
+              the community?</label
+            >
+            <textarea
+              id="process_comments"
+              name="process_comments"
+              style="min-height: 100px"
+              data-i18n-placeholder="placeholder_process"
+              placeholder="e.g. 'Meetings should be held on weekends,' 'People who should represent the community,' 'Need translation services,' 'Transparency on CAB selection'..."
+              autocomplete="off"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- ══ 6. About You ══ -->
+        <div class="card">
+          <div class="card-title">
+            <span class="num">6</span> <span data-i18n="sec_about_you">About You</span>
             <span
               style="
                 font-family: &quot;DM Sans&quot;;
@@ -1470,323 +1786,7 @@
           </div>
         </div>
 
-        <!-- ══ 3. Park Use ══ -->
-        <div class="card">
-          <div class="card-title">
-            <span class="num">3</span> <span data-i18n="sec_park_usage">Franklin Park Usage</span>
-          </div>
-
-          <div class="field" style="margin-bottom: 22px">
-            <label data-i18n="label_visit_freq"
-              >How often do you visit Franklin Park?
-              <span class="req">*</span></label
-            >
-            <div
-              class="radio-group"
-              style="margin-top: 8px"
-              id="group-park_freq"
-            >
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f1"
-                  name="park_freq"
-                  value="Daily"
-                /><label for="f1" data-i18n="freq_daily">Daily</label>
-              </div>
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f2"
-                  name="park_freq"
-                  value="Several times a week"
-                /><label for="f2" data-i18n="freq_weekly_multi">Several times/week</label>
-              </div>
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f3"
-                  name="park_freq"
-                  value="Weekly"
-                /><label for="f3" data-i18n="freq_weekly">Weekly</label>
-              </div>
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f4"
-                  name="park_freq"
-                  value="Monthly"
-                /><label for="f4" data-i18n="freq_monthly">Monthly</label>
-              </div>
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f5"
-                  name="park_freq"
-                  value="A few times a year"
-                /><label for="f5" data-i18n="freq_yearly">A few times/year</label>
-              </div>
-              <div class="radio-pill">
-                <input
-                  type="radio"
-                  id="f6"
-                  name="park_freq"
-                  value="Rarely or never"
-                /><label for="f6" data-i18n="freq_rarely">Rarely / never</label>
-              </div>
-            </div>
-            <div class="error-msg" id="err-park_freq">
-              Please select a visit frequency.
-            </div>
-          </div>
-
-          <div class="field">
-            <label data-i18n="label_park_use"
-              >What do you use Franklin Park for?
-              <span class="lnote">(select all that apply)</span></label
-            >
-            <div class="check-group" style="margin-top: 8px">
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u1"
-                  name="park_use[]"
-                  value="Walking or running"
-                /><label for="u1" data-i18n="act_walking">Walking / Running</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u2"
-                  name="park_use[]"
-                  value="Dog walking"
-                /><label for="u2" data-i18n="act_dog">Dog walking</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u3"
-                  name="park_use[]"
-                  value="Sports and recreation"
-                /><label for="u3" data-i18n="act_sports">Sports &amp; recreation</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u4"
-                  name="park_use[]"
-                  value="Nature and birding"
-                /><label for="u4" data-i18n="act_nature">Nature &amp; birding</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u5"
-                  name="park_use[]"
-                  value="Picnicking"
-                /><label for="u5" data-i18n="act_picnic">Picnicking</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u6"
-                  name="park_use[]"
-                  value="Golf course"
-                /><label for="u6" data-i18n="act_golf">Golf course</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u7"
-                  name="park_use[]"
-                  value="Youth programs"
-                /><label for="u7" data-i18n="act_youth">Youth programs</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u8"
-                  name="park_use[]"
-                  value="Attending events"
-                /><label for="u8" data-i18n="act_events">Attending events</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u9"
-                  name="park_use[]"
-                  value="Cutting through or transit"
-                /><label for="u9" data-i18n="act_transit">Cutting through / transit</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u10"
-                  name="park_use[]"
-                  value="Zoo visit"
-                /><label for="u10" data-i18n="act_zoo">Zoo visit</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="u_other"
-                  name="park_use[]"
-                  value="Other park use"
-                />
-                <label for="u_other" data-i18n="act_other">Other…</label>
-              </div>
-            </div>
-            <div class="park-use-other-wrap" id="parkUseOtherWrap">
-              <input
-                type="text"
-                id="park_use_other_text"
-                name="park_use_other"
-                data-i18n-placeholder="placeholder_park_other"
-                placeholder="Please describe how else you use Franklin Park…"
-                autocomplete="off"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- ══ 4. Priorities ══ -->
-        <div class="card">
-          <div class="card-title">
-            <span class="num">4</span> <span data-i18n="sec_priorities">What Should Be on the Shattuck Campus?</span>
-          </div>
-
-          <div class="priority-intro" data-i18n="priority_instr">
-            <strong>Step 1 —</strong> Click any option on the left to add it to
-            your list.<br />
-            <strong>Step 2 —</strong> Drag items on the right to rank them in
-            order of priority (most important at top).<br />
-            Select as many or as few as you like. Click ✕ to remove an item.
-          </div>
-
-          <div class="priority-panels">
-            <div>
-              <div class="panel-label">
-                <span data-i18n="label_available">Available options</span>
-                <span class="panel-badge" id="avail-count">13</span>
-              </div>
-              <div class="available-list" id="availableList"></div>
-            </div>
-            <div>
-              <div class="panel-label">
-                <span data-i18n="label_your_picks">Your priorities</span>
-                <span class="panel-badge" id="ranked-count">0 selected</span>
-              </div>
-              <div class="ranked-list" id="rankedList">
-                <div class="ranked-empty" id="rankedEmpty">
-                  ← Click items to add &amp; rank them here.
-                </div>
-              </div>
-              <p class="drag-hint" id="dragHint">⋮⋮ Drag rows to reorder</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ══ 5. Opposition ══ -->
-        <div class="card">
-          <div class="card-title">
-            <span class="num">5</span> <span data-i18n="sec_opposition">Concerns & Opposition</span>
-          </div>
-          <div class="field-group full">
-            <div class="field">
-              <label for="opposition" data-i18n="label_opposition"
-                >Is there anything you would strongly oppose on this
-                site?</label
-              >
-              <textarea
-                id="opposition"
-                name="opposition"
-                style="min-height: 100px"
-                data-i18n-placeholder="placeholder_oppose"
-                autocomplete="off"
-              ></textarea>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">
-            <span class="num">6</span> <span data-i18n="sec_planning">Future Planning Process</span>
-          </div>
-
-          <div class="field" style="margin-bottom: 22px">
-            <label data-i18n="label_participation"
-              >How would you prefer to participate in the planning process?
-              <span class="lnote">(select all that apply)</span>
-            </label>
-            <div class="check-group" style="margin-top: 8px">
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p1"
-                  name="process_pref[]"
-                  value="In-person meetings"
-                /><label for="p1" data-i18n="pref_in_person">In-person meetings</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p2"
-                  name="process_pref[]"
-                  value="Virtual/Zoom meetings"
-                /><label for="p2" data-i18n="pref_virtual">Virtual (Zoom) meetings</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p3"
-                  name="process_pref[]"
-                  value="Smaller community conversations"
-                /><label for="p3" data-i18n="pref_small_groups">Small neighborhood groups</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p4"
-                  name="process_pref[]"
-                  value="Community Advisory Board (CAB)"
-                /><label for="p4" data-i18n="pref_cab">Community Advisory Board (CAB)</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p5"
-                  name="process_pref[]"
-                  value="Site walk-throughs"
-                /><label for="p5" data-i18n="pref_walkthrough">On-site walk-throughs</label>
-              </div>
-              <div class="check-pill">
-                <input
-                  type="checkbox"
-                  id="p6"
-                  name="process_pref[]"
-                  value="Digital surveys/polls"
-                /><label for="p6" data-i18n="pref_digital">Digital surveys & polls</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="process_comments" data-i18n="label_process_comments"
-              >Do you have specific suggestions for how the State should engage
-              the community?</label
-            >
-            <textarea
-              id="process_comments"
-              name="process_comments"
-              style="min-height: 100px"
-              data-i18n-placeholder="placeholder_process"
-              placeholder="e.g. 'Meetings should be held on weekends,' 'People who should represent the community,' 'Need translation services,' 'Transparency on CAB selection'..."
-              autocomplete="off"
-            ></textarea>
-          </div>
-        </div>
-
-        <!-- ══ 6. Stay Connected ══ -->
+        <!-- ══ 7. Stay Connected ══ -->
         <div class="card">
           <div class="card-title">
             <span class="num">7</span> <span data-i18n="sec_stay_connected">Stay Connected</span>
@@ -1921,6 +1921,7 @@
         <button
           onclick="resetForm()"
           style="
+            display: none;
             margin-top: 20px;
             padding: 12px 32px;
             background: var(--forest);
@@ -3039,6 +3040,15 @@
       // ═══════════════════════════════════════════════════════════════
       // INIT
       // ═══════════════════════════════════════════════════════════════
+      // Check for Canvasser Mode in the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('mode') === 'canvas') {
+        document.getElementById('btnAnother').style.display = 'inline-block';
+        // Also show the tablet hint only for canvassers
+        document.querySelector('.tablet-hint').style.display = 'block';
+      } else {
+        document.querySelector('.tablet-hint').style.display = 'none';
+      }
       setLanguage('en');
       buildAvailable();
       buildRanked();
