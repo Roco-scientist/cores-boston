@@ -944,6 +944,93 @@
           padding: 24px 18px;
         }
       }
+      /* ── Collapsible priority categories ── */
+      .avail-category {
+          margin-top: 10px;
+          border: 2px solid rgba(45, 90, 61, 0.15);
+          border-radius: 10px;
+          overflow: hidden;
+      }
+      .avail-category:first-child {
+          margin-top: 0;
+      }
+      .avail-category-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 14px;
+          background: var(--mist);
+          cursor: pointer;
+          user-select: none;
+          transition: background 0.15s;
+      }
+      .avail-category-header:hover {
+          background: var(--meadow);
+      }
+      .avail-category-header.has-selected {
+          background: rgba(45, 90, 61, 0.12);
+      }
+      .avail-category-name {
+          font-size: 0.72rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--moss);
+          display: flex;
+          align-items: center;
+          gap: 8px;
+      }
+      .avail-category-meta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+      }
+      .avail-category-count {
+          font-size: 0.68rem;
+          font-weight: 500;
+          color: var(--stone);
+          background: white;
+          border-radius: 20px;
+          padding: 2px 8px;
+      }
+      .avail-category-chevron {
+          font-size: 0.7rem;
+          color: var(--stone);
+          transition: transform 0.2s ease;
+      }
+      .avail-category.open .avail-category-chevron {
+          transform: rotate(180deg);
+      }
+      .avail-category-items {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+      }
+      .avail-category.open .avail-category-items {
+          display: flex;
+      }
+      /* Items inside a category lose their own border-radius on top */
+      .avail-category .avail-item {
+          border: none;
+          border-top: 1px solid rgba(45, 90, 61, 0.1);
+          border-radius: 0;
+      }
+      .avail-category .avail-item:hover {
+          transform: none;
+          padding-left: 20px;
+      }
+      /* Checkmark on items that are already ranked */
+      .avail-category-added-badge {
+          font-size: 0.65rem;
+          color: var(--sage);
+          background: rgba(74, 124, 89, 0.1);
+          border-radius: 20px;
+          padding: 1px 7px;
+          display: none;
+      }
+      .avail-category-header.has-selected .avail-category-added-badge {
+          display: inline-block;
+      }
     </style>
   </head>
   <body>
@@ -2706,28 +2793,84 @@
       // ═══════════════════════════════════════════════════════════════
       function buildAvailable() {
           const ul = document.getElementById("availableList");
+          // Remember which categories were open before rebuild
+          const openCats = new Set(
+              [...ul.querySelectorAll('.avail-category.open')]
+                  .map(el => el.dataset.category)
+          );
+
           ul.innerHTML = "";
+
           if (availableItems.length === 0) {
-              ul.innerHTML = '<div style="font-size:0.82rem;color:var(--stone);padding:12px;text-align:center;">All options added ✓</div>';
-          } else {
-              let lastCategory = null;
-              availableItems.forEach((item) => {
-                  if (item.category !== lastCategory) {
-                      lastCategory = item.category;
-                      const header = document.createElement("div");
-                      header.style.cssText = "font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--stone);padding:10px 14px 4px;opacity:0.7;";
-                      header.textContent = I18N[currentLang].categories[item.category];
-                      ul.appendChild(header);
-                  }
+              ul.innerHTML =
+                  '<div style="font-size:0.82rem;color:var(--stone);padding:12px;text-align:center;">All options added ✓</div>';
+              document.getElementById("avail-count").textContent = 0;
+              return;
+          }
+
+          // Group available items by category, preserving master order
+          const groups = {};
+          const groupOrder = [];
+          availableItems.forEach(item => {
+              const cat = item.category || "Other";
+              if (!groups[cat]) {
+                  groups[cat] = [];
+                  groupOrder.push(cat);
+              }
+              groups[cat].push(item);
+          });
+
+          // Count how many from each category are already ranked
+          const rankedLabels = new Set(rankedItems.map(x => x.label));
+          const rankedByCategory = {};
+          rankedItems.forEach(item => {
+              const cat = item.category || "Other";
+              rankedByCategory[cat] = (rankedByCategory[cat] || 0) + 1;
+          });
+
+          groupOrder.forEach(cat => {
+              const items = groups[cat];
+              const addedCount = rankedByCategory[cat] || 0;
+              const translatedCat = I18N[currentLang].categories?.[cat] || cat;
+              const isOpen = openCats.has(cat);
+
+              const wrapper = document.createElement("div");
+              wrapper.className = "avail-category" + (isOpen ? " open" : "");
+              wrapper.dataset.category = cat;
+
+              const header = document.createElement("div");
+              header.className = "avail-category-header" + (addedCount > 0 ? " has-selected" : "");
+              header.innerHTML = `
+                  <span class="avail-category-name">
+                      ${translatedCat}
+                  </span>
+                  <span class="avail-category-meta">
+                      <span class="avail-category-added-badge">✓ ${addedCount} added</span>
+                      <span class="avail-category-count">${items.length} option${items.length !== 1 ? 's' : ''}</span>
+                      <span class="avail-category-chevron">▼</span>
+                  </span>`;
+              header.addEventListener("click", () => {
+                  wrapper.classList.toggle("open");
+              });
+
+              const itemsContainer = document.createElement("div");
+              itemsContainer.className = "avail-category-items";
+
+              items.forEach(item => {
                   const div = document.createElement("div");
                   div.className = "avail-item";
                   div.dataset.item = item.label;
                   div.dataset.category = item.category;
                   div.innerHTML = `<span class="avail-label">${item.label}</span><span class="add-icon">＋</span>`;
                   div.addEventListener("click", () => addToRanked(item));
-                  ul.appendChild(div);
+                  itemsContainer.appendChild(div);
               });
-          }
+
+              wrapper.appendChild(header);
+              wrapper.appendChild(itemsContainer);
+              ul.appendChild(wrapper);
+          });
+
           document.getElementById("avail-count").textContent = availableItems.length;
       }
 
