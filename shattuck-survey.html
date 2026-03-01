@@ -1344,12 +1344,12 @@
                 autocomplete="off"
               >
                 <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
-                <option data-i18n="opt_black">Black or African American</option>
-                <option data-i18n="opt_hispanic">Hispanic or Latino/a/x</option>
-                <option data-i18n="opt_white">White / Caucasian</option>
-                <option data-i18n="opt_asian">Asian or Pacific Islander</option>
-                <option data-i18n="opt_native">Native American or Alaska Native</option>
-                <option data-i18n="opt_multi">Multiracial</option>
+                <option value="Black or African American" data-i18n="opt_black">Black or African American</option>
+                <option value="Hispanic or Latino/a/x" data-i18n="opt_hispanic">Hispanic or Latino/a/x</option>
+                <option value="White / Caucasian" data-i18n="opt_white">White / Caucasian</option>
+                <option value="Asian or Pacific Islander" data-i18n="opt_asian">Asian or Pacific Islander</option>
+                <option value="Native American or Alaska Native" data-i18n="opt_native">Native American or Alaska Native</option>
+                <option value="Multiracial" data-i18n="opt_multi">Multiracial</option>
                 <option value="self-describe" data-i18n="opt_self_describe">Other / Self-describe</option>
               </select>
               <!-- Revealed when "Other / Self-describe" is selected -->
@@ -1368,7 +1368,7 @@
               <label for="income" data-i18n="label_income">Household Income</label>
               <select id="income" name="income" autocomplete="off">
                 <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
-                <option data-i18n="inc_under_25">Under $25,000</option>
+                <option value="Under $25,000" data-i18n="inc_under_25">Under $25,000</option>
                 <option>$25,000–$49,999</option>
                 <option>$50,000–$74,999</option>
                 <option>$75,000–$99,999</option>
@@ -1819,15 +1819,15 @@
               autocomplete="off"
             >
               <option value="" data-i18n="opt_select">— Select one —</option>
-              <option data-i18n="ref_canvasser">Community canvasser / tablet</option>
-              <option data-i18n="ref_neighbor">Neighbor or friend</option>
-              <option data-i18n="ref_event">Community meeting or event</option>
-              <option data-i18n="ref_flyer">Flyer or printed material</option>
-              <option data-i18n="ref_social">Social media (Facebook, Instagram, etc.)</option>
-              <option data-i18n="ref_email">Email or newsletter</option>
-              <option data-i18n="ref_news">News article</option>
-              <option data-i18n="ref_govt">City or State website</option>
-              <option data-i18n="act_other">Other</option>
+              <option value="Community canvasser / tablet" data-i18n="ref_canvasser">Community canvasser / tablet</option>
+              <option value="Neighbor or friend" data-i18n="ref_neighbor">Neighbor or friend</option>
+              <option value="Community meeting or event" data-i18n="ref_event">Community meeting or event</option>
+              <option value="Flyer or printed material" data-i18n="ref_flyer">Flyer or printed material</option>
+              <option value="Social media (Facebook, Instagram, etc.)" data-i18n="ref_social">Social media (Facebook, Instagram, etc.)</option>
+              <option value="Email or newsletter" data-i18n="ref_email">Email or newsletter</option>
+              <option value="News article" data-i18n="ref_news">News article</option>
+              <option value="City or State website" data-i18n="ref_govt">City or State website</option>
+              <option value="Other" data-i18n="act_other">Other</option>
             </select>
           </div>
 
@@ -2899,6 +2899,9 @@
       function collectData() {
         const fd = new FormData(document.getElementById("surveyForm"));
         const data = {};
+        // Capture the language the user was using
+        data.language_used = currentLang;
+
         fd.forEach((v, k) => {
           if (k.endsWith("[]")) {
             const key = k.replace("[]", "");
@@ -2909,27 +2912,38 @@
           }
         });
 
-        // Ranked priorities
+        // --- ENGLISH PRIORITY MAPPING ---
+        const englishList = I18N['en'].priorities;
+        const currentLangList = I18N[currentLang].priorities;
+
         data.ranked_priorities = [
           ...document.querySelectorAll("#rankedList .rank-item"),
         ].map((el, i) => {
-          const label = el.dataset.item;
+          const translatedLabel = el.dataset.item;
+          
+          // Find where this item sits in the current language's array
+          const itemIndex = currentLangList.indexOf(translatedLabel);
+          
+          // Use that index to get the English equivalent
+          const englishLabel = englishList[itemIndex] || translatedLabel;
+
           const otherText = el.querySelector("textarea")?.value?.trim() || "";
+          
           return {
             rank: i + 1,
-            item:
-              label === I18N[currentLang].priorities.slice(-1)[0] && otherText ? `Other: ${otherText}` : label,
+            // If it's "Other", append the user's specific text
+            item: (englishLabel === "Other") && otherText ? `Other: ${otherText}` : englishLabel,
           };
         });
 
         // Append "Other connection" text to connection array if present
-        const conOther = document
-          .getElementById("connection_other_text")
-          ?.value?.trim();
+        const conOther = document.getElementById("connection_other_text")?.value?.trim();
         if (conOther) {
           if (!data.connection) data.connection = [];
+          // We replace the translated "Other" string with the detailed user text
+          const otherTerm = I18N[currentLang].conn_other;
           data.connection = data.connection.map((v) =>
-            v === "Other community connection" ? `Other: ${conOther}` : v,
+            v === otherTerm ? `Other: ${conOther}` : v
           );
         }
 
@@ -2981,19 +2995,19 @@
           console.log("Survey payload:", JSON.stringify(payload, null, 2));
 
           // ── CONNECT YOUR BACKEND ──────────────────────────────────────
-          // const ENDPOINT = 'https://YOUR-API.execute-api.us-east-1.amazonaws.com/prod/survey';
-          // try {
-          //   const res = await fetch(ENDPOINT, {
-          //     method: 'POST',
-          //     headers: { 'Content-Type': 'application/json' },
-          //     body: JSON.stringify(payload)
-          //   });
-          //   if (!res.ok) throw new Error('Server error');
-          // } catch(err) {
-          //   btn.disabled = false; btn.textContent = 'Submit My Response →';
-          //   banner.textContent = 'Submission failed — please try again.';
-          //   banner.style.display = 'block'; return;
-          // }
+          const ENDPOINT = 'https://dwwu9rnixh.execute-api.us-east-2.amazonaws.com/submit';
+          try {
+            const res = await fetch(ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error('Server error');
+          } catch(err) {
+            btn.disabled = false; btn.textContent = 'Submit My Response →';
+            banner.textContent = 'Submission failed — please try again.';
+            banner.style.display = 'block'; return;
+          }
           // ─────────────────────────────────────────────────────────────
 
           await new Promise((r) => setTimeout(r, 700)); // remove when live
