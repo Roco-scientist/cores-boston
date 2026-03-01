@@ -1031,6 +1031,49 @@
       .avail-category-header.has-selected .avail-category-added-badge {
           display: inline-block;
       }
+      .rank-block {
+          background: #fff;
+          border: 2px solid var(--sage);
+          border-radius: 12px;
+          margin-bottom: 16px;
+          overflow: hidden;
+          cursor: grab;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .rank-block:active { cursor: grabbing; }
+      .rank-block.dragging { opacity: 0.5; transform: scale(0.98); }
+      .rank-block.drag-over { border-style: dashed; background: var(--mist); }
+
+      .rank-block-header {
+          background: var(--forest);
+          color: var(--gold);
+          padding: 8px 12px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+      }
+      .rank-block-items {
+          padding: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+      }
+      .rank-sub-item {
+          background: var(--mist);
+          border-radius: 6px;
+          padding: 8px 12px;
+          font-size: 0.85rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      .rank-sub-item .remove-btn { margin-top: 0; }
+      .rank-block-handle { font-size: 1.2rem; opacity: 0.5; }
     </style>
   </head>
   <body>
@@ -2121,7 +2164,10 @@
           success_msg: "Your response has been recorded and will help shape the future of the Shattuck Campus in Franklin Park. We appreciate you taking the time to share your vision for this community.",
           btn_another: "Submit Another Response",
           priorities: [
-              { label: "Return land to Franklin Park (Nature trails, nature center, visitor center)", category: "Parkland" },
+              { label: "Return to Park: Nature trails and walking paths", category: "Return to Parkland" },
+              { label: "Return to Park: Dedicated dog park area", category: "Return to Parkland" },
+              { label: "Return to Park: Visitor center & public restrooms", category: "Return to Parkland" },
+              { label: "Partial return to parkland (combined with other uses)", category: "Return to Parkland" },
               { label: "24-hour pharmacy",                                                            category: "Health Services" },
               { label: "Health & Wellness Center (Pool, recreation center, meditation space)",        category: "Health Services" },
               { label: "Urgent care clinic",                                                          category: "Health Services" },
@@ -2131,17 +2177,18 @@
               { label: "Substance use disorder housing (no sobriety requirement)",                    category: "Housing" },
               { label: "Sober housing",                                                               category: "Housing" },
               { label: "Assisted living facility",                                                    category: "Housing" },
-              { label: "Current in-patient substance use disorder (SUD) services",                   category: "SUD Services" },
+              { label: "Current level of in-patient SUD services", category: "SUD Services" },
+              { label: "Increase in-patient SUD services (more beds/capacity)", category: "SUD Services" },
               { label: "Other",                                                                       category: "Other" },
           ],
           categories: {
-              "Parkland":             "Parkland",
-              "Health Services":      "Health Services",
-              "Veterans":             "Veterans",
-              "Housing":              "Housing",
-              "SUD Services":         "SUD Services",
-              "Other":                "Other",
-          },
+                "Return to Parkland": "Return to Parkland",
+                "Health Services": "Health Services",
+                "Veterans": "Veterans",
+                "Housing": "Housing",
+                "SUD Services": "SUD Services",
+                "Other": "Other",
+            },
           label_race: "Race / Ethnicity",
           opt_black: "Black or African American",
           opt_hispanic: "Hispanic or Latino/a/x",
@@ -2253,7 +2300,10 @@
           success_msg: "Su respuesta ha sido registrada y ayudará a dar forma al futuro del Campus Shattuck en Franklin Park. Agradecemos su tiempo.",
           btn_another: "Enviar otra respuesta",
           priorities: [
-              { label: "Devolver terreno al Franklin Park (Senderos, centro de naturaleza, centro de visitantes)", category: "Parkland" },
+              { label: "Regreso al Parque: Senderos naturales y caminos", category: "Return to Parkland" },
+              { label: "Regreso al Parque: Área dedicada para perros", category: "Return to Parkland" },
+              { label: "Regreso al Parque: Centro de visitantes y baños", category: "Return to Parkland" },
+              { label: "Retorno parcial al parque (combinado con otros usos)", category: "Return to Parkland" },
               { label: "Farmacia las 24 horas",                                                            category: "Health Services" },
               { label: "Centro de Salud y Bienestar (Piscina, recreación, espacio de meditación)",        category: "Health Services" },
               { label: "Clínica de urgencias",                                                          category: "Health Services" },
@@ -2264,16 +2314,17 @@
               { label: "Vivienda para personas con SUD (sin requisito de sobriedad)",                    category: "Housing" },
               { label: "Vivienda para personas sobrias (Sober housing)",                                                               category: "Housing" },
               { label: "Servicios actuales de internado para trastornos por uso de sustancias (SUD)",                   category: "SUD Services" },
+              { label: "Aumentar servicios SUD (más camas/capacidad)", category: "SUD Services" },
               { label: "Otro",                                                                       category: "Other" },
           ],
           categories: {
-              "Parkland":             "Terreno del Parque",
-              "Health Services":      "Servicios de Salud",
-              "Veterans":             "Veteranos",
-              "Housing":              "Vivienda",
-              "SUD Services": "Servicios para SUD",
-              "Other":                "Otro",
-          },
+                "Return to Parkland": "Retorno a Terrenos del Parque",
+                "Health Services": "Servicios de Salud",
+                "Veterans": "Veteranos",
+                "Housing": "Vivienda",
+                "SUD Services": "Servicios para SUD",
+                "Other": "Otro",
+            },
           label_race: "Raza / Etnia",
           opt_black: "Negro o Afroamericano",
           opt_hispanic: "Hispano o Latino/a/x",
@@ -2385,7 +2436,9 @@
           success_msg: "Repons ou anrejistre epi li pral ede fasonnen lavni Campus Shattuck nan Franklin Park. Nou apresye tan ou.",
           btn_another: "Soumèt yon lòt repons",
           priorities: [
-              { label: "Retounen tè a nan Franklin Park (Sant lanati, sant vizitè, santye)", category: "Parkland" },
+              { label: "Retounen nan Pak: Santye nati ak chemen mache", category: "Return to Parkland" },
+              { label: "Retounen nan Pak: Zòn dedye pou chyen", category: "Return to Parkland" },
+              { label: "Retounen nan Pak: Sant vizitè ak twalèt piblik", category: "Return to Parkland" },
               { label: "Famasi 24/7",                                                            category: "Health Services" },
               { label: "Sant Sante ak Byennèt (Pisin, sant rekreyasyon, espas meditasyon)",        category: "Health Services" },
               { label: "Klinik ijan",                                                          category: "Health Services" },
@@ -2396,15 +2449,16 @@
               { label: "Lojman pou moun ki gen depandans (san kondisyon pou moun pa nan bweson)",                    category: "Housing" },
               { label: "Lojman pou moun ki pa nan bweson (Sober housing)",                                                               category: "Housing" },
               { label: "Sèvis tretman entèn pou moun ki gen depandans (SUD)",                   category: "SUD Services" },
+              { label: "Ogmante sèvis SUD (plis kabann/kapasite)", category: "SUD Services" },
               { label: "Lòt",                                                                       category: "Other" },
           ],
           categories: {
-              "Parkland":             "Tè Pak",
-              "Health Services":      "Sèvis Sante",
-              "Veterans":             "Veteran",
-              "Housing":              "Lojman",
+              "Return to Parkland": "Retounen Tè a nan Pak la",
+              "Health Services": "Sèvis Sante",
+              "Veterans": "Veteran",
+              "Housing": "Lojman",
               "SUD Services": "Sèvis SUD",
-              "Other":                "Lòt",
+              "Other": "Lòt",
           },
           label_race: "Ras / Etisite",
           opt_black: "Nwa oswa Afro-Ameriken",
@@ -2473,7 +2527,8 @@
         }
       };
       let currentLang = 'en';
-      let rankedItems = [];
+      let rankedCategories = []; // Tracks the order of categories
+      let rankedItems = [];      // Tracks the items selected
       let dragSrc = null;
       let captchaAnswer = 0;
 
@@ -2849,106 +2904,100 @@
       }
 
       function buildRanked() {
-        const container = document.getElementById("rankedList");
-        const empty = document.getElementById("rankedEmpty");
-        const hint = document.getElementById("dragHint");
-        container.querySelectorAll(".rank-item").forEach((el) => el.remove());
+          const container = document.getElementById("rankedList");
+          const empty = document.getElementById("rankedEmpty");
+          container.querySelectorAll(".rank-block").forEach(el => el.remove());
 
-        const n = rankedItems.length;
-        document.getElementById("ranked-count").textContent =
-          n === 0 ? "0 selected" : `${n} selected`;
+          if (rankedCategories.length === 0) {
+              empty.style.display = "";
+              document.getElementById("dragHint").style.display = "none";
+              return;
+          }
+          empty.style.display = "none";
+          document.getElementById("dragHint").style.display = "block";
 
-        if (n === 0) {
-          empty.style.display = "";
-          hint.style.display = "none";
-          return;
-        }
-        empty.style.display = "none";
-        hint.style.display = n > 1 ? "block" : "none";
+          rankedCategories.forEach((catKey, index) => {
+              const translatedCat = I18N[currentLang].categories[catKey] || catKey;
+              const itemsInCat = rankedItems.filter(x => x.category === catKey);
 
-        rankedItems.forEach((item, i) => {
-          const div = document.createElement("div");
-          div.className = "rank-item";
-          div.draggable = true;
-          div.dataset.item = item.label;
-          div.dataset.category = item.category;
-          const isOther = item.label === "Other";
+              const block = document.createElement("div");
+              block.className = "rank-block";
+              block.draggable = true;
+              block.dataset.category = catKey;
 
-          div.innerHTML = `
-      <span class="drag-handle">⋮⋮</span>
-      <span class="rank-num">${i + 1}</span>
-      <div class="rank-content">
-        <div class="rank-item-label">${item.label}</div>
-        ${isOther ? `<textarea class="rank-other-input" name="other_specify" placeholder="Please describe your idea…" rows="2" autocomplete="off"></textarea>` : ""}
-      </div>
-      <button type="button" class="remove-btn" title="Remove">✕</button>
-    `;
+              block.innerHTML = `
+                  <div class="rank-block-header">
+                      <span class="rank-num">${index + 1}</span>
+                      <span class="rank-block-handle">⋮⋮</span>
+                      <span>${translatedCat}</span>
+                  </div>
+                  <div class="rank-block-items">
+                      ${itemsInCat.map(item => `
+                          <div class="rank-sub-item">
+                              <span>${item.label}</span>
+                              <button type="button" class="remove-btn" onclick='removeFromRanked(${JSON.stringify(item)})'>✕</button>
+                          </div>
+                      `).join('')}
+                  </div>
+              `;
 
-          div.querySelector(".remove-btn").addEventListener("click", (e) => {
-            e.stopPropagation();
-            removeFromRanked(item);
+              // Drag Events for Blocks
+              block.addEventListener("dragstart", (e) => {
+                  dragSrc = block;
+                  block.classList.add("dragging");
+              });
+              block.addEventListener("dragend", () => {
+                  block.classList.remove("dragging");
+                  container.querySelectorAll(".rank-block").forEach(el => el.classList.remove("drag-over"));
+                  syncCategoryOrder();
+              });
+              block.addEventListener("dragover", (e) => {
+                  e.preventDefault();
+                  if (block !== dragSrc) block.classList.add("drag-over");
+              });
+              block.addEventListener("dragleave", () => block.classList.remove("drag-over"));
+              block.addEventListener("drop", (e) => {
+                  e.preventDefault();
+                  if (dragSrc && dragSrc !== block) {
+                      const nodes = [...container.querySelectorAll(".rank-block")];
+                      const si = nodes.indexOf(dragSrc), di = nodes.indexOf(block);
+                      if (si < di) container.insertBefore(dragSrc, block.nextSibling);
+                      else container.insertBefore(dragSrc, block);
+                  }
+              });
+
+              container.appendChild(block);
           });
-
-          div.addEventListener("dragstart", (e) => {
-            dragSrc = div;
-            div.classList.add("dragging");
-            e.dataTransfer.effectAllowed = "move";
-          });
-          div.addEventListener("dragend", () => {
-            div.classList.remove("dragging");
-            document
-              .querySelectorAll(".rank-item")
-              .forEach((el) => el.classList.remove("drag-over"));
-            syncFromDOM();
-          });
-          div.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            if (div !== dragSrc) div.classList.add("drag-over");
-          });
-          div.addEventListener("dragleave", () =>
-            div.classList.remove("drag-over"),
-          );
-          div.addEventListener("drop", (e) => {
-            e.preventDefault();
-            if (dragSrc && dragSrc !== div) {
-              const nodes = [...container.querySelectorAll(".rank-item")];
-              const si = nodes.indexOf(dragSrc),
-                di = nodes.indexOf(div);
-              if (si < di) container.insertBefore(dragSrc, div.nextSibling);
-              else container.insertBefore(dragSrc, div);
-            }
-            div.classList.remove("drag-over");
-          });
-
-          container.appendChild(div);
-        });
-        updateNumbers();
       }
 
-      function syncFromDOM() {
-        rankedItems = [
-            ...document.querySelectorAll("#rankedList .rank-item"),
-        ].map((el) => ({ label: el.dataset.item, category: el.dataset.category }));
-        updateNumbers();
+      function syncCategoryOrder() {
+          rankedCategories = [...document.querySelectorAll(".rank-block")].map(el => el.dataset.category);
+          document.querySelectorAll(".rank-block .rank-num").forEach((el, i) => el.textContent = i + 1);
       }
-      function updateNumbers() {
-        document
-          .querySelectorAll("#rankedList .rank-num")
-          .forEach((el, i) => (el.textContent = i + 1));
-      }
-      function addToRanked(item) {
-        rankedItems.push(item);
-        rebuildBoth();
-      }
-      function removeFromRanked(item) {
-        rankedItems = rankedItems.filter((x) => x.label !== item.label);
-        rebuildBoth();
-      }
+
       function rebuildBoth() {
           const rankedLabels = new Set(rankedItems.map(x => x.label));
           availableItems = I18N[currentLang].priorities.filter(p => !rankedLabels.has(p.label));
           buildAvailable();
           buildRanked();
+      }
+
+      function addToRanked(item) {
+          if (!rankedItems.find(x => x.label === item.label)) {
+              rankedItems.push(item);
+              if (!rankedCategories.includes(item.category)) {
+                  rankedCategories.push(item.category);
+              }
+              rebuildBoth();
+          }
+      }
+      function removeFromRanked(item) {
+          rankedItems = rankedItems.filter(x => x.label !== item.label);
+          // If no items left in this category, remove the category from ranking
+          if (!rankedItems.some(x => x.category === item.category)) {
+              rankedCategories = rankedCategories.filter(c => c !== item.category);
+          }
+          rebuildBoth();
       }
 
       // ═══════════════════════════════════════════════════════════════
