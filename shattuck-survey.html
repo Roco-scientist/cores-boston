@@ -1897,10 +1897,7 @@
           Submit My Response →
         </button>
         <p class="privacy-note" data-i18n="privacy_note">
-          🔒 Responses collected securely. IP address and approximate location
-          recorded to maintain survey integrity.<br />
-          Personal information will not be shared publicly or used for
-          commercial purposes.
+          🔒 Responses collected securely.<br />Personal information will not be shared publicly or used for commercial purposes.
         </p>
       </form>
 
@@ -2058,7 +2055,7 @@
           ref_news: "News article",
           ref_govt: "City or State website",
           placeholder_additional: "Anything else you'd like us to know…",
-          privacy_note: "🔒 Responses collected securely. IP address and approximate location recorded to maintain survey integrity.<br />Personal information will not be shared publicly or used for commercial purposes.",
+          privacy_note: "🔒 Responses collected securely.<br />Personal information will not be shared publicly or used for commercial purposes.",
           label_park_use: "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
           opt_select: "— Select one —",
           placeholder_conn_other: "e.g. attend school or church nearby, visit family, shop in the area…",
@@ -2187,7 +2184,7 @@
           ref_news: "Artículo de noticias",
           ref_govt: "Sitio web de la Ciudad o el Estado",
           placeholder_additional: "Cualquier otra cosa que le gustaría que supiéramos…",
-          privacy_note: "🔒 Respuestas recopiladas de forma segura. Dirección IP y ubicación aproximada registradas para mantener la integridad de la encuesta.<br />La información personal no se compartirá públicamente ni se utilizará con fines comerciales.",
+          privacy_note: "🔒 Respuestas recopiladas de forma segura.<br />La información personal no se compartirá públicamente ni se utilizará con fines comerciales.",
           label_park_use: "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
           opt_select: "— Seleccione uno —",
           placeholder_conn_other: "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
@@ -2316,7 +2313,7 @@
           ref_news: "Atik nouvèl",
           ref_govt: "Sit entènèt Vil oswa Leta",
           placeholder_additional: "Nenpòt lòt bagay ou ta renmen nou konnen…",
-          privacy_note: "🔒 Repons yo kolekte an sekirite. Adrès IP ak kote apwoksimatif anrejistre pou kenbe entegrite sondaj la.<br />Enfòmasyon pèsonèl yo p ap pataje piblikman oswa itilize pou rezon komèsyal.",
+          privacy_note: "🔒 Repons yo kolekte an sekirite.<br />Enfòmasyon pèsonèl yo p ap pataje piblikman oswa itilize pou rezon komèsyal.",
           label_park_use: "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
           opt_select: "— Chwazi yonn —",
           placeholder_conn_other: "egz. ale lekòl oswa legliz toupre, vizite fanmi, achte nan zòn nan…",
@@ -2799,22 +2796,16 @@
             const d = await r.json();
             geoData = {
               ip: d.ip || "",
-              lat: d.latitude || "",
+              lat: d.latitude || "", // This is the center of the city/zip area, not the person's house
               lng: d.longitude || "",
               city: d.city || "",
+              region: d.region || "",
               country: d.country_name || "",
+              org: d.org || "" // Helps identify if it's a home user or a business/bot
             };
           }
-        } catch (_) {}
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (p) => {
-              geoData.lat = p.coords.latitude;
-              geoData.lng = p.coords.longitude;
-            },
-            () => {},
-            { timeout: 5000, maximumAge: 60000 },
-          );
+        } catch (_) {
+          // If the API fails, we still have the user's typed address from the form
         }
       }
 
