@@ -1099,7 +1099,7 @@
         </div>
       </div>
 
-      <div class="tablet-hint">
+      <div class="tablet-hint" data-i18n="tablet_hint">
         📋 Canvassing with a tablet? Each submission is recorded individually —
         tap "Submit Another Response" to start fresh for the next person.
       </div>
@@ -1326,6 +1326,7 @@
                   type="text"
                   id="gender_self_describe"
                   name="gender_self_describe"
+                  data-i18n-placeholder=""
                   placeholder="Please describe your gender identity…"
                   autocomplete="off"
                   autocapitalize="sentences"
@@ -1460,6 +1461,7 @@
                 type="text"
                 id="connection_other_text"
                 name="connection_other"
+                data-i18n-placeholder="placeholder_conn_other"
                 placeholder="e.g. attend school or church nearby, visit family, shop in the area…"
                 autocomplete="off"
                 autocapitalize="sentences"
@@ -1777,6 +1779,7 @@
               id="process_comments"
               name="process_comments"
               style="min-height: 100px"
+              data-i18n-placeholder="placeholder_process"
               placeholder="e.g. 'Meetings should be held on weekends,' 'People who should represent the community,' 'Need translation services,' 'Transparency on CAB selection'..."
               autocomplete="off"
             ></textarea>
@@ -2060,6 +2063,10 @@
           privacy_note: "🔒 Responses collected securely. IP address and approximate location recorded to maintain survey integrity.<br />Personal information will not be shared publicly or used for commercial purposes.",
           label_park_use: "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
           opt_select: "— Select one —",
+          placeholder_conn_other: "e.g. attend school or church nearby, visit family, shop in the area…",
+          placeholder_park_other: "Please describe how else you use Franklin Park…",
+          placeholder_process: "e.g. Meetings on weekends, translation services, transparency on CAB selection...",
+          tablet_hint: "📋 Canvassing with a tablet? Each submission is recorded individually — tap 'Submit Another Response' to start fresh for the next person.",
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
@@ -2183,7 +2190,11 @@
           placeholder_additional: "Cualquier otra cosa que le gustaría que supiéramos…",
           privacy_note: "🔒 Respuestas recopiladas de forma segura. Dirección IP y ubicación aproximada registradas para mantener la integridad de la encuesta.<br />La información personal no se compartirá públicamente ni se utilizará con fines comerciales.",
           label_park_use: "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
-          opt_select: "— Seleccione uno —"
+          opt_select: "— Seleccione uno —",
+          placeholder_conn_other: "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
+          placeholder_park_other: "Describa de qué otra manera usa Franklin Park…",
+          placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción, transparencia en la selección del CAB...",
+          tablet_hint: "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona."
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
@@ -2307,7 +2318,11 @@
           placeholder_additional: "Nenpòt lòt bagay ou ta renmen nou konnen…",
           privacy_note: "🔒 Repons yo kolekte an sekirite. Adrès IP ak kote apwoksimatif anrejistre pou kenbe entegrite sondaj la.<br />Enfòmasyon pèsonèl yo p ap pataje piblikman oswa itilize pou rezon komèsyal.",
           label_park_use: "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
-          opt_select: "— Chwazi yonn —"
+          opt_select: "— Chwazi yonn —",
+          placeholder_conn_other: "egz. ale lekòl oswa legliz toupre, vizite fanmi, achte nan zòn nan…",
+          placeholder_park_other: "Tanpri dekri kijan ou itilize Franklin Park ankò…",
+          placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon, transparans sou seleksyon CAB...",
+          tablet_hint: "📋 Èske w ap fè sondaj ak yon tablèt? Chak repons anrejistre separeman — tape 'Soumèt yon lòt repons' pou kòmanse yon lòt pou pwochen moun nan.",
         }
       };
       // ═══════════════════════════════════════════════════════════════
