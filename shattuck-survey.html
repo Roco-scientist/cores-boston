@@ -1074,6 +1074,19 @@
       }
       .rank-sub-item .remove-btn { margin-top: 0; }
       .rank-block-handle { font-size: 1.2rem; opacity: 0.5; }
+      skip-btn {
+          background: var(--sage);
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          margin-top: 10px;
+          font-family: 'DM Sans', sans-serif;
+          transition: background 0.2s;
+      }
+      .skip-btn:hover { background: var(--moss); }
     </style>
   </head>
   <body>
@@ -1201,6 +1214,11 @@
           <span class="site-info-chevron">▼</span>
         </div>
         <div class="site-info-body" id="siteInfoBody">
+          <div style="text-align: center; padding-top: 10px;">
+            <button type="button" class="skip-btn" onclick="skipHistory()" data-i18n="btn_skip">
+               Skip History & Start Survey ↓
+            </button>
+          </div>
           <div class="site-info-inner" style="margin-top: 20px;">
             <div>
               <p data-i18n="about_p1">
@@ -1225,10 +1243,9 @@
                 <strong
                   >Hospital services are relocating to Boston Medical Center's
                   South End campus</strong
-                >, likely by 2026. This creates a rare decision point: the State
+                >. This creates a rare decision point: the State
                 holds the site under a deed restriction requiring health use —
-                <em>or it can be returned to the City for parkland</em>. The
-                community's input will help shape what comes next.
+                <em>or it can be returned to the City for parkland</em>. Community input is a vital part of the public process and could help inform the vision for what comes next.
               </p>
               <div class="info-tags">
                 <span class="info-tag">📍 170 Morton St</span>
@@ -1280,7 +1297,7 @@
         </div>
 
         <!-- ══ 1. Contact ══ -->
-        <div class="card">
+        <div class="card" id="contactSection">
           <div class="card-title">
             <span class="num">1</span> <span data-i18n="sec_contact">Contact Information</span>
           </div>
@@ -2123,7 +2140,7 @@
           about_title: "About the Shattuck Campus",
           about_p1: "The <strong>Lemuel Shattuck Hospital campus</strong> sits on <strong>13.3 acres</strong> at 170 Morton Street, deep within Frederick Law Olmsted's Franklin Park — Boston's largest park and the crown jewel of the Emerald Necklace.",
           about_p2: "In <strong>1949</strong>, the City of Boston conveyed this parkland — then a scenic meadow called <em>Heathfield</em> — to the Commonwealth specifically for public health purposes. The hospital, built in the early 1950s, has served the region for over 70 years, providing care for respiratory illness, cancer, HIV, psychiatric services, corrections inmates, and substance use disorder (SUD) treatment. Today, several nonprofits operate on the campus, including a men's shelter and structured, supervised in-patient SUD programs.",
-          about_p3: "The aging building cannot be cost-effectively renovated. <strong >Hospital services are relocating to Boston Medical Center's South End campus</strong >, likely by 2026. This creates a rare decision point: the State holds the site under a deed restriction requiring health use — <em>or it can be returned to the City for parkland</em>. The community's input will help shape what comes next.",
+          about_p3: "The aging building cannot be cost-effectively renovated. <strong >Hospital services are relocating to Boston Medical Center's South End campus</strong >. This creates a rare decision point: the State holds the site under a deed restriction requiring health use — <em>or it can be returned to the City for parkland</em>. Community input is a vital part of the public process and could help inform the vision for what comes next.",
           sec_contact: "Contact Information",
           first_name: "First Name",
           last_name: "Last Name",
@@ -2167,16 +2184,21 @@
               { label: "Return to Park: Dedicated dog park area", category: "Return to Parkland" },
               { label: "Return to Park: Visitor center & public restrooms", category: "Return to Parkland" },
               { label: "Partial return to parkland (combined with other uses)", category: "Return to Parkland" },
+              { label: "Other (Parkland)", category: "Return to Parkland" },
               { label: "24-hour pharmacy", category: "Health Services" },
               { label: "Health & Wellness Center (Pool, recreation center, meditation space)", category: "Health Services" },
               { label: "Urgent care clinic", category: "Health Services" },
+              { label: "Other (Health Services)", category: "Health Services" },
               { label: "Veterans services", category: "Veterans" },
+              { label: "Other (Veterans)", category: "Veterans" },
               { label: "Veterans housing", category: "Housing" },
               { label: "Senior housing / Assisted living facility", category: "Housing" },
               { label: "Substance use disorder housing (no sobriety requirement)", category: "Housing" },
               { label: "Sober housing", category: "Housing" },
+              { label: "Other (Housing)", category: "Housing" },
               { label: "Current level of in-patient SUD services", category: "SUD Services" },
               { label: "Increase in-patient SUD services (more beds/capacity)", category: "SUD Services" },
+              { label: "Other (SUD Services)", category: "SUD Services" },
               { label: "Other", category: "Other" }
           ],
           categories: {
@@ -2251,6 +2273,7 @@
           tablet_hint: "📋 Canvassing with a tablet? Each submission is recorded individually — tap 'Submit Another Response' to start fresh for the next person.",
           conn_lives_nearby: "Lives nearby",
           priority_source_note: "💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use \"Other\" to add your own.",
+          btn_skip: "Skip History & Start Survey ↓",
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
@@ -2258,7 +2281,7 @@
           about_title: "Sobre el Campus Shattuck",
           about_p1: "El campus del <strong>Hospital Lemuel Shattuck</strong> ocupa <strong>13.3 acres</strong> en el 170 de la calle Morton, en el corazón del Franklin Park de Frederick Law Olmsted.",
           about_p2: "En <strong>1949</strong>, la ciudad de Boston cedió estos terrenos —entonces un prado llamado <em>Heathfield</em>— al Estado específicamente para fines de salud pública. El hospital ha servido a la región por más de 70 años. Hoy en día, varias organizaciones sin fines de lucro operan en el campus, incluyendo un refugio para hombres y programas de tratamiento de adicciones.",
-          about_p3: "El edificio actual es antiguo y no puede ser renovado de manera rentable. <strong >Los servicios hospitalarios se trasladarán al campus del Boston Medical Center en el South End</strong>, probablemente para 2026. Esto crea un momento de decisión: el Estado mantiene el sitio bajo una restricción de uso para la salud — <em>o puede ser devuelto a la Ciudad para convertirlo en parque</em>.",
+          about_p3: "El edificio actual es antiguo y no puede ser renovado de manera rentable. <strong >Los servicios hospitalarios se trasladarán al campus del Boston Medical Center en el South End</strong>. Esto crea un momento de decisión: el Estado mantiene el sitio bajo una restricción de uso para la salud — <em>o puede ser devuelto a la Ciudad para convertirlo en parque</em>. El aporte de la comunidad es una parte vital del proceso público y podría ayudar a informar la visión de lo que vendrá después.",
           sec_contact: "Información de Contacto",
           first_name: "Nombre",
           last_name: "Apellido",
@@ -2302,16 +2325,21 @@
               { label: "Regreso al Parque: Área dedicada para perros", category: "Return to Parkland" },
               { label: "Regreso al Parque: Centro de visitantes y baños", category: "Return to Parkland" },
               { label: "Retorno parcial al parque (combinado con otros usos)", category: "Return to Parkland" },
+              { label: "Otro (Terrenos del Parque)", category: "Return to Parkland" },
               { label: "Farmacia las 24 horas", category: "Health Services" },
               { label: "Centro de Salud y Bienestar (Piscina, recreación, espacio de meditación)", category: "Health Services" },
               { label: "Clínica de urgencias", category: "Health Services" },
+              { label: "Otro (Servicios de Salud)", category: "Health Services" },
               { label: "Servicios para veteranos", category: "Veterans" },
+              { label: "Otro (Veteranos)", category: "Veterans" },
               { label: "Vivienda para veteranos", category: "Housing" },
               { label: "Vivienda para adultos mayores / Centro de vida asistida (Assisted living)", category: "Housing" },
               { label: "Vivienda para personas con SUD (sin requisito de sobriedad)", category: "Housing" },
               { label: "Vivienda para personas sobrias (Sober housing)", category: "Housing" },
+              { label: "Otro (Vivienda)", category: "Housing" },
               { label: "Servicios actuales de internado para trastornos por uso de sustancias (SUD)", category: "SUD Services" },
               { label: "Aumentar servicios SUD (más camas/capacidad)", category: "SUD Services" },
+              { label: "Otro (Servicios SUD)", category: "SUD Services" },
               { label: "Otro", category: "Other" }
           ],
           categories: {
@@ -2386,6 +2414,7 @@
           tablet_hint: "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona.",
           conn_lives_nearby: "Vive cerca",
           priority_source_note: "💬 Las siguientes ideas han surgido en conversaciones comunitarias sobre el futuro de este sitio. No está limitado a estas opciones — use \"Otro\" para agregar la suya.",
+          btn_skip: "Saltar Historia e Iniciar Encuesta ↓",
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
@@ -2393,7 +2422,7 @@
           about_title: "Konsènan Campus Shattuck la",
           about_p1: "Lopital <strong>Lemuel Shattuck</strong> la chita sou <strong>13.3 kawo tè</strong> nan 170 Morton Street, nan mitan Franklin Park — pi gwo pak nan Boston.",
           about_p2: "Nan lanne <strong>1949</strong>, Vil Boston te bay Leta tè sa a — ki te yon savann yo te rele <em>Heathfield</em> — espesyalman pou sèvis sante piblik. Lopital la sèvi rejyon an pandan plis pase 70 lanne. Jodi a, plizyè òganizasyon san bi likratif ap fonksyone sou sit la, tankou yon refij pou gason ak pwogram tretman pou moun ki gen depandans.",
-          about_p3: "Vye batiman sa a pa kapab repare ankò. <strong >Sèvis lopital yo ap deplase ale nan Boston Medical Center (South End)</strong> bò lanne 2026. Sa kreye yon chwa: Leta ka kenbe sit la pou sèvis sante — <em>oswa li ka tounen bay Vil la pou li tounen yon pak</em>.",
+          about_p3: "Vye batiman sa a pa kapab repare ankò. <strong >Sèvis lopital yo ap deplase ale nan Boston Medical Center (South End)</strong>. Sa kreye yon chwa: Leta ka kenbe sit la pou sèvis sante — <em>oswa li ka tounen bay Vil la pou li tounen yon pak</em>. Opinyon kominote a se yon pati enpòtan nan pwosesis piblik la epi li ta ka ede bay enfòmasyon sou vizyon pou sa k ap vini apre a.",
           sec_contact: "Enfòmasyon pou Kontakte Ou",
           first_name: "Premye Non",
           last_name: "Siyati",
@@ -2437,16 +2466,21 @@
               { label: "Retounen nan Pak: Zòn dedye pou chyen", category: "Return to Parkland" },
               { label: "Retounen nan Pak: Sant vizitè ak twalèt piblik", category: "Return to Parkland" },
               { label: "Retou pasyèl nan teren pak la (konbine avèk lòt itilizasyon)", category: "Return to Parkland" },
+              { label: "Lòt (Teren Pak la)", category: "Return to Parkland" },
               { label: "Famasi 24/7", category: "Health Services" },
               { label: "Sant Sante ak Byennèt (Pisin, sant rekreyasyon, espas meditasyon)", category: "Health Services" },
               { label: "Klinik ijan", category: "Health Services" },
+              { label: "Lòt (Sèvis Sante)", category: "Health Services" },
               { label: "Sèvis pou veteran", category: "Veterans" },
+              { label: "Lòt (Veteran)", category: "Veterans" },
               { label: "Lojman pou veteran", category: "Housing" },
               { label: "Lojman pou granmoun aje / Kay pou moun ki bezwen asistans (Assisted living)", category: "Housing" },
               { label: "Lojman pou moun ki gen depandans (san kondisyon pou moun pa nan bweson)", category: "Housing" },
               { label: "Lojman pou moun ki pa nan bweson (Sober housing)", category: "Housing" },
+              { label: "Lòt (Lojman)", category: "Housing" },
               { label: "Sèvis tretman entèn pou moun ki gen depandans (SUD)", category: "SUD Services" },
               { label: "Ogmante sèvis SUD (plis kabann/kapasite)", category: "SUD Services" },
+              { label: "Lòt (Sèvis SUD)", category: "SUD Services" },
               { label: "Lòt", category: "Other" }
           ],
           categories: {
@@ -2521,6 +2555,7 @@
           tablet_hint: "📋 Èske w ap fè sondaj ak yon tablèt? Chak repons anrejistre separeman — tape 'Soumèt yon lòt repons' pou kòmanse yon lòt pou pwochen moun nan.",
           conn_lives_nearby: "Rete toupre",
           priority_source_note: "💬 Ide ki annapre yo te sijere nan diskisyon kominotè sou lavni sit sa a. Ou pa oblije chwazi nan yo sèlman — itilize \"Lòt\" pou ajoute pa ou.",
+          btn_skip: "Sote Istwa a epi Kòmanse Sondaj la ↓",
         }
       };
       let currentLang = 'en';
@@ -2528,6 +2563,8 @@
       let rankedItems = [];      // Tracks the items selected
       let dragSrc = null;
       let captchaAnswer = 0;
+      let urlSource = null;
+
 
       // ═══════════════════════════════════════════════════════════════
       // BOSTON-AREA ADDRESS HINTS
@@ -2932,7 +2969,7 @@
                   </div>
                   <div class="rank-block-items">
                       ${itemsInCat.map(item => {
-                          const isOther = (item.category === "Other");
+                          const isOther = item.label.includes("Other");
                           const isHousing = (item.category === "Housing");
                           
                           return `
@@ -2946,7 +2983,7 @@
                                       <input type="text" class="rank-other-input" 
                                           style="width: 100%; padding: 8px; border: 2px solid rgba(45,90,61,0.1); border-radius: 6px;"
                                           placeholder="Describe your idea..." value="${item.otherText || ''}"
-                                          oninput="saveOtherText(this.value)">
+                                          oninput="saveSpecificOtherText('${item.label}', this.value)">
                                   ` : ''}
 
                                   ${isHousing ? `
@@ -2994,6 +3031,11 @@
       function saveOtherText(val) {
           const otherItem = rankedItems.find(item => item.category === "Other");
           if (otherItem) otherItem.otherText = val;
+      }
+
+      function saveSpecificOtherText(itemLabel, val) {
+          const item = rankedItems.find(it => it.label === itemLabel);
+          if (item) item.otherText = val;
       }
 
       function saveBedCount(itemLabel, value) {
@@ -3179,36 +3221,40 @@
               }
           });
 
+          // 1. Handle URL Source logic
+          if (urlSource) {
+              data.referral_source = `URL Source: ${urlSource}`;
+          }
+
+          // 2. Handle Priority Collection with Category-Specific "Other"
           data.ranked_priorities = rankedCategories.map((catKey, i) => {
               const itemsInThisCat = rankedItems.filter(item => item.category === catKey);
               return {
                   rank: i + 1,
                   category: catKey,
                   items: itemsInThisCat.map(it => {
-                      let label = it.label;
-                      if (it.category === "Other" && it.otherText) {
-                          label = `Other: ${it.otherText}`;
-                      }
+                      let finalName = it.label;
                       
-                      // Construct object for each item to include bed counts
-                      return {
-                          name: label,
-                          max_beds: it.maxBeds || "Not specified"
-                      };
+                      // If it's an "Other" item, format it as "Category Other: [Text]"
+                      if (it.label.includes("Other") && it.otherText) {
+                          finalName = `${catKey} Other: ${it.otherText}`;
+                      }
+
+                      const itemData = { name: finalName };
+                      if (it.category === "Housing" && it.maxBeds) {
+                          itemData.max_beds = it.maxBeds;
+                      }
+                      return itemData;
                   })
               };
           });
 
-          // Handle 'Other Connection' text
-          const conOther = document.getElementById("connection_other_text")?.value?.trim();
-          if (conOther && (data.connection || []).includes(I18N[currentLang].conn_other)) {
-              data.connection = data.connection.map(v => v === I18N[currentLang].conn_other ? `Other: ${conOther}` : v);
-          }
+          // Standard metadata
           data.geo = geoData;
           data.submitted_at = new Date().toISOString();
           data.user_agent = navigator.userAgent;
-          delete data.captcha_answer; delete data.website; delete data.phone_confirm; delete data.consent;
 
+          delete data.captcha_answer; delete data.website; delete data.phone_confirm; delete data.consent;
           return data;
       }
 
@@ -3293,6 +3339,10 @@
           panel.querySelector('.site-info-toggle').setAttribute('aria-expanded', !isCollapsed);
       }
 
+      function skipHistory() {
+          document.getElementById('contactSection').scrollIntoView({ behavior: 'smooth' });
+      }
+
       function checkCanvasserMode() {
         const urlParams = new URLSearchParams(window.location.search);
         const isCanvasser = urlParams.get('mode') === 'canvas';
@@ -3311,12 +3361,25 @@
         }
       }
 
+      function checkUrlSource() {
+          const params = new URLSearchParams(window.location.search);
+          const source = params.get('source');
+          if (source) {
+              urlSource = source;
+              // Hide the referral question field
+              const referralField = document.getElementById('referral_source').closest('.field');
+              if (referralField) referralField.style.display = 'none';
+          }
+      }
+
+
 
       // ═══════════════════════════════════════════════════════════════
       // INIT
       // ═══════════════════════════════════════════════════════════════
 
       checkCanvasserMode();
+      checkUrlSource();
       setLanguage('en');
       buildAvailable();
       buildRanked();
