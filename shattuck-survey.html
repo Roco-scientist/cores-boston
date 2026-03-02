@@ -175,29 +175,13 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          cursor: pointer;
-          user-select: none;
           margin-bottom: 0;
+          cursor: default;
       }
       .site-info-toggle h2 { margin-bottom: 0; }
-      .site-info-chevron {
-          font-size: 0.85rem;
-          color: var(--stone);
-          transition: transform 0.25s ease;
-          flex-shrink: 0;
-      }
-      .site-info.collapsed .site-info-chevron {
-          transform: rotate(-90deg);
-      }
       .site-info-body {
-          overflow: hidden;
-          transition: max-height 0.35s ease, opacity 0.25s ease;
-          max-height: 600px;
           opacity: 1;
-      }
-      .site-info.collapsed .site-info-body {
-          max-height: 0;
-          opacity: 0;
+          display: block;
       }
       .info-tags {
         display: flex;
@@ -1227,9 +1211,8 @@
 
       <!-- Site Info + Map -->
       <div class="site-info" id="siteInfoPanel">
-        <div class="site-info-toggle" onclick="toggleSiteInfo()" role="button" aria-expanded="true" aria-controls="siteInfoBody">
+        <div class="site-info-toggle">
           <h2 data-i18n="about_title">About the Shattuck Campus</h2>
-          <span class="site-info-chevron">▼</span>
         </div>
         <div class="site-info-body" id="siteInfoBody">
           <div style="text-align: center; padding-top: 10px;">
@@ -3341,12 +3324,6 @@
         rebuildBoth();
         newChallenge();
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-
-      function toggleSiteInfo() {
-          const panel = document.getElementById('siteInfoPanel');
-          const isCollapsed = panel.classList.toggle('collapsed');
-          panel.querySelector('.site-info-toggle').setAttribute('aria-expanded', !isCollapsed);
       }
 
       function skipHistory() {
