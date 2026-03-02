@@ -1087,6 +1087,24 @@
           transition: background 0.2s;
       }
       .skip-btn:hover { background: var(--moss); }
+      .privacy-note {
+          text-align: center;
+          font-size: 0.78rem;
+          color: var(--meadow);
+          margin-top: 24px;
+          line-height: 1.6;
+          padding: 20px;
+          background: rgba(168, 197, 160, 0.05);
+          border-radius: 12px;
+          border: 1px solid rgba(168, 197, 160, 0.15);
+      }
+      .privacy-note strong {
+          color: var(--cream);
+          display: block;
+          margin-bottom: 4px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+      }
     </style>
   </head>
   <body>
@@ -1980,8 +1998,8 @@
 
           <div class="toggle-field">
             <div class="toggle-text" data-i18n="label_updates">
-              <strong>Receive updates</strong> about the Shattuck Campus
-              process, public meetings, and ways to stay involved.
+              <strong>Receive updates</strong> about the official State planning process, 
+              including public meeting notices and formal comment periods.
             </div>
             <label class="toggle-switch">
               <input
@@ -2086,9 +2104,11 @@
         <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn_submit">
           Submit My Response →
         </button>
-        <p class="privacy-note" data-i18n="privacy_note">
-          🔒 Responses collected securely.<br />Personal information will not be shared publicly or used for commercial purposes.
-        </p>
+        <div class="privacy-note">
+          <p data-i18n="combined_disclaimer">
+            🔒 <strong>Privacy & Transparency:</strong> This survey is a community-led initiative by local neighbors to capture local sentiment. It is not an official publication of the Commonwealth of Massachusetts. Responses are collected securely; personal info will not be shared publicly or used for commercial purposes. Anonymized results will be shared with community organizations and public officials to help inform the planning process.
+          </p>
+        </div>
       </form>
 
       <!-- Success -->
@@ -2241,7 +2261,7 @@
           label_opposition: "Is there anything you would strongly oppose on this site?",
           placeholder_oppose: "Please describe any uses you find unacceptable...",
           sec_stay_connected: "Stay Connected",
-          label_updates: "<strong>Receive updates</strong> about the Shattuck Campus process, public meetings, and ways to stay involved.",
+          label_updates: "<strong>Receive updates</strong> about the official State planning process, including public meeting notices and formal comment periods.",
           label_referral: "How did you hear about this survey?",
           label_additional: "Additional Comments",
           label_consent: "<strong>I confirm</strong> this is my own individual response, submitted voluntarily. I have not been directed to submit multiple responses, and I understand this information will be used to inform planning decisions for the Shattuck Campus.",
@@ -2254,7 +2274,7 @@
           ref_news: "News article",
           ref_govt: "City or State website",
           placeholder_additional: "Anything else you'd like us to know…",
-          privacy_note: "🔒 Responses collected securely.<br />Personal information will not be shared publicly or used for commercial purposes.",
+          combined_disclaimer: "🔒 <strong>Privacy & Transparency:</strong> This survey is a community-led initiative by local neighbors to capture local sentiment. It is not an official publication of the Commonwealth of Massachusetts. Responses are collected securely; personal info will not be shared publicly or used for commercial purposes. Anonymized results will be shared with community organizations and public officials to help inform the planning process.",
           label_park_use: "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
           opt_select: "— Select one —",
           placeholder_conn_other: "e.g. attend school or church nearby, visit family, shop in the area…",
@@ -2382,7 +2402,7 @@
           label_opposition: "¿Hay algo a lo que se opondría firmemente en este sitio?",
           placeholder_oppose: "Describa cualquier uso que considere inaceptable...",
           sec_stay_connected: "Manténgase Conectado",
-          label_updates: "<strong>Recibir actualizaciones</strong> sobre el proceso del Campus Shattuck, reuniones públicas y formas de participar.",
+          label_updates: "<strong>Recibir actualizaciones</strong> sobre el proceso oficial de planificación estatal, incluyendo avisos de reuniones públicas y períodos formales de comentarios.",
           label_referral: "¿Cómo se enteró de esta encuesta?",
           label_additional: "Comentarios Adicionales",
           label_consent: "<strong>Confirmo</strong> que esta es mi propia respuesta individual, enviada voluntariamente. No se me ha indicado que envíe múltiples respuestas y entiendo que esta información se utilizará para informar las decisiones de planificación del Campus Shattuck.",
@@ -2395,7 +2415,7 @@
           ref_news: "Artículo de noticias",
           ref_govt: "Sitio web de la Ciudad o el Estado",
           placeholder_additional: "Cualquier otra cosa que le gustaría que supiéramos…",
-          privacy_note: "🔒 Respuestas recopiladas de forma segura.<br />La información personal no se compartirá públicamente ni se utilizará con fines comerciales.",
+          combined_disclaimer: "🔒 <strong>Privacidad y Transparencia:</strong> Esta encuesta es una iniciativa comunitaria liderada por vecinos para captar el sentimiento local. No es una publicación oficial del Estado de Massachusetts. Las respuestas se recopilan de forma segura; la información personal no se compartirá públicamente ni se utilizará con fines comerciales. Los resultados anónimos se compartirán con organizaciones comunitarias y funcionarios públicos para ayudar a informar el proceso de planificación.",
           label_park_use: "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
           opt_select: "— Seleccione uno —",
           placeholder_conn_other: "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
@@ -2523,7 +2543,7 @@
           label_opposition: "Èske gen nenpòt bagay ou ta opoze fòman sou sit sa a?",
           placeholder_oppose: "Tanpri dekri nenpòt itilizasyon ou ta jwenn inakseptab...",
           sec_stay_connected: "Rete Konekte",
-          label_updates: "<strong>Resevwa dènye nouvèl</strong> sou pwosesis Campus Shattuck la, reyinyon piblik yo, ak fason pou w rete enplike.",
+          label_updates: "<strong>Resevwa dènye nouvèl</strong> sou pwosesis planifikasyon ofisyèl Leta a, tankou avi sou reyinyon piblik ak peryòd kòmantè ofisyèl yo.",
           label_referral: "Kijan ou te tande pale de sondaj sa a?",
           label_additional: "Lòt Kòmantè",
           label_consent: "<strong>Mwen konfime</strong> sa a se pwòp repons pa m, mwen soumèt li volontèman. Yo pa t mande m pou m soumèt plizyè repons, epi mwen konprann enfòmasyon sa yo pral sèvi pou enfòme desizyon planifikasyon pou Campus Shattuck la.",
@@ -2536,7 +2556,7 @@
           ref_news: "Atik nouvèl",
           ref_govt: "Sit entènèt Vil oswa Leta",
           placeholder_additional: "Nenpòt lòt bagay ou ta renmen nou konnen…",
-          privacy_note: "🔒 Repons yo kolekte an sekirite.<br />Enfòmasyon pèsonèl yo p ap pataje piblikman oswa itilize pou rezon komèsyal.",
+          combined_disclaimer: "🔒 <strong>Konfidansyalite ak Transparans:</strong> Sondaj sa a se yon inisyativ kominotè vwazen yo ap dirije pou konprann jan moun nan katye a santi yo. Se pa yon piblikasyon ofisyèl Leta Massachusetts. Repons yo kolekte an sekirite; enfòmasyon pèsonèl ou p ap pataje an piblik ni sèvi pou rezon komèsyal. Rezilta san non (anonymized) pral pataje ak òganizasyon kominotè ak otorite piblik yo pou ede bay enfòmasyon nan pwosesis planifikasyon an.",
           label_park_use: "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
           opt_select: "— Chwazi yonn —",
           placeholder_conn_other: "egz. ale lekòl oswa legliz toupre, vizite fanmi, achte nan zòn nan…",
