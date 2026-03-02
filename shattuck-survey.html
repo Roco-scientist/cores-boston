@@ -2271,6 +2271,7 @@
           opt_up_to: "Up to",
           opt_select_limit: "— Select Limit —",
           word_beds: "beds",
+          placeholder_add_idea: "Add your idea...",
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
@@ -2416,6 +2417,7 @@
           opt_up_to: "Hasta",
           opt_select_limit: "— Seleccionar Límite —",
           word_beds: "camas",
+          placeholder_add_idea: "Añada su idea...",
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
@@ -2561,6 +2563,7 @@
           opt_up_to: "Jiska",
           opt_select_limit: "— Chwazi Limit —",
           word_beds: "kabann",
+          placeholder_add_idea: "Ajoute lide pa ou...",
         }
       };
       let currentLang = 'en';
@@ -2962,6 +2965,7 @@
           const tUpTo = I18N[currentLang].opt_up_to;
           const tSelect = I18N[currentLang].opt_select_limit;
           const tBedsWord = I18N[currentLang].word_beds;
+          const tAddIdea = I18N[currentLang].placeholder_add_idea;
 
           rankedCategories.forEach((catKey, index) => {
               const translatedCat = I18N[currentLang].categories[catKey] || catKey;
@@ -2996,7 +3000,7 @@
                                   ${isOther ? `
                                       <input type="text" class="rank-other-input" 
                                           style="width: 100%; padding: 8px; border: 2px solid rgba(45,90,61,0.1); border-radius: 6px;"
-                                          placeholder="..." value="${item.otherText || ''}"
+                                          placeholder="${tAddIdea}" value="${item.otherText || ''}"
                                           oninput="saveSpecificOtherText('${item.label}', this.value)">
                                   ` : ''}
 
