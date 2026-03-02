@@ -2267,6 +2267,10 @@
           conn_lives_nearby: "Lives nearby",
           priority_source_note: "💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use \"Other\" to add your own.",
           btn_skip: "Skip History & Start Survey ↓",
+          label_max_beds: "Max beds preferred:",
+          opt_up_to: "Up to",
+          opt_select_limit: "— Select Limit —",
+          word_beds: "beds",
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
@@ -2408,6 +2412,10 @@
           conn_lives_nearby: "Vive cerca",
           priority_source_note: "💬 Las siguientes ideas han surgido en conversaciones comunitarias sobre el futuro de este sitio. No está limitado a estas opciones — use \"Otro\" para agregar la suya.",
           btn_skip: "Saltar Historia e Iniciar Encuesta ↓",
+          label_max_beds: "Máximo de camas preferido:",
+          opt_up_to: "Hasta",
+          opt_select_limit: "— Seleccionar Límite —",
+          word_beds: "camas",
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
@@ -2549,6 +2557,10 @@
           conn_lives_nearby: "Rete toupre",
           priority_source_note: "💬 Ide ki annapre yo te sijere nan diskisyon kominotè sou lavni sit sa a. Ou pa oblije chwazi nan yo sèlman — itilize \"Lòt\" pou ajoute pa ou.",
           btn_skip: "Sote Istwa a epi Kòmanse Sondaj la ↓",
+          label_max_beds: "Maksimòm kabann pi pito:",
+          opt_up_to: "Jiska",
+          opt_select_limit: "— Chwazi Limit —",
+          word_beds: "kabann",
         }
       };
       let currentLang = 'en';
@@ -2945,6 +2957,12 @@
 
           const bedOptions = [10, 20, 50, 100, 200, 400, 800];
 
+          // Get current translations for the dropdown
+          const tMaxBeds = I18N[currentLang].label_max_beds;
+          const tUpTo = I18N[currentLang].opt_up_to;
+          const tSelect = I18N[currentLang].opt_select_limit;
+          const tBedsWord = I18N[currentLang].word_beds;
+
           rankedCategories.forEach((catKey, index) => {
               const translatedCat = I18N[currentLang].categories[catKey] || catKey;
               const itemsInCat = rankedItems.filter(x => x.category === catKey);
@@ -2962,7 +2980,10 @@
                   </div>
                   <div class="rank-block-items">
                       ${itemsInCat.map(item => {
-                          const isOther = item.label.includes("Other");
+                          const isOther = item.label.includes("Other") || 
+                                          item.label.includes("Otro") || 
+                                          item.label.includes("Lòt");
+                                          
                           const isHousing = (item.category === "Housing");
                           
                           return `
@@ -2975,18 +2996,20 @@
                                   ${isOther ? `
                                       <input type="text" class="rank-other-input" 
                                           style="width: 100%; padding: 8px; border: 2px solid rgba(45,90,61,0.1); border-radius: 6px;"
-                                          placeholder="Describe your idea..." value="${item.otherText || ''}"
+                                          placeholder="..." value="${item.otherText || ''}"
                                           oninput="saveSpecificOtherText('${item.label}', this.value)">
                                   ` : ''}
 
                                   ${isHousing ? `
                                       <div style="width: 100%; background: rgba(74, 124, 89, 0.05); padding: 8px; border-radius: 8px;">
-                                          <label style="font-size: 0.65rem; color: var(--sage); font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 4px;">Max beds preferred:</label>
+                                          <label style="font-size: 0.65rem; color: var(--sage); font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 4px;">
+                                              ${tMaxBeds}
+                                          </label>
                                           <select onchange="saveBedCount('${item.label}', this.value)" style="width: 100%; padding: 6px; font-size: 0.8rem; border: 1px solid rgba(45,90,61,0.2); border-radius: 4px; background: white;">
-                                              <option value="">— Select Limit —</option>
+                                              <option value="">${tSelect}</option>
                                               ${bedOptions.map(num => `
                                                   <option value="${num}" ${item.maxBeds == num ? 'selected' : ''}>
-                                                      Up to ${num} beds
+                                                      ${tUpTo} ${num} ${tBedsWord}
                                                   </option>
                                               `).join('')}
                                           </select>
@@ -2998,7 +3021,6 @@
                   </div>
               `;
 
-              // Add the standard drag listeners
               block.addEventListener("dragstart", (e) => { dragSrc = block; block.classList.add("dragging"); });
               block.addEventListener("dragend", () => { 
                   block.classList.remove("dragging"); 
