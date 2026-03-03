@@ -172,16 +172,18 @@
         font-style: italic;
       }
       .site-info-toggle {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 0;
-          cursor: default;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0;
+        cursor: default;
       }
-      .site-info-toggle h2 { margin-bottom: 0; }
+      .site-info-toggle h2 {
+        margin-bottom: 0;
+      }
       .site-info-body {
-          opacity: 1;
-          display: block;
+        opacity: 1;
+        display: block;
       }
       .info-tags {
         display: flex;
@@ -930,164 +932,181 @@
       }
       /* ── Collapsible priority categories ── */
       .avail-category {
-          margin-top: 10px;
-          border: 2px solid rgba(45, 90, 61, 0.15);
-          border-radius: 10px;
-          overflow: hidden;
+        margin-top: 10px;
+        border: 2px solid rgba(45, 90, 61, 0.15);
+        border-radius: 10px;
+        overflow: hidden;
       }
       .avail-category:first-child {
-          margin-top: 0;
+        margin-top: 0;
       }
       .avail-category-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 10px 14px;
-          background: var(--mist);
-          cursor: pointer;
-          user-select: none;
-          transition: background 0.15s;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: var(--mist);
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.15s;
       }
       .avail-category-header:hover {
-          background: var(--meadow);
+        background: var(--meadow);
       }
       .avail-category-header.has-selected {
-          background: rgba(45, 90, 61, 0.12);
+        background: rgba(45, 90, 61, 0.12);
       }
       .avail-category-name {
-          font-size: 0.72rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          color: var(--moss);
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--moss);
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
       .avail-category-meta {
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
       .avail-category-count {
-          font-size: 0.68rem;
-          font-weight: 500;
-          color: var(--stone);
-          background: white;
-          border-radius: 20px;
-          padding: 2px 8px;
+        font-size: 0.68rem;
+        font-weight: 500;
+        color: var(--stone);
+        background: white;
+        border-radius: 20px;
+        padding: 2px 8px;
       }
       .avail-category-chevron {
-          font-size: 0.7rem;
-          color: var(--stone);
-          transition: transform 0.2s ease;
+        font-size: 0.7rem;
+        color: var(--stone);
+        transition: transform 0.2s ease;
       }
       .avail-category.open .avail-category-chevron {
-          transform: rotate(180deg);
+        transform: rotate(180deg);
       }
       .avail-category-items {
-          display: none;
-          flex-direction: column;
-          gap: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0;
       }
       .avail-category.open .avail-category-items {
-          display: flex;
+        display: flex;
       }
       /* Items inside a category lose their own border-radius on top */
       .avail-category .avail-item {
-          border: none;
-          border-top: 1px solid rgba(45, 90, 61, 0.1);
-          border-radius: 0;
+        border: none;
+        border-top: 1px solid rgba(45, 90, 61, 0.1);
+        border-radius: 0;
       }
       .avail-category .avail-item:hover {
-          transform: none;
-          padding-left: 20px;
+        transform: none;
+        padding-left: 20px;
       }
       /* Checkmark on items that are already ranked */
       .avail-category-added-badge {
-          font-size: 0.65rem;
-          color: var(--sage);
-          background: rgba(74, 124, 89, 0.1);
-          border-radius: 20px;
-          padding: 1px 7px;
-          display: none;
+        font-size: 0.65rem;
+        color: var(--sage);
+        background: rgba(74, 124, 89, 0.1);
+        border-radius: 20px;
+        padding: 1px 7px;
+        display: none;
       }
       .avail-category-header.has-selected .avail-category-added-badge {
-          display: inline-block;
+        display: inline-block;
       }
       .rank-block {
-          background: #fff;
-          border: 2px solid var(--sage);
-          border-radius: 12px;
-          margin-bottom: 16px;
-          overflow: hidden;
-          cursor: grab;
-          transition: transform 0.2s, box-shadow 0.2s;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        background: #fff;
+        border: 2px solid var(--sage);
+        border-radius: 12px;
+        margin-bottom: 16px;
+        overflow: hidden;
+        cursor: grab;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
-      .rank-block:active { cursor: grabbing; }
-      .rank-block.dragging { opacity: 0.5; transform: scale(0.98); }
-      .rank-block.drag-over { border-style: dashed; background: var(--mist); }
+      .rank-block:active {
+        cursor: grabbing;
+      }
+      .rank-block.dragging {
+        opacity: 0.5;
+        transform: scale(0.98);
+      }
+      .rank-block.drag-over {
+        border-style: dashed;
+        background: var(--mist);
+      }
 
       .rank-block-header {
-          background: var(--forest);
-          color: var(--gold);
-          padding: 8px 12px;
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        background: var(--forest);
+        color: var(--gold);
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
       .rank-block-items {
-          padding: 8px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
       .rank-sub-item {
-          background: var(--mist);
-          border-radius: 6px;
-          padding: 8px 12px;
-          font-size: 0.85rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+        background: var(--mist);
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
-      .rank-sub-item .remove-btn { margin-top: 0; }
-      .rank-block-handle { font-size: 1.2rem; opacity: 0.5; }
+      .rank-sub-item .remove-btn {
+        margin-top: 0;
+      }
+      .rank-block-handle {
+        font-size: 1.2rem;
+        opacity: 0.5;
+      }
       skip-btn {
-          background: var(--sage);
-          color: white;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 8px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          margin-top: 10px;
-          font-family: 'DM Sans', sans-serif;
-          transition: background 0.2s;
+        background: var(--sage);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-top: 10px;
+        font-family: "DM Sans", sans-serif;
+        transition: background 0.2s;
       }
-      .skip-btn:hover { background: var(--moss); }
+      .skip-btn:hover {
+        background: var(--moss);
+      }
       .privacy-note {
-          text-align: center;
-          font-size: 0.78rem;
-          color: var(--meadow);
-          margin-top: 24px;
-          line-height: 1.6;
-          padding: 20px;
-          background: rgba(168, 197, 160, 0.05);
-          border-radius: 12px;
-          border: 1px solid rgba(168, 197, 160, 0.15);
+        text-align: center;
+        font-size: 0.78rem;
+        color: var(--meadow);
+        margin-top: 24px;
+        line-height: 1.6;
+        padding: 20px;
+        background: rgba(168, 197, 160, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(168, 197, 160, 0.15);
       }
       .privacy-note strong {
-          color: var(--cream);
-          display: block;
-          margin-bottom: 4px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
+        color: var(--cream);
+        display: block;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
     </style>
   </head>
@@ -1200,7 +1219,9 @@
           Franklin Park · Roxbury / Mattapan / Dorchester / Jamaica Plain /
           Roslindale, Boston
         </div>
-        <h1 data-i18n="hero_title">Shape the Future of<br /><em>Shattuck Campus</em></h1>
+        <h1 data-i18n="hero_title">
+          Shape the Future of<br /><em>Shattuck Campus</em>
+        </h1>
         <div class="divider"></div>
         <p class="header-sub" data-i18n="hero_sub">
           Your voice matters. Tell us what you'd like to see on these 13 acres —
@@ -1215,38 +1236,45 @@
           <h2 data-i18n="about_title">About the Shattuck Campus</h2>
         </div>
         <div class="site-info-body" id="siteInfoBody">
-          <div style="text-align: center; padding-top: 10px;">
-            <button type="button" class="skip-btn" onclick="skipHistory()" data-i18n="btn_skip">
-               Skip History & Start Survey ↓
+          <div style="text-align: center; padding-top: 10px">
+            <button
+              type="button"
+              class="skip-btn"
+              onclick="skipHistory()"
+              data-i18n="btn_skip"
+            >
+              Skip History & Start Survey ↓
             </button>
           </div>
-          <div class="site-info-inner" style="margin-top: 20px;">
+          <div class="site-info-inner" style="margin-top: 20px">
             <div>
               <p data-i18n="about_p1">
                 The <strong>Lemuel Shattuck Hospital campus</strong> sits on
                 <strong>13.3 acres</strong> at 170 Morton Street, deep within
-                Frederick Law Olmsted's Franklin Park — Boston's largest park and
-                the crown jewel of the Emerald Necklace.
+                Frederick Law Olmsted's Franklin Park — Boston's largest park
+                and the crown jewel of the Emerald Necklace.
               </p>
               <p data-i18n="about_p2">
                 In <strong>1949</strong>, the City of Boston conveyed this
                 parkland — then a scenic meadow called <em>Heathfield</em> — to
                 the Commonwealth specifically for public health purposes. The
-                hospital, built in the early 1950s, has served the region for over
-                70 years, providing care for respiratory illness, cancer, HIV,
-                psychiatric services, corrections inmates, and substance use
-                disorder (SUD) treatment. Today, several nonprofits operate on 
-                the campus, including a men's shelter and structured, supervised 
-                addiction recovery and treatment programs.
+                hospital, built in the early 1950s, has served the region for
+                over 70 years, providing care for respiratory illness, cancer,
+                HIV, psychiatric services, corrections inmates, and substance
+                use disorder (SUD) treatment. Today, several nonprofits operate
+                on the campus, including a men's shelter and structured,
+                supervised addiction recovery and treatment programs.
               </p>
               <p data-i18n="about_p3">
                 The aging building cannot be cost-effectively renovated.
                 <strong
                   >Hospital services are relocating to Boston Medical Center's
                   South End campus</strong
-                >. This creates a rare decision point: the State
-                holds the site under a deed restriction requiring health use —
-                <em>or it can be returned to the City for parkland</em>. Community input is a vital part of the public process and could help inform the vision for what comes next.
+                >. This creates a rare decision point: the State holds the site
+                under a deed restriction requiring health use —
+                <em>or it can be returned to the City for parkland</em>.
+                Community input is a vital part of the public process and could
+                help inform the vision for what comes next.
               </p>
             </div>
             <div>
@@ -1263,7 +1291,8 @@
                 </iframe>
               </div>
               <p class="map-caption">
-                📍 Shattuck Campus, 170 Morton St<br />South edge of Franklin Park
+                📍 Shattuck Campus, 170 Morton St<br />South edge of Franklin
+                Park
               </p>
             </div>
           </div>
@@ -1290,7 +1319,8 @@
         <!-- ══ 1. Contact ══ -->
         <div class="card" id="contactSection">
           <div class="card-title">
-            <span class="num">1</span> <span data-i18n="sec_contact">Contact Information</span>
+            <span class="num">1</span>
+            <span data-i18n="sec_contact">Contact Information</span>
           </div>
 
           <div class="field-group">
@@ -1300,7 +1330,8 @@
             Browsers map this to whatever the user has saved in their profile.
           -->
               <label for="first_name"
-                ><span data-i18n="first_name">First Name</span> <span class="req">*</span></label
+                ><span data-i18n="first_name">First Name</span>
+                <span class="req">*</span></label
               >
               <input
                 type="text"
@@ -1315,7 +1346,8 @@
             </div>
             <div class="field" id="field-last_name">
               <label for="last_name"
-                ><span data-i18n="last_name">Last Name</span> <span class="req">*</span></label
+                ><span data-i18n="last_name">Last Name</span>
+                <span class="req">*</span></label
               >
               <input
                 type="text"
@@ -1333,7 +1365,8 @@
           <div class="field-group full">
             <div class="field" id="field-email">
               <label for="email"
-                ><span data-i18n="email">Email Address</span> <span class="req">*</span></label
+                ><span data-i18n="email">Email Address</span>
+                <span class="req">*</span></label
               >
               <!--
             autocomplete="email" + inputmode="email" → keyboard switches to email layout on mobile,
@@ -1365,7 +1398,8 @@
           <div class="field-group full">
             <div class="field" id="field-street" style="position: relative">
               <label for="street"
-                ><span data-i18n="street">Street Address</span> <span class="req">*</span></label
+                ><span data-i18n="street">Street Address</span>
+                <span class="req">*</span></label
               >
               <input
                 type="text"
@@ -1376,28 +1410,11 @@
                 autocapitalize="words"
               />
               <div class="error-msg">Please enter your street address.</div>
-              <!-- Boston-neighborhood-aware suggestion dropdown (built-in, no API key) -->
               <div class="autocomplete-list" id="streetDropdown"></div>
             </div>
           </div>
 
-          <div class="field-group triple">
-            <div class="field" id="field-city" style="position: relative">
-              <label for="city"><span data-i18n="city">City / Town</span></label>
-              <!--
-            autocomplete="address-level2" = city.
-            We pre-populate with Boston and show a Boston-area dropdown on focus.
-          -->
-              <input
-                type="text"
-                id="city"
-                name="city"
-                placeholder="Boston"
-                autocomplete="address-level2"
-                autocapitalize="words"
-              />
-              <div class="autocomplete-list" id="cityDropdown"></div>
-            </div>
+          <div class="field-group">
             <div class="field">
               <label for="state"><span data-i18n="state">State</span></label>
               <select id="state" name="state" autocomplete="address-level1">
@@ -1410,12 +1427,11 @@
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div class="field">
-              <label for="zip"><span data-i18n="zip">ZIP Code<span></label>
-              <!--
-            autocomplete="postal-code" + inputmode="numeric" → numeric keyboard on mobile,
-            browser fills ZIP from saved address.
-          -->
+            <div class="field" id="field-zip">
+              <label for="zip"
+                ><span data-i18n="zip">ZIP Code</span>
+                <span class="req">*</span></label
+              >
               <input
                 type="text"
                 id="zip"
@@ -1426,14 +1442,19 @@
                 autocomplete="postal-code"
                 pattern="[0-9]{5}"
               />
+              <div class="error-msg">
+                Please enter a valid 5-digit ZIP code.
+              </div>
             </div>
           </div>
 
-          <!-- Neighborhood: free text, no autofill (too granular for OS autofill) -->
           <div class="field-group full">
             <div class="field" style="position: relative">
               <label for="neighborhood"
-                ><span data-i18n="neighborhood">Neighborhood</span> <span class="lnote" data-i18n="optional_hint">(optional)</span></label
+                ><span data-i18n="neighborhood">Neighborhood</span>
+                <span class="lnote" data-i18n="optional_hint"
+                  >(optional)</span
+                ></label
               >
               <input
                 type="text"
@@ -1451,7 +1472,8 @@
         <!-- ══ 2. Park Use ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">2</span> <span data-i18n="sec_park_usage">Franklin Park Usage</span>
+            <span class="num">2</span>
+            <span data-i18n="sec_park_usage">Franklin Park Usage</span>
           </div>
 
           <div class="field" style="margin-bottom: 22px">
@@ -1478,7 +1500,9 @@
                   id="f2"
                   name="park_freq"
                   value="Several times a week"
-                /><label for="f2" data-i18n="freq_weekly_multi">Several times/week</label>
+                /><label for="f2" data-i18n="freq_weekly_multi"
+                  >Several times/week</label
+                >
               </div>
               <div class="radio-pill">
                 <input
@@ -1502,7 +1526,9 @@
                   id="f5"
                   name="park_freq"
                   value="A few times a year"
-                /><label for="f5" data-i18n="freq_yearly">A few times/year</label>
+                /><label for="f5" data-i18n="freq_yearly"
+                  >A few times/year</label
+                >
               </div>
               <div class="radio-pill">
                 <input
@@ -1530,7 +1556,9 @@
                   id="u1"
                   name="park_use[]"
                   value="Walking or running"
-                /><label for="u1" data-i18n="act_walking">Walking / Running</label>
+                /><label for="u1" data-i18n="act_walking"
+                  >Walking / Running</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1546,7 +1574,9 @@
                   id="u3"
                   name="park_use[]"
                   value="Sports and recreation"
-                /><label for="u3" data-i18n="act_sports">Sports &amp; recreation</label>
+                /><label for="u3" data-i18n="act_sports"
+                  >Sports &amp; recreation</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1554,7 +1584,9 @@
                   id="u4"
                   name="park_use[]"
                   value="Nature and birding"
-                /><label for="u4" data-i18n="act_nature">Nature &amp; birding</label>
+                /><label for="u4" data-i18n="act_nature"
+                  >Nature &amp; birding</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1586,7 +1618,9 @@
                   id="u8"
                   name="park_use[]"
                   value="Attending events"
-                /><label for="u8" data-i18n="act_events">Attending events</label>
+                /><label for="u8" data-i18n="act_events"
+                  >Attending events</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1594,7 +1628,9 @@
                   id="u9"
                   name="park_use[]"
                   value="Cutting through or transit"
-                /><label for="u9" data-i18n="act_transit">Cutting through / transit</label>
+                /><label for="u9" data-i18n="act_transit"
+                  >Cutting through / transit</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1630,14 +1666,21 @@
         <!-- ══ 3. Priorities ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">3</span> <span data-i18n="sec_priorities">What would you like to see on the Shattuck Campus?</span>
+            <span class="num">3</span>
+            <span data-i18n="sec_priorities"
+              >What would you like to see on the Shattuck Campus?</span
+            >
           </div>
 
           <div class="priority-intro" data-i18n="priority_instr">
-            <strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).
+            <strong>Step 1 —</strong> Click any available option to add it to
+            your selection.<br />
+            <strong>Step 2 —</strong> Drag items within your list to rank them
+            in order of priority (most important at top).
           </div>
 
-          <div style="
+          <div
+            style="
               font-size: 0.78rem;
               color: var(--stone);
               background: rgba(200, 168, 75, 0.08);
@@ -1646,8 +1689,12 @@
               padding: 10px 14px;
               margin-bottom: 18px;
               line-height: 1.5;
-          " data-i18n="priority_source_note">
-              💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use "Other" to add your own.
+            "
+            data-i18n="priority_source_note"
+          >
+            💬 The following ideas have been put forth in community discussions
+            about the future of this site. You are not limited to these — use
+            "Other" to add your own.
           </div>
 
           <div class="priority-panels">
@@ -1663,7 +1710,11 @@
                 <span data-i18n="label_your_picks">Your priorities</span>
               </div>
               <div class="ranked-list" id="rankedList">
-                <div class="ranked-empty" id="rankedEmpty" data-i18n="ranked_empty">
+                <div
+                  class="ranked-empty"
+                  id="rankedEmpty"
+                  data-i18n="ranked_empty"
+                >
                   Click items to add &amp; rank them here.
                 </div>
               </div>
@@ -1675,7 +1726,8 @@
         <!-- ══ 4. Opposition ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">4</span> <span data-i18n="sec_opposition">Concerns & Opposition</span>
+            <span class="num">4</span>
+            <span data-i18n="sec_opposition">Concerns & Opposition</span>
           </div>
           <div class="field-group full">
             <div class="field">
@@ -1696,7 +1748,8 @@
 
         <div class="card">
           <div class="card-title">
-            <span class="num">5</span> <span data-i18n="sec_planning">Future Planning Process</span>
+            <span class="num">5</span>
+            <span data-i18n="sec_planning">Future Planning Process</span>
           </div>
 
           <div class="field" style="margin-bottom: 22px">
@@ -1711,7 +1764,9 @@
                   id="p1"
                   name="process_pref[]"
                   value="In-person meetings"
-                /><label for="p1" data-i18n="pref_in_person">In-person meetings</label>
+                /><label for="p1" data-i18n="pref_in_person"
+                  >In-person meetings</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1719,7 +1774,9 @@
                   id="p2"
                   name="process_pref[]"
                   value="Virtual/Zoom meetings"
-                /><label for="p2" data-i18n="pref_virtual">Virtual (Zoom) meetings</label>
+                /><label for="p2" data-i18n="pref_virtual"
+                  >Virtual (Zoom) meetings</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1727,7 +1784,9 @@
                   id="p3"
                   name="process_pref[]"
                   value="Smaller community conversations"
-                /><label for="p3" data-i18n="pref_small_groups">Small neighborhood groups</label>
+                /><label for="p3" data-i18n="pref_small_groups"
+                  >Small neighborhood groups</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1735,7 +1794,9 @@
                   id="p4"
                   name="process_pref[]"
                   value="Community Advisory Board (CAB)"
-                /><label for="p4" data-i18n="pref_cab">Community Advisory Board (CAB)</label>
+                /><label for="p4" data-i18n="pref_cab"
+                  >Community Advisory Board (CAB)</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1743,7 +1804,9 @@
                   id="p5"
                   name="process_pref[]"
                   value="Site walk-throughs"
-                /><label for="p5" data-i18n="pref_walkthrough">On-site walk-throughs</label>
+                /><label for="p5" data-i18n="pref_walkthrough"
+                  >On-site walk-throughs</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1751,7 +1814,9 @@
                   id="p6"
                   name="process_pref[]"
                   value="Digital surveys/polls"
-                /><label for="p6" data-i18n="pref_digital">Digital surveys & polls</label>
+                /><label for="p6" data-i18n="pref_digital"
+                  >Digital surveys & polls</label
+                >
               </div>
             </div>
           </div>
@@ -1775,7 +1840,8 @@
         <!-- ══ 6. About You ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">6</span> <span data-i18n="sec_about_you">About You</span>
+            <span class="num">6</span>
+            <span data-i18n="sec_about_you">About You</span>
             <span
               style="
                 font-family: &quot;DM Sans&quot;;
@@ -1795,7 +1861,9 @@
             <div class="field">
               <label for="age_range" data-i18n="label_age">Age Range</label>
               <select id="age_range" name="age_range" autocomplete="off">
-                <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
+                <option value="" data-i18n="opt_prefer_not">
+                  Prefer not to say
+                </option>
                 <option>Under 18</option>
                 <option>18–24</option>
                 <option>25–34</option>
@@ -1807,14 +1875,24 @@
               </select>
             </div>
             <div class="field">
-              <label for="gender" data-i18n="label_gender">Gender Identity</label>
+              <label for="gender" data-i18n="label_gender"
+                >Gender Identity</label
+              >
               <select id="gender" name="gender" autocomplete="off">
-                <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
+                <option value="" data-i18n="opt_prefer_not">
+                  Prefer not to say
+                </option>
                 <option value="Woman" data-i18n="opt_woman">Woman</option>
                 <option value="Man" data-i18n="opt_man">Man</option>
-                <option value="Non-binary" data-i18n="opt_nb">Non-binary / gender non-conforming</option>
-                <option value="Non-binary" data-i18n="opt_trans">Transgender</option>
-                <option value="self-describe" data-i18n="opt_self_describe">Self-describe</option>
+                <option value="Non-binary" data-i18n="opt_nb">
+                  Non-binary / gender non-conforming
+                </option>
+                <option value="Non-binary" data-i18n="opt_trans">
+                  Transgender
+                </option>
+                <option value="self-describe" data-i18n="opt_self_describe">
+                  Self-describe
+                </option>
               </select>
               <div class="self-describe-wrap" id="genderDescribeWrap">
                 <input
@@ -1832,20 +1910,41 @@
 
           <div class="field-group">
             <div class="field">
-              <label for="race_ethnicity" data-i18n="label_race">Race / Ethnicity</label>
+              <label for="race_ethnicity" data-i18n="label_race"
+                >Race / Ethnicity</label
+              >
               <select
                 id="race_ethnicity"
                 name="race_ethnicity"
                 autocomplete="off"
               >
-                <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
-                <option value="Black or African American" data-i18n="opt_black">Black or African American</option>
-                <option value="Hispanic or Latino/a/x" data-i18n="opt_hispanic">Hispanic or Latino/a/x</option>
-                <option value="White / Caucasian" data-i18n="opt_white">White / Caucasian</option>
-                <option value="Asian or Pacific Islander" data-i18n="opt_asian">Asian or Pacific Islander</option>
-                <option value="Native American or Alaska Native" data-i18n="opt_native">Native American or Alaska Native</option>
-                <option value="Multiracial" data-i18n="opt_multi">Multiracial</option>
-                <option value="self-describe" data-i18n="opt_self_describe">Other / Self-describe</option>
+                <option value="" data-i18n="opt_prefer_not">
+                  Prefer not to say
+                </option>
+                <option value="Black or African American" data-i18n="opt_black">
+                  Black or African American
+                </option>
+                <option value="Hispanic or Latino/a/x" data-i18n="opt_hispanic">
+                  Hispanic or Latino/a/x
+                </option>
+                <option value="White / Caucasian" data-i18n="opt_white">
+                  White / Caucasian
+                </option>
+                <option value="Asian or Pacific Islander" data-i18n="opt_asian">
+                  Asian or Pacific Islander
+                </option>
+                <option
+                  value="Native American or Alaska Native"
+                  data-i18n="opt_native"
+                >
+                  Native American or Alaska Native
+                </option>
+                <option value="Multiracial" data-i18n="opt_multi">
+                  Multiracial
+                </option>
+                <option value="self-describe" data-i18n="opt_self_describe">
+                  Other / Self-describe
+                </option>
               </select>
               <!-- Revealed when "Other / Self-describe" is selected -->
               <div class="self-describe-wrap" id="raceDescribeWrap">
@@ -1860,10 +1959,16 @@
               </div>
             </div>
             <div class="field">
-              <label for="income" data-i18n="label_income">Household Income</label>
+              <label for="income" data-i18n="label_income"
+                >Household Income</label
+              >
               <select id="income" name="income" autocomplete="off">
-                <option value="" data-i18n="opt_prefer_not">Prefer not to say</option>
-                <option value="Under $25,000" data-i18n="inc_under_25">Under $25,000</option>
+                <option value="" data-i18n="opt_prefer_not">
+                  Prefer not to say
+                </option>
+                <option value="Under $25,000" data-i18n="inc_under_25">
+                  Under $25,000
+                </option>
                 <option>$25,000–$49,999</option>
                 <option>$50,000–$74,999</option>
                 <option>$75,000–$99,999</option>
@@ -1886,15 +1991,19 @@
                   id="c1"
                   name="connection[]"
                   value="Abutter (adjacent property)"
-                /><label for="c1" data-i18n="conn_abutter">Direct neighbor (property touches the Park)</label>
+                /><label for="c1" data-i18n="conn_abutter"
+                  >Direct neighbor (property touches the Park)</label
+                >
               </div>
               <div class="check-pill">
-                  <input
-                      type="checkbox"
-                      id="c9"
-                      name="connection[]"
-                      value="Lives nearby"
-                  /><label for="c9" data-i18n="conn_lives_nearby">Lives nearby</label>
+                <input
+                  type="checkbox"
+                  id="c9"
+                  name="connection[]"
+                  value="Lives nearby"
+                /><label for="c9" data-i18n="conn_lives_nearby"
+                  >Lives nearby</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1902,7 +2011,9 @@
                   id="c2"
                   name="connection[]"
                   value="Park advocate"
-                /><label for="c2" data-i18n="conn_park_adv">Park Advocate</label>
+                /><label for="c2" data-i18n="conn_park_adv"
+                  >Park Advocate</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1910,7 +2021,9 @@
                   id="c3"
                   name="connection[]"
                   value="Housing advocate"
-                /><label for="c3" data-i18n="conn_house_adv">Housing Advocate</label>
+                /><label for="c3" data-i18n="conn_house_adv"
+                  >Housing Advocate</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1918,7 +2031,9 @@
                   id="c4"
                   name="connection[]"
                   value="SUD services advocate"
-                /><label for="c4" data-i18n="conn_sud_adv">Addiction recovery advocate</label>
+                /><label for="c4" data-i18n="conn_sud_adv"
+                  >Addiction recovery advocate</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1934,7 +2049,9 @@
                   id="c6"
                   name="connection[]"
                   value="Current or former patient"
-                /><label for="c6" data-i18n="conn_patient">Current / former patient</label>
+                /><label for="c6" data-i18n="conn_patient"
+                  >Current / former patient</label
+                >
               </div>
               <div class="check-pill">
                 <input
@@ -1955,7 +2072,9 @@
                   name="connection[]"
                   value="Other community connection"
                   id="c8_cb"
-                /><label for="c8" data-i18n="conn_other">Other connection</label>
+                /><label for="c8" data-i18n="conn_other"
+                  >Other connection</label
+                >
               </div>
             </div>
             <!-- Revealed when "Other connection" is checked -->
@@ -1976,13 +2095,15 @@
         <!-- ══ 7. Stay Connected ══ -->
         <div class="card">
           <div class="card-title">
-            <span class="num">7</span> <span data-i18n="sec_stay_connected">Stay Connected</span>
+            <span class="num">7</span>
+            <span data-i18n="sec_stay_connected">Stay Connected</span>
           </div>
 
           <div class="toggle-field">
             <div class="toggle-text" data-i18n="label_updates">
-              <strong>Receive updates</strong> about the official State planning process, 
-              including public meeting notices and formal comment periods.
+              <strong>Receive updates</strong> about the official State planning
+              process, including public meeting notices and formal comment
+              periods.
             </div>
             <label class="toggle-switch">
               <input
@@ -1998,7 +2119,9 @@
           <div class="field" style="margin-bottom: 16px">
             <label for="referral_source" data-i18n="label_referral"
               >How did you hear about this survey?
-              <span class="lnote" data-i18n="optional_hint">(optional)</span></label
+              <span class="lnote" data-i18n="optional_hint"
+                >(optional)</span
+              ></label
             >
             <select
               id="referral_source"
@@ -2006,14 +2129,36 @@
               autocomplete="off"
             >
               <option value="" data-i18n="opt_select">— Select one —</option>
-              <option value="Community canvasser / tablet" data-i18n="ref_canvasser">Community canvasser / tablet</option>
-              <option value="Neighbor or friend" data-i18n="ref_neighbor">Neighbor or friend</option>
-              <option value="Community meeting or event" data-i18n="ref_event">Community meeting or event</option>
-              <option value="Flyer or printed material" data-i18n="ref_flyer">Flyer or printed material</option>
-              <option value="Social media (Facebook, Instagram, etc.)" data-i18n="ref_social">Social media (Facebook, Instagram, etc.)</option>
-              <option value="Email or newsletter" data-i18n="ref_email">Email or newsletter</option>
-              <option value="News article" data-i18n="ref_news">News article</option>
-              <option value="City or State website" data-i18n="ref_govt">City or State website</option>
+              <option
+                value="Community canvasser / tablet"
+                data-i18n="ref_canvasser"
+              >
+                Community canvasser / tablet
+              </option>
+              <option value="Neighbor or friend" data-i18n="ref_neighbor">
+                Neighbor or friend
+              </option>
+              <option value="Community meeting or event" data-i18n="ref_event">
+                Community meeting or event
+              </option>
+              <option value="Flyer or printed material" data-i18n="ref_flyer">
+                Flyer or printed material
+              </option>
+              <option
+                value="Social media (Facebook, Instagram, etc.)"
+                data-i18n="ref_social"
+              >
+                Social media (Facebook, Instagram, etc.)
+              </option>
+              <option value="Email or newsletter" data-i18n="ref_email">
+                Email or newsletter
+              </option>
+              <option value="News article" data-i18n="ref_news">
+                News article
+              </option>
+              <option value="City or State website" data-i18n="ref_govt">
+                City or State website
+              </option>
               <option value="Other" data-i18n="act_other">Other</option>
             </select>
           </div>
@@ -2022,7 +2167,9 @@
             <div class="field">
               <label for="additional_comments"
                 ><span data-i18n="label_additional">Additional Comments</span>
-                <span class="lnote" data-i18n="optional_hint">(optional)</span></label
+                <span class="lnote" data-i18n="optional_hint"
+                  >(optional)</span
+                ></label
               >
               <textarea
                 id="additional_comments"
@@ -2084,12 +2231,23 @@
         <div class="form-error-banner" id="formErrorBanner">
           Please review the highlighted fields above and try again.
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn_submit">
+        <button
+          type="submit"
+          class="submit-btn"
+          id="submitBtn"
+          data-i18n="btn_submit"
+        >
           Submit My Response →
         </button>
         <div class="privacy-note">
           <p data-i18n="combined_disclaimer">
-            🔒 <strong>Privacy & Transparency:</strong> This survey is a community-led initiative by local neighbors to capture local sentiment. It is not an official publication of the Commonwealth of Massachusetts. Responses are collected securely; personal info will not be shared publicly or used for commercial purposes. Anonymized results will be shared with community organizations and public officials to help inform the planning process.
+            🔒 <strong>Privacy & Transparency:</strong> This survey is a
+            community-led initiative by local neighbors to capture local
+            sentiment. It is not an official publication of the Commonwealth of
+            Massachusetts. Responses are collected securely; personal info will
+            not be shared publicly or used for commercial purposes. Anonymized
+            results will be shared with community organizations and public
+            officials to help inform the planning process.
           </p>
         </div>
       </form>
@@ -2129,22 +2287,26 @@
       const I18N = {
         en: {
           hero_title: "Shape the Future of <em>Shattuck Campus</em>",
-          hero_sub: "Your voice matters. Tell us what you'd like to see on these 13 acres — a once-in-a-generation opportunity to reimagine this land for our community.",
+          hero_sub:
+            "Your voice matters. Tell us what you'd like to see on these 13 acres — a once-in-a-generation opportunity to reimagine this land for our community.",
           about_title: "About the Shattuck Campus",
-          about_p1: "The <strong>Lemuel Shattuck Hospital campus</strong> sits on <strong>13.3 acres</strong> at 170 Morton Street, deep within Frederick Law Olmsted's Franklin Park — Boston's largest park and the crown jewel of the Emerald Necklace.",
-          about_p2: "In <strong>1949</strong>, the City of Boston conveyed this parkland — then a scenic meadow called <em>Heathfield</em> — to the Commonwealth specifically for public health purposes. The hospital, built in the early 1950s, has served the region for over 70 years, providing care for respiratory illness, cancer, HIV, psychiatric services, corrections inmates, and substance use disorder (SUD) treatment. Today, several nonprofits operate on the campus, including a men's shelter and structured, supervised addiction recovery and treatment programs.",
-          about_p3: "The aging building cannot be cost-effectively renovated. <strong >Hospital services are relocating to Boston Medical Center's South End campus</strong >. This creates a rare decision point: the State holds the site under a deed restriction requiring health use — <em>or it can be returned to the City for parkland</em>. Community input is a vital part of the public process and could help inform the vision for what comes next.",
+          about_p1:
+            "The <strong>Lemuel Shattuck Hospital campus</strong> sits on <strong>13.3 acres</strong> at 170 Morton Street, deep within Frederick Law Olmsted's Franklin Park — Boston's largest park and the crown jewel of the Emerald Necklace.",
+          about_p2:
+            "In <strong>1949</strong>, the City of Boston conveyed this parkland — then a scenic meadow called <em>Heathfield</em> — to the Commonwealth specifically for public health purposes. The hospital, built in the early 1950s, has served the region for over 70 years, providing care for respiratory illness, cancer, HIV, psychiatric services, corrections inmates, and substance use disorder (SUD) treatment. Today, several nonprofits operate on the campus, including a men's shelter and structured, supervised addiction recovery and treatment programs.",
+          about_p3:
+            "The aging building cannot be cost-effectively renovated. <strong >Hospital services are relocating to Boston Medical Center's South End campus</strong >. This creates a rare decision point: the State holds the site under a deed restriction requiring health use — <em>or it can be returned to the City for parkland</em>. Community input is a vital part of the public process and could help inform the vision for what comes next.",
           sec_contact: "Contact Information",
           first_name: "First Name",
           last_name: "Last Name",
           email: "Email Address",
           street: "Street Address",
-          city: "City / Town",
           state: "State",
           zip: "Zip Code",
           neighborhood: "Neighborhood",
           sec_about_you: "About You",
-          optional_hint: "(optional — helps us understand who we're hearing from)",
+          optional_hint:
+            "(optional — helps us understand who we're hearing from)",
           label_age: "Age Range",
           label_gender: "Gender Identity",
           label_connection: "Connection to the Area",
@@ -2163,44 +2325,89 @@
           conn_park_adv: "Park Advocate",
           conn_other: "Other connection",
           sec_priorities: "What would you like to see on the Shattuck Campus?",
-          priority_instr: "<strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).",
+          priority_instr:
+            "<strong>Step 1 —</strong> Click any available option to add it to your selection.<br /> <strong>Step 2 —</strong> Drag items within your list to rank them in order of priority (most important at top).",
           ranked_empty: "Click items to add & rank them here.",
           label_available: "Available Options",
           label_your_picks: "Your Priorities",
-          placeholder_oppose: "Please describe any uses you find unacceptable...",
+          placeholder_oppose:
+            "Please describe any uses you find unacceptable...",
           btn_submit: "Submit My Response →",
           success_title: "Thank You!",
-          success_msg: "Your response has been recorded and will help shape the future of the Shattuck Campus in Franklin Park. We appreciate you taking the time to share your vision for this community.",
+          success_msg:
+            "Your response has been recorded and will help shape the future of the Shattuck Campus in Franklin Park. We appreciate you taking the time to share your vision for this community.",
           btn_another: "Submit Another Response",
           priorities: [
-              { label: "Return to Park: Nature trails and walking paths", category: "Return to Parkland" },
-              { label: "Return to Park: Dedicated dog park area", category: "Return to Parkland" },
-              { label: "Return to Park: Visitor center & public restrooms", category: "Return to Parkland" },
-              { label: "Partial return to parkland (combined with other uses)", category: "Return to Parkland" },
-              { label: "Other (Parkland)", category: "Return to Parkland" },
-              { label: "24-hour pharmacy", category: "Health Services" },
-              { label: "Health & Wellness Center (Pool, recreation center, meditation space)", category: "Health Services" },
-              { label: "Urgent care clinic", category: "Health Services" },
-              { label: "Other (Health Services)", category: "Health Services" },
-              { label: "Veterans services", category: "Veterans" },
-              { label: "Other (Veterans)", category: "Veterans" },
-              { label: "Veterans housing", category: "Housing" },
-              { label: "Senior housing / Assisted living facility", category: "Housing" },
-              { label: "Supportive housing (treatment available, but not required to stay)", category: "Housing" },
-              { label: "Recovery housing (must be in treatment or drug-free to stay)", category: "Housing" },
-              { label: "Other (Housing)", category: "Housing" },
-              { label: "Current level of residential (overnight) addiction treatment", category: "Addiction Recovery" },
-              { label: "Increase residential addiction treatment (more beds/capacity)", category: "Addiction Recovery" },
-              { label: "Other (Addiction Recovery)", category: "Addiction Recovery" },
-              { label: "Other", category: "Other" }
+            {
+              label: "Return to Park: Nature trails and walking paths",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Return to Park: Dedicated dog park area",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Return to Park: Visitor center & public restrooms",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Partial return to parkland (combined with other uses)",
+              category: "Return to Parkland",
+            },
+            { label: "Other (Parkland)", category: "Return to Parkland" },
+            {
+              label: "Community Wellness Center (Pool, gym, and recreation)",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Public Health Clinic & 24-hour Pharmacy",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Other (Community Health & Wellness)",
+              category: "Community Health & Wellness",
+            },
+            { label: "Veterans services", category: "Veterans" },
+            { label: "Other (Veterans)", category: "Veterans" },
+            { label: "Veterans housing", category: "Housing" },
+            {
+              label: "Senior housing / Assisted living facility",
+              category: "Housing",
+            },
+            {
+              label:
+                "Supportive housing (treatment available, but not required to stay)",
+              category: "Housing",
+            },
+            {
+              label:
+                "Recovery housing (must be in treatment or drug-free to stay)",
+              category: "Housing",
+            },
+            { label: "Other (Housing)", category: "Housing" },
+            {
+              label:
+                "Current level of residential (overnight) addiction treatment",
+              category: "Addiction Recovery",
+            },
+            {
+              label:
+                "Increase residential addiction treatment (more beds/capacity)",
+              category: "Addiction Recovery",
+            },
+            {
+              label: "Other (Addiction Recovery)",
+              category: "Addiction Recovery",
+            },
+            { label: "Other", category: "Other" },
           ],
           categories: {
-              "Return to Parkland": "Return to Parkland",
-              "Health Services": "Health Services",
-              "Veterans": "Veterans",
-              "Housing": "Housing",
-              "Addiction Recovery": "Addiction Recovery",
-              "Other": "Other",
+            "Return to Parkland": "Return to Parkland",
+            "Community Health & Wellness": "Community Health & Wellness",
+            Veterans: "Veterans",
+            Housing: "Housing",
+            "Addiction Recovery": "Addiction Recovery",
+            Other: "Other",
           },
           label_race: "Race / Ethnicity",
           opt_black: "Black or African American",
@@ -2230,24 +2437,30 @@
           act_zoo: "Zoo visit",
           act_other: "Other...",
           sec_planning: "Future Planning Process",
-          label_participation: "How would you prefer to participate in the planning process?",
+          label_participation:
+            "How would you prefer to participate in the planning process?",
           pref_in_person: "In-person meetings",
           pref_virtual: "Virtual (Zoom) meetings",
           pref_small_groups: "Small neighborhood groups",
           pref_cab: "Community Advisory Board (CAB)",
           pref_walkthrough: "On-site walk-throughs",
           pref_digital: "Digital surveys & polls",
-          label_process_comments: "Do you have specific suggestions for how the State should engage the community?",
+          label_process_comments:
+            "Do you have specific suggestions for how the State should engage the community?",
           label_income: "Household Income",
           inc_under_25: "Under $25,000",
           sec_opposition: "Concerns & Opposition",
-          label_opposition: "Is there anything you would strongly oppose on this site?",
-          placeholder_oppose: "Please describe any uses you find unacceptable...",
+          label_opposition:
+            "Is there anything you would strongly oppose on this site?",
+          placeholder_oppose:
+            "Please describe any uses you find unacceptable...",
           sec_stay_connected: "Stay Connected",
-          label_updates: "<strong>Receive updates</strong> about the official State planning process, including public meeting notices and formal comment periods.",
+          label_updates:
+            "<strong>Receive updates</strong> about the official State planning process, including public meeting notices and formal comment periods.",
           label_referral: "How did you hear about this survey?",
           label_additional: "Additional Comments",
-          label_consent: "<strong>I confirm</strong> this is my own individual response, submitted voluntarily. I have not been directed to submit multiple responses, and I understand this information will be used to inform planning decisions for the Shattuck Campus.",
+          label_consent:
+            "<strong>I confirm</strong> this is my own individual response, submitted voluntarily. I have not been directed to submit multiple responses, and I understand this information will be used to inform planning decisions for the Shattuck Campus.",
           ref_canvasser: "Community canvasser / tablet",
           ref_neighbor: "Neighbor or friend",
           ref_event: "Community meeting or event",
@@ -2257,15 +2470,22 @@
           ref_news: "News article",
           ref_govt: "City or State website",
           placeholder_additional: "Anything else you'd like us to know…",
-          combined_disclaimer: "🔒 <strong>Privacy & Transparency:</strong> This survey is a community-led initiative by local neighbors to capture local sentiment. It is not an official publication of the Commonwealth of Massachusetts. Responses are collected securely; personal info will not be shared publicly or used for commercial purposes. Anonymized results will be shared with community organizations and public officials to help inform the planning process.",
-          label_park_use: "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
+          combined_disclaimer:
+            "🔒 <strong>Privacy & Transparency:</strong> This survey is a community-led initiative by local neighbors to capture local sentiment. It is not an official publication of the Commonwealth of Massachusetts. Responses are collected securely; personal info will not be shared publicly or used for commercial purposes. Anonymized results will be shared with community organizations and public officials to help inform the planning process.",
+          label_park_use:
+            "What do you use Franklin Park for? <span class='lnote'>(select all that apply)</span>",
           opt_select: "— Select one —",
-          placeholder_conn_other: "e.g. attend school or church nearby, visit family, shop in the area…",
-          placeholder_park_other: "Please describe how else you use Franklin Park…",
-          placeholder_process: "e.g. Meetings on weekends, translation services, transparency on CAB selection...",
-          tablet_hint: "📋 Canvassing with a tablet? Each submission is recorded individually — tap 'Submit Another Response' to start fresh for the next person.",
+          placeholder_conn_other:
+            "e.g. attend school or church nearby, visit family, shop in the area…",
+          placeholder_park_other:
+            "Please describe how else you use Franklin Park…",
+          placeholder_process:
+            "e.g. Meetings on weekends, translation services, transparency on CAB selection...",
+          tablet_hint:
+            "📋 Canvassing with a tablet? Each submission is recorded individually — tap 'Submit Another Response' to start fresh for the next person.",
           conn_lives_nearby: "Lives nearby",
-          priority_source_note: "💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use \"Other\" to add your own.",
+          priority_source_note:
+            '💬 The following ideas have been put forth in community discussions about the future of this site. You are not limited to these — use "Other" to add your own.',
           btn_skip: "Skip History & Start Survey ↓",
           label_max_beds: "Max beds preferred:",
           opt_up_to: "Up to",
@@ -2275,17 +2495,20 @@
         },
         es: {
           hero_title: "Forje el Futuro del <em>Campus Shattuck</em>",
-          hero_sub: "Su voz importa. Díganos qué le gustaría ver en estos 13 acres — una oportunidad única en una generación para reimaginar este terreno para nuestra comunidad.",
+          hero_sub:
+            "Su voz importa. Díganos qué le gustaría ver en estos 13 acres — una oportunidad única en una generación para reimaginar este terreno para nuestra comunidad.",
           about_title: "Sobre el Campus Shattuck",
-          about_p1: "El campus del <strong>Hospital Lemuel Shattuck</strong> ocupa <strong>13.3 acres</strong> en el 170 de la calle Morton, en el corazón del Franklin Park de Frederick Law Olmsted.",
-          about_p2: "En <strong>1949</strong>, la ciudad de Boston cedió estos terrenos —entonces un prado llamado <em>Heathfield</em>— al Estado específicamente para fines de salud pública. El hospital ha servido a la región por más de 70 años. Hoy en día, varias organizaciones operan en el campus, incluyendo un refugio para hombres y programas supervisados de tratamiento y recuperación de adicciones.",
-          about_p3: "El edificio actual es antiguo y no puede ser renovado de manera rentable. <strong >Los servicios hospitalarios se trasladarán al campus del Boston Medical Center en el South End</strong>. Esto crea un momento de decisión: el Estado mantiene el sitio bajo una restricción de uso para la salud — <em>o puede ser devuelto a la Ciudad para convertirlo en parque</em>. El aporte de la comunidad es una parte vital del proceso público y podría ayudar a informar la visión de lo que vendrá después.",
+          about_p1:
+            "El campus del <strong>Hospital Lemuel Shattuck</strong> ocupa <strong>13.3 acres</strong> en el 170 de la calle Morton, en el corazón del Franklin Park de Frederick Law Olmsted.",
+          about_p2:
+            "En <strong>1949</strong>, la ciudad de Boston cedió estos terrenos —entonces un prado llamado <em>Heathfield</em>— al Estado específicamente para fines de salud pública. El hospital ha servido a la región por más de 70 años. Hoy en día, varias organizaciones operan en el campus, incluyendo un refugio para hombres y programas supervisados de tratamiento y recuperación de adicciones.",
+          about_p3:
+            "El edificio actual es antiguo y no puede ser renovado de manera rentable. <strong >Los servicios hospitalarios se trasladarán al campus del Boston Medical Center en el South End</strong>. Esto crea un momento de decisión: el Estado mantiene el sitio bajo una restricción de uso para la salud — <em>o puede ser devuelto a la Ciudad para convertirlo en parque</em>. El aporte de la comunidad es una parte vital del proceso público y podría ayudar a informar la visión de lo que vendrá después.",
           sec_contact: "Información de Contacto",
           first_name: "Nombre",
           last_name: "Apellido",
           email: "Correo Electrónico",
           street: "Dirección",
-          city: "Ciudad",
           state: "Estado",
           zip: "Código Postal",
           neighborhood: "Barrio / Vecindario",
@@ -2309,44 +2532,95 @@
           conn_park_adv: "Defensor del parque",
           conn_other: "Otra conexión",
           sec_priorities: "¿Qué le gustaría ver en el Campus Shattuck?",
-          priority_instr: "<strong>Paso 1 —</strong> Haga clic en cualquier opción disponible para agregarla a su selección.<br /> <strong>Paso 2 —</strong> Arrastre los elementos dentro de su lista para clasificarlos por orden de prioridad (el más importante arriba).",
-          ranked_empty: "Haga clic en los elementos para agregarlos y clasificarlos aquí.",
+          priority_instr:
+            "<strong>Paso 1 —</strong> Haga clic en cualquier opción disponible para agregarla a su selección.<br /> <strong>Paso 2 —</strong> Arrastre los elementos dentro de su lista para clasificarlos por orden de prioridad (el más importante arriba).",
+          ranked_empty:
+            "Haga clic en los elementos para agregarlos y clasificarlos aquí.",
           label_available: "Opciones Disponibles",
           label_your_picks: "Sus Prioridades",
-          placeholder_oppose: "Describa cualquier uso que considere inaceptable...",
+          placeholder_oppose:
+            "Describa cualquier uso que considere inaceptable...",
           btn_submit: "Enviar mi respuesta →",
           success_title: "¡Gracias!",
-          success_msg: "Su respuesta ha sido registrada y ayudará a dar forma al futuro del Campus Shattuck en Franklin Park. Agradecemos su tiempo.",
+          success_msg:
+            "Su respuesta ha sido registrada y ayudará a dar forma al futuro del Campus Shattuck en Franklin Park. Agradecemos su tiempo.",
           btn_another: "Enviar otra respuesta",
           priorities: [
-              { label: "Regreso al Parque: Senderos naturales y caminos", category: "Return to Parkland" },
-              { label: "Regreso al Parque: Área dedicada para perros", category: "Return to Parkland" },
-              { label: "Regreso al Parque: Centro de visitantes y baños", category: "Return to Parkland" },
-              { label: "Retorno parcial al parque (combinado con otros usos)", category: "Return to Parkland" },
-              { label: "Otro (Terrenos del Parque)", category: "Return to Parkland" },
-              { label: "Farmacia las 24 horas", category: "Health Services" },
-              { label: "Centro de Salud y Bienestar (Piscina, recreación, espacio de meditación)", category: "Health Services" },
-              { label: "Clínica de urgencias", category: "Health Services" },
-              { label: "Otro (Servicios de Salud)", category: "Health Services" },
-              { label: "Servicios para veteranos", category: "Veterans" },
-              { label: "Otro (Veteranos)", category: "Veterans" },
-              { label: "Vivienda para veteranos", category: "Housing" },
-              { label: "Vivienda para adultos mayores / Centro de vida asistida (Assisted living)", category: "Housing" },
-              { label: "Vivienda de apoyo (tratamiento disponible, pero no es obligatorio para quedarse)", category: "Housing" },
-              { label: "Vivienda de recuperación (debe estar en tratamiento o libre de drogas para quedarse)", category: "Housing" },
-              { label: "Otro (Vivienda)", category: "Housing" },
-              { label: "Nivel actual de tratamiento de adicciones residencial (con pernoctación)", category: "Addiction Recovery" },
-              { label: "Aumentar tratamiento de adicciones residencial (más camas/capacidad)", category: "Addiction Recovery" },
-              { label: "Otro (Recuperación de Adicciones)", category: "Addiction Recovery" },
-              { label: "Otro", category: "Other" }
+            {
+              label: "Regreso al Parque: Senderos naturales y caminos",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Regreso al Parque: Área dedicada para perros",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Regreso al Parque: Centro de visitantes y baños",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Retorno parcial al parque (combinado con otros usos)",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Otro (Terrenos del Parque)",
+              category: "Return to Parkland",
+            },
+            {
+              label:
+                "Centro de Bienestar Comunitario (Piscina, gimnasio y recreación)",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Clínica de Salud Pública y Farmacia las 24 horas",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Otro (Servicios de Salud)",
+              category: "Community Health & Wellness",
+            },
+            { label: "Servicios para veteranos", category: "Veterans" },
+            { label: "Otro (Veteranos)", category: "Veterans" },
+            { label: "Vivienda para veteranos", category: "Housing" },
+            {
+              label:
+                "Vivienda para adultos mayores / Centro de vida asistida (Assisted living)",
+              category: "Housing",
+            },
+            {
+              label:
+                "Vivienda de apoyo (tratamiento disponible, pero no es obligatorio para quedarse)",
+              category: "Housing",
+            },
+            {
+              label:
+                "Vivienda de recuperación (debe estar en tratamiento o libre de drogas para quedarse)",
+              category: "Housing",
+            },
+            { label: "Otro (Vivienda)", category: "Housing" },
+            {
+              label:
+                "Nivel actual de tratamiento de adicciones residencial (con pernoctación)",
+              category: "Addiction Recovery",
+            },
+            {
+              label:
+                "Aumentar tratamiento de adicciones residencial (más camas/capacidad)",
+              category: "Addiction Recovery",
+            },
+            {
+              label: "Otro (Recuperación de Adicciones)",
+              category: "Addiction Recovery",
+            },
+            { label: "Otro", category: "Other" },
           ],
           categories: {
-              "Return to Parkland": "Retorno a Terrenos del Parque",
-              "Health Services": "Servicios de Salud",
-              "Veterans": "Veteranos",
-              "Housing": "Vivienda",
-              "Addiction Recovery": "Recuperación de Adicciones",
-              "Other": "Otro",
+            "Return to Parkland": "Retorno a Terrenos del Parque",
+            "Community Health & Wellness": "Salud y Bienestar Comunitario",
+            Veterans: "Veteranos",
+            Housing: "Vivienda",
+            "Addiction Recovery": "Recuperación de Adicciones",
+            Other: "Otro",
           },
           label_race: "Raza / Etnia",
           opt_black: "Negro o Afroamericano",
@@ -2376,24 +2650,30 @@
           act_zoo: "Visita al zoológico",
           act_other: "Otro...",
           sec_planning: "Proceso de Planificación Futura",
-          label_participation: "¿Cómo preferiría participar en el proceso de planificación?",
+          label_participation:
+            "¿Cómo preferiría participar en el proceso de planificación?",
           pref_in_person: "Reuniones en persona",
           pref_virtual: "Reuniones virtuales (Zoom)",
           pref_small_groups: "Pequeños grupos vecinales",
           pref_cab: "Junta Asesora Comunitaria (CAB)",
           pref_walkthrough: "Recorridos en el sitio",
           pref_digital: "Encuestas y sondeos digitales",
-          label_process_comments: "¿Sugerencias específicas para la participación comunitaria?",
+          label_process_comments:
+            "¿Sugerencias específicas para la participación comunitaria?",
           label_income: "Ingresos del Hogar",
           inc_under_25: "Menos de $25,000",
           sec_opposition: "Preocupaciones y Oposición",
-          label_opposition: "¿Hay algo a lo que se opondría firmemente en este sitio?",
-          placeholder_oppose: "Describa cualquier uso que considere inaceptable...",
+          label_opposition:
+            "¿Hay algo a lo que se opondría firmemente en este sitio?",
+          placeholder_oppose:
+            "Describa cualquier uso que considere inaceptable...",
           sec_stay_connected: "Manténgase Conectado",
-          label_updates: "<strong>Recibir actualizaciones</strong> sobre el proceso oficial de planificación estatal, incluyendo avisos de reuniones públicas y períodos formales de comentarios.",
+          label_updates:
+            "<strong>Recibir actualizaciones</strong> sobre el proceso oficial de planificación estatal, incluyendo avisos de reuniones públicas y períodos formales de comentarios.",
           label_referral: "¿Cómo se enteró de esta encuesta?",
           label_additional: "Comentarios Adicionales",
-          label_consent: "<strong>Confirmo</strong> que esta es mi propia respuesta individual, enviada voluntariamente. No se me ha indicado que envíe múltiples respuestas y entiendo que esta información se utilizará para informar las decisiones de planificación del Campus Shattuck.",
+          label_consent:
+            "<strong>Confirmo</strong> que esta es mi propia respuesta individual, enviada voluntariamente. No se me ha indicado que envíe múltiples respuestas y entiendo que esta información se utilizará para informar las decisiones de planificación del Campus Shattuck.",
           ref_canvasser: "Encuestador comunitario / tableta",
           ref_neighbor: "Vecino o amigo",
           ref_event: "Reunión o evento comunitario",
@@ -2402,16 +2682,24 @@
           ref_email: "Correo o boletín",
           ref_news: "Artículo de noticias",
           ref_govt: "Sitio web de la Ciudad o el Estado",
-          placeholder_additional: "Cualquier otra cosa que le gustaría que supiéramos…",
-          combined_disclaimer: "🔒 <strong>Privacidad y Transparencia:</strong> Esta encuesta es una iniciativa comunitaria liderada por vecinos para captar el sentimiento local. No es una publicación oficial del Estado de Massachusetts. Las respuestas se recopilan de forma segura; la información personal no se compartirá públicamente ni se utilizará con fines comerciales. Los resultados anónimos se compartirán con organizaciones comunitarias y funcionarios públicos para ayudar a informar el proceso de planificación.",
-          label_park_use: "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
+          placeholder_additional:
+            "Cualquier otra cosa que le gustaría que supiéramos…",
+          combined_disclaimer:
+            "🔒 <strong>Privacidad y Transparencia:</strong> Esta encuesta es una iniciativa comunitaria liderada por vecinos para captar el sentimiento local. No es una publicación oficial del Estado de Massachusetts. Las respuestas se recopilan de forma segura; la información personal no se compartirá públicamente ni se utilizará con fines comerciales. Los resultados anónimos se compartirán con organizaciones comunitarias y funcionarios públicos para ayudar a informar el proceso de planificación.",
+          label_park_use:
+            "¿Para qué utiliza Franklin Park? <span class='lnote'>(seleccione todas las que correspondan)</span>",
           opt_select: "— Seleccione uno —",
-          placeholder_conn_other: "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
-          placeholder_park_other: "Describa de qué otra manera usa Franklin Park…",
-          placeholder_process: "ej. Reuniones los fines de semana, servicios de traducción, transparencia en la selección del CAB...",
-          tablet_hint: "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona.",
+          placeholder_conn_other:
+            "ej. asiste a la escuela o iglesia cercana, visita a la familia, compra en el área…",
+          placeholder_park_other:
+            "Describa de qué otra manera usa Franklin Park…",
+          placeholder_process:
+            "ej. Reuniones los fines de semana, servicios de traducción, transparencia en la selección del CAB...",
+          tablet_hint:
+            "📋 ¿Está realizando encuestas con una tableta? Cada respuesta se registra individualmente — toque 'Enviar otra respuesta' para comenzar de nuevo con la siguiente persona.",
           conn_lives_nearby: "Vive cerca",
-          priority_source_note: "💬 Las siguientes ideas han surgido en conversaciones comunitarias sobre el futuro de este sitio. No está limitado a estas opciones — use \"Otro\" para agregar la suya.",
+          priority_source_note:
+            '💬 Las siguientes ideas han surgido en conversaciones comunitarias sobre el futuro de este sitio. No está limitado a estas opciones — use "Otro" para agregar la suya.',
           btn_skip: "Saltar Historia e Iniciar Encuesta ↓",
           label_max_beds: "Máximo de camas preferido:",
           opt_up_to: "Hasta",
@@ -2421,22 +2709,26 @@
         },
         ht: {
           hero_title: "Fasonnen Lavni <em>Campus Shattuck</em> la",
-          hero_sub: "Vwa ou enpòtan. Di nou sa ou ta renmen wè sou 13 kawo tè sa yo — yon chans ki rive yon sèl fwa nan yon jenerasyon pou nou reimajine tè sa a pou kominote nou an.",
+          hero_sub:
+            "Vwa ou enpòtan. Di nou sa ou ta renmen wè sou 13 kawo tè sa yo — yon chans ki rive yon sèl fwa nan yon jenerasyon pou nou reimajine tè sa a pou kominote nou an.",
           about_title: "Konsènan Campus Shattuck la",
-          about_p1: "Lopital <strong>Lemuel Shattuck</strong> la chita sou <strong>13.3 kawo tè</strong> nan 170 Morton Street, nan mitan Franklin Park — pi gwo pak nan Boston.",
-          about_p2: "Nan lanne <strong>1949</strong>, Vil Boston te bay Leta tè sa a — ki te yon savann yo te rele <em>Heathfield</em> — espesyalman pou sèvis sante piblik. Lopital la sèvi rejyon an pandan plis pase 70 lanne. Jodi a, plizyè òganizasyon ap fonksyone sou sit la, tankou yon refij pou gason ak pwogram tretman ak rekiperasyon pou moun ki gen depandans.",
-          about_p3: "Vye batiman sa a pa kapab repare ankò. <strong >Sèvis lopital yo ap deplase ale nan Boston Medical Center (South End)</strong>. Sa kreye yon chwa: Leta ka kenbe sit la pou sèvis sante — <em>oswa li ka tounen bay Vil la pou li tounen yon pak</em>. Opinyon kominote a se yon pati enpòtan nan pwosesis piblik la epi li ta ka ede bay enfòmasyon sou vizyon pou sa k ap vini apre a.",
+          about_p1:
+            "Lopital <strong>Lemuel Shattuck</strong> la chita sou <strong>13.3 kawo tè</strong> nan 170 Morton Street, nan mitan Franklin Park — pi gwo pak nan Boston.",
+          about_p2:
+            "Nan lanne <strong>1949</strong>, Vil Boston te bay Leta tè sa a — ki te yon savann yo te rele <em>Heathfield</em> — espesyalman pou sèvis sante piblik. Lopital la sèvi rejyon an pandan plis pase 70 lanne. Jodi a, plizyè òganizasyon ap fonksyone sou sit la, tankou yon refij pou gason ak pwogram tretman ak rekiperasyon pou moun ki gen depandans.",
+          about_p3:
+            "Vye batiman sa a pa kapab repare ankò. <strong >Sèvis lopital yo ap deplase ale nan Boston Medical Center (South End)</strong>. Sa kreye yon chwa: Leta ka kenbe sit la pou sèvis sante — <em>oswa li ka tounen bay Vil la pou li tounen yon pak</em>. Opinyon kominote a se yon pati enpòtan nan pwosesis piblik la epi li ta ka ede bay enfòmasyon sou vizyon pou sa k ap vini apre a.",
           sec_contact: "Enfòmasyon pou Kontakte Ou",
           first_name: "Premye Non",
           last_name: "Siyati",
           email: "Adrès Imèl",
           street: "Adrès Ri",
-          city: "Vil",
           state: "Eta",
           zip: "Kòd Postal",
           neighborhood: "Katye",
           sec_about_you: "Konsènan Ou",
-          optional_hint: "(opsyonèl — sa ede nou konprann ki moun k ap patisipe)",
+          optional_hint:
+            "(opsyonèl — sa ede nou konprann ki moun k ap patisipe)",
           label_age: "Laj",
           label_gender: "Idantite Sèks",
           label_connection: "Koneksyon ou ak Zòn nan",
@@ -2455,44 +2747,91 @@
           conn_park_adv: "Defansè pak la",
           conn_other: "Lòt koneksyon",
           sec_priorities: "Kisa ou ta renmen wè sou Campus Shattuck la?",
-          priority_instr: "<strong>Etap 1 —</strong> Klike sou nenpòt opsyon ki disponib pou ajoute li nan lis ou a.<br /> <strong>Etap 2 —</strong> Trennen eleman yo nan lis ou a pou klase yo selon priyorite (sa ki pi enpòtan an anlè).",
+          priority_instr:
+            "<strong>Etap 1 —</strong> Klike sou nenpòt opsyon ki disponib pou ajoute li nan lis ou a.<br /> <strong>Etap 2 —</strong> Trennen eleman yo nan lis ou a pou klase yo selon priyorite (sa ki pi enpòtan an anlè).",
           ranked_empty: "Klike sou eleman yo pou ajoute ak klase yo isit la.",
           label_available: "Opsyon ki Disponib",
           label_your_picks: "Priyorite Ou Yo",
-          placeholder_oppose: "Tanpri dekri nenpòt itilizasyon ou pa ta aksepte...",
+          placeholder_oppose:
+            "Tanpri dekri nenpòt itilizasyon ou pa ta aksepte...",
           btn_submit: "Soumèt Repons Mwen →",
           success_title: "Mèsi!",
-          success_msg: "Repons ou anrejistre epi li pral ede fasonnen lavni Campus Shattuck nan Franklin Park. Nou apresye tan ou.",
+          success_msg:
+            "Repons ou anrejistre epi li pral ede fasonnen lavni Campus Shattuck nan Franklin Park. Nou apresye tan ou.",
           btn_another: "Soumèt yon lòt repons",
           priorities: [
-              { label: "Retounen nan Pak: Santye nati ak chemen mache", category: "Return to Parkland" },
-              { label: "Retounen nan Pak: Zòn dedye pou chyen", category: "Return to Parkland" },
-              { label: "Retounen nan Pak: Sant vizitè ak twalèt piblik", category: "Return to Parkland" },
-              { label: "Retou pasyèl nan teren pak la (konbine avèk lòt itilizasyon)", category: "Return to Parkland" },
-              { label: "Lòt (Teren Pak la)", category: "Return to Parkland" },
-              { label: "Famasi 24/7", category: "Health Services" },
-              { label: "Sant Sante ak Byennèt (Pisin, sant rekreyasyon, espas meditasyon)", category: "Health Services" },
-              { label: "Klinik ijan", category: "Health Services" },
-              { label: "Lòt (Sèvis Sante)", category: "Health Services" },
-              { label: "Sèvis pou veteran", category: "Veterans" },
-              { label: "Lòt (Veteran)", category: "Veterans" },
-              { label: "Lojman pou veteran", category: "Housing" },
-              { label: "Lojman pou granmoun aje / Kay pou moun ki bezwen asistans (Assisted living)", category: "Housing" },
-              { label: "Lojman sipò (tretman disponib, men li pa obligatwa pou w rete)", category: "Housing" },
-              { label: "Lojman rekiperasyon (fòk ou nan tretman oswa ou pa nan bweson/dwòg pou w rete)", category: "Housing" },
-              { label: "Lòt (Lojman)", category: "Housing" },
-              { label: "Nivo sèvis tretman dejwe (moun ki rete pase nwit) ki la kounye a", category: "Addiction Recovery" },
-              { label: "Ogmante sèvis tretman dejwe (plis kabann/kapasite)", category: "Addiction Recovery" },
-              { label: "Lòt (Rekiperasyon anba Dejwe)", category: "Addiction Recovery" },
-              { label: "Lòt", category: "Other" }
+            {
+              label: "Retounen nan Pak: Santye nati ak chemen mache",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Retounen nan Pak: Zòn dedye pou chyen",
+              category: "Return to Parkland",
+            },
+            {
+              label: "Retounen nan Pak: Sant vizitè ak twalèt piblik",
+              category: "Return to Parkland",
+            },
+            {
+              label:
+                "Retou pasyèl nan teren pak la (konbine avèk lòt itilizasyon)",
+              category: "Return to Parkland",
+            },
+            { label: "Lòt (Teren Pak la)", category: "Return to Parkland" },
+            {
+              label:
+                "Sant Byennèt Kominotè (Pisin, jimnaz, ak rekreyasyon andedan)",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Klinik Sante Piblik ak Famasi 24/24",
+              category: "Community Health & Wellness",
+            },
+            {
+              label: "Lòt (Sèvis Sante)",
+              category: "Community Health & Wellness",
+            },
+            { label: "Sèvis pou veteran", category: "Veterans" },
+            { label: "Lòt (Veteran)", category: "Veterans" },
+            { label: "Lojman pou veteran", category: "Housing" },
+            {
+              label:
+                "Lojman pou granmoun aje / Kay pou moun ki bezwen asistans (Assisted living)",
+              category: "Housing",
+            },
+            {
+              label:
+                "Lojman sipò (tretman disponib, men li pa obligatwa pou w rete)",
+              category: "Housing",
+            },
+            {
+              label:
+                "Lojman rekiperasyon (fòk ou nan tretman oswa ou pa nan bweson/dwòg pou w rete)",
+              category: "Housing",
+            },
+            { label: "Lòt (Lojman)", category: "Housing" },
+            {
+              label:
+                "Nivo sèvis tretman dejwe (moun ki rete pase nwit) ki la kounye a",
+              category: "Addiction Recovery",
+            },
+            {
+              label: "Ogmante sèvis tretman dejwe (plis kabann/kapasite)",
+              category: "Addiction Recovery",
+            },
+            {
+              label: "Lòt (Rekiperasyon anba Dejwe)",
+              category: "Addiction Recovery",
+            },
+            { label: "Lòt", category: "Other" },
           ],
           categories: {
-              "Return to Parkland": "Retounen Tè a nan Pak la",
-              "Health Services": "Sèvis Sante",
-              "Veterans": "Veteran",
-              "Housing": "Lojman",
-              "Addiction Recovery": "Rekiperasyon anba Dejwe",
-              "Other": "Lòt",
+            "Return to Parkland": "Retounen Tè a nan Pak la",
+            "Community Health & Wellness": "Sante ak Byennèt Kominotè",
+            Veterans: "Veteran",
+            Housing: "Lojman",
+            "Addiction Recovery": "Rekiperasyon anba Dejwe",
+            Other: "Lòt",
           },
           label_race: "Ras / Etisite",
           opt_black: "Nwa oswa Afro-Ameriken",
@@ -2522,7 +2861,8 @@
           act_zoo: "Vizite zou a",
           act_other: "Lòt...",
           sec_planning: "Pwosesis Planifikasyon pou Lavni",
-          label_participation: "Kijan ou ta prefere patisipe nan pwosesis planifikasyon an?",
+          label_participation:
+            "Kijan ou ta prefere patisipe nan pwosesis planifikasyon an?",
           pref_in_person: "Reyinyon an pèsòn",
           pref_virtual: "Reyinyon vityèl (Zoom)",
           pref_small_groups: "Ti gwoup nan katye a",
@@ -2533,13 +2873,17 @@
           label_income: "Revni Kay la",
           inc_under_25: "Mwens pase $25,000",
           sec_opposition: "Enkyetid ak Opizisyon",
-          label_opposition: "Èske gen nenpòt bagay ou ta opoze fòman sou sit sa a?",
-          placeholder_oppose: "Tanpri dekri nenpòt itilizasyon ou ta jwenn inakseptab...",
+          label_opposition:
+            "Èske gen nenpòt bagay ou ta opoze fòman sou sit sa a?",
+          placeholder_oppose:
+            "Tanpri dekri nenpòt itilizasyon ou ta jwenn inakseptab...",
           sec_stay_connected: "Rete Konekte",
-          label_updates: "<strong>Resevwa dènye nouvèl</strong> sou pwosesis planifikasyon ofisyèl Leta a, tankou avi sou reyinyon piblik ak peryòd kòmantè ofisyèl yo.",
+          label_updates:
+            "<strong>Resevwa dènye nouvèl</strong> sou pwosesis planifikasyon ofisyèl Leta a, tankou avi sou reyinyon piblik ak peryòd kòmantè ofisyèl yo.",
           label_referral: "Kijan ou te tande pale de sondaj sa a?",
           label_additional: "Lòt Kòmantè",
-          label_consent: "<strong>Mwen konfime</strong> sa a se pwòp repons pa m, mwen soumèt li volontèman. Yo pa t mande m pou m soumèt plizyè repons, epi mwen konprann enfòmasyon sa yo pral sèvi pou enfòme desizyon planifikasyon pou Campus Shattuck la.",
+          label_consent:
+            "<strong>Mwen konfime</strong> sa a se pwòp repons pa m, mwen soumèt li volontèman. Yo pa t mande m pou m soumèt plizyè repons, epi mwen konprann enfòmasyon sa yo pral sèvi pou enfòme desizyon planifikasyon pou Campus Shattuck la.",
           ref_canvasser: "Moun k ap fè sondaj / tablèt",
           ref_neighbor: "Vwazen oswa zanmi",
           ref_event: "Reyinyon oswa evènman kominotè",
@@ -2549,30 +2893,38 @@
           ref_news: "Atik nouvèl",
           ref_govt: "Sit entènèt Vil oswa Leta",
           placeholder_additional: "Nenpòt lòt bagay ou ta renmen nou konnen…",
-          combined_disclaimer: "🔒 <strong>Konfidansyalite ak Transparans:</strong> Sondaj sa a se yon inisyativ kominotè vwazen yo ap dirije pou konprann jan moun nan katye a santi yo. Se pa yon piblikasyon ofisyèl Leta Massachusetts. Repons yo kolekte an sekirite; enfòmasyon pèsonèl ou p ap pataje an piblik ni sèvi pou rezon komèsyal. Rezilta san non (anonymized) pral pataje ak òganizasyon kominotè ak otorite piblik yo pou ede bay enfòmasyon nan pwosesis planifikasyon an.",
-          label_park_use: "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
+          combined_disclaimer:
+            "🔒 <strong>Konfidansyalite ak Transparans:</strong> Sondaj sa a se yon inisyativ kominotè vwazen yo ap dirije pou konprann jan moun nan katye a santi yo. Se pa yon piblikasyon ofisyèl Leta Massachusetts. Repons yo kolekte an sekirite; enfòmasyon pèsonèl ou p ap pataje an piblik ni sèvi pou rezon komèsyal. Rezilta san non (anonymized) pral pataje ak òganizasyon kominotè ak otorite piblik yo pou ede bay enfòmasyon nan pwosesis planifikasyon an.",
+          label_park_use:
+            "Pou kisa ou itilize Franklin Park? <span class='lnote'>(chwazi tout sa ki aplikab)</span>",
           opt_select: "— Chwazi yonn —",
-          placeholder_conn_other: "egz. ale lekòl oswa legliz toupre, vizite fanmi, achte nan zòn nan…",
-          placeholder_park_other: "Tanpri dekri kijan ou itilize Franklin Park ankò…",
-          placeholder_process: "egz. Reyinyon nan wikenn, sèvis tradiksyon, transparans sou seleksyon CAB...",
-          tablet_hint: "📋 Èske w ap fè sondaj ak yon tablèt? Chak repons anrejistre separeman — tape 'Soumèt yon lòt repons' pou kòmanse yon lòt pou pwochen moun nan.",
+          placeholder_conn_other:
+            "egz. ale lekòl oswa legliz toupre, vizite fanmi, achte nan zòn nan…",
+          placeholder_park_other:
+            "Tanpri dekri kijan ou itilize Franklin Park ankò…",
+          placeholder_process:
+            "egz. Reyinyon nan wikenn, sèvis tradiksyon, transparans sou seleksyon CAB...",
+          tablet_hint:
+            "📋 Èske w ap fè sondaj ak yon tablèt? Chak repons anrejistre separeman — tape 'Soumèt yon lòt repons' pou kòmanse yon lòt pou pwochen moun nan.",
           conn_lives_nearby: "Rete toupre",
-          priority_source_note: "💬 Ide ki annapre yo te sijere nan diskisyon kominotè sou lavni sit sa a. Ou pa oblije chwazi nan yo sèlman — itilize \"Lòt\" pou ajoute pa ou.",
+          priority_source_note:
+            '💬 Ide ki annapre yo te sijere nan diskisyon kominotè sou lavni sit sa a. Ou pa oblije chwazi nan yo sèlman — itilize "Lòt" pou ajoute pa ou.',
           btn_skip: "Sote Istwa a epi Kòmanse Sondaj la ↓",
           label_max_beds: "Maksimòm kabann pi pito:",
           opt_up_to: "Jiska",
           opt_select_limit: "— Chwazi Limit —",
           word_beds: "kabann",
           placeholder_add_idea: "Ajoute lide pa ou...",
-        }
+        },
       };
-      let currentLang = 'en';
+      const pageLoadTime = Date.now();
+      const sessionId = crypto.randomUUID();
+
+      let currentLang = "en";
       let rankedCategories = []; // Tracks the order of categories
-      let rankedItems = [];      // Tracks the items selected
+      let rankedItems = []; // Tracks the items selected
       let dragSrc = null;
       let captchaAnswer = 0;
-      let urlSource = null;
-
 
       // ═══════════════════════════════════════════════════════════════
       // BOSTON-AREA ADDRESS HINTS
@@ -2660,18 +3012,18 @@
 
       function setLanguage(lang) {
         currentLang = lang;
-        
+
         // Translate text
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
           if (I18N[lang] && I18N[lang][key]) {
             el.innerHTML = I18N[lang][key];
           }
         });
 
         // Translate placeholders
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-          const key = el.getAttribute('data-i18n-placeholder');
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-placeholder");
           if (I18N[lang][key]) el.placeholder = I18N[lang][key];
         });
 
@@ -2679,7 +3031,6 @@
         rankedItems = [];
         rebuildBoth();
       }
-
 
       function setupLocalAutocomplete(
         inputId,
@@ -2761,42 +3112,6 @@
         });
       }
 
-      // Zip → city helper (Boston area common ZIPs pre-mapped for convenience)
-      const ZIP_CITY_MAP = {
-        "02119": "Roxbury",
-        "02130": "Jamaica Plain",
-        "02121": "Dorchester",
-        "02126": "Mattapan",
-        "02136": "Hyde Park",
-        "02131": "Roslindale",
-        "02132": "West Roxbury",
-        "02120": "Mission Hill",
-        "02467": "Chestnut Hill",
-        "02215": "Fenway",
-        "02118": "South End",
-        "02116": "Back Bay",
-        "02134": "Allston",
-        "02135": "Brighton",
-        "02128": "East Boston",
-        "02445": "Brookline",
-        "02446": "Brookline",
-        "02138": "Cambridge",
-        "02139": "Cambridge",
-        "02143": "Somerville",
-        "02169": "Quincy",
-        "02186": "Milton",
-        "02026": "Dedham",
-      };
-
-      document.getElementById("zip")?.addEventListener("input", function () {
-        if (this.value.length === 5 && ZIP_CITY_MAP[this.value]) {
-          const cityInput = document.getElementById("city");
-          if (cityInput && !cityInput.value) {
-            cityInput.value = ZIP_CITY_MAP[this.value];
-          }
-        }
-      });
-
       // ═══════════════════════════════════════════════════════════════
       // RACE SELF-DESCRIBE REVEAL
       // ═══════════════════════════════════════════════════════════════
@@ -2863,133 +3178,138 @@
       // PRIORITY PICKER
       // ═══════════════════════════════════════════════════════════════
       function buildAvailable() {
-          const ul = document.getElementById("availableList");
-          // Remember which categories were open before rebuild
-          const openCats = new Set(
-              [...ul.querySelectorAll('.avail-category.open')]
-                  .map(el => el.dataset.category)
-          );
+        const ul = document.getElementById("availableList");
+        // Remember which categories were open before rebuild
+        const openCats = new Set(
+          [...ul.querySelectorAll(".avail-category.open")].map(
+            (el) => el.dataset.category,
+          ),
+        );
 
-          ul.innerHTML = "";
+        ul.innerHTML = "";
 
-          if (availableItems.length === 0) {
-              ul.innerHTML =
-                  '<div style="font-size:0.82rem;color:var(--stone);padding:12px;text-align:center;">All options added ✓</div>';
-              document.getElementById("avail-count").textContent = 0;
-              return;
+        if (availableItems.length === 0) {
+          ul.innerHTML =
+            '<div style="font-size:0.82rem;color:var(--stone);padding:12px;text-align:center;">All options added ✓</div>';
+          document.getElementById("avail-count").textContent = 0;
+          return;
+        }
+
+        // Group available items by category, preserving master order
+        const groups = {};
+        const groupOrder = [];
+        availableItems.forEach((item) => {
+          const cat = item.category || "Other";
+          if (!groups[cat]) {
+            groups[cat] = [];
+            groupOrder.push(cat);
           }
+          groups[cat].push(item);
+        });
 
-          // Group available items by category, preserving master order
-          const groups = {};
-          const groupOrder = [];
-          availableItems.forEach(item => {
-              const cat = item.category || "Other";
-              if (!groups[cat]) {
-                  groups[cat] = [];
-                  groupOrder.push(cat);
-              }
-              groups[cat].push(item);
-          });
+        // Count how many from each category are already ranked
+        const rankedLabels = new Set(rankedItems.map((x) => x.label));
+        const rankedByCategory = {};
+        rankedItems.forEach((item) => {
+          const cat = item.category || "Other";
+          rankedByCategory[cat] = (rankedByCategory[cat] || 0) + 1;
+        });
 
-          // Count how many from each category are already ranked
-          const rankedLabels = new Set(rankedItems.map(x => x.label));
-          const rankedByCategory = {};
-          rankedItems.forEach(item => {
-              const cat = item.category || "Other";
-              rankedByCategory[cat] = (rankedByCategory[cat] || 0) + 1;
-          });
+        groupOrder.forEach((cat) => {
+          const items = groups[cat];
+          const addedCount = rankedByCategory[cat] || 0;
+          const translatedCat = I18N[currentLang].categories?.[cat] || cat;
+          const isOpen = openCats.has(cat);
 
-          groupOrder.forEach(cat => {
-              const items = groups[cat];
-              const addedCount = rankedByCategory[cat] || 0;
-              const translatedCat = I18N[currentLang].categories?.[cat] || cat;
-              const isOpen = openCats.has(cat);
+          const wrapper = document.createElement("div");
+          wrapper.className = "avail-category" + (isOpen ? " open" : "");
+          wrapper.dataset.category = cat;
 
-              const wrapper = document.createElement("div");
-              wrapper.className = "avail-category" + (isOpen ? " open" : "");
-              wrapper.dataset.category = cat;
-
-              const header = document.createElement("div");
-              header.className = "avail-category-header" + (addedCount > 0 ? " has-selected" : "");
-              header.innerHTML = `
+          const header = document.createElement("div");
+          header.className =
+            "avail-category-header" + (addedCount > 0 ? " has-selected" : "");
+          header.innerHTML = `
                   <span class="avail-category-name">
                       ${translatedCat}
                   </span>
                   <span class="avail-category-meta">
                       <span class="avail-category-added-badge">✓ ${addedCount} added</span>
-                      <span class="avail-category-count">${items.length} option${items.length !== 1 ? 's' : ''}</span>
+                      <span class="avail-category-count">${items.length} option${items.length !== 1 ? "s" : ""}</span>
                       <span class="avail-category-chevron">▼</span>
                   </span>`;
-              header.addEventListener("click", () => {
-                  wrapper.classList.toggle("open");
-              });
-
-              const itemsContainer = document.createElement("div");
-              itemsContainer.className = "avail-category-items";
-
-              items.forEach(item => {
-                  const div = document.createElement("div");
-                  div.className = "avail-item";
-                  div.dataset.item = item.label;
-                  div.dataset.category = item.category;
-                  div.innerHTML = `<span class="avail-label">${item.label}</span><span class="add-icon">＋</span>`;
-                  div.addEventListener("click", () => addToRanked(item));
-                  itemsContainer.appendChild(div);
-              });
-
-              wrapper.appendChild(header);
-              wrapper.appendChild(itemsContainer);
-              ul.appendChild(wrapper);
+          header.addEventListener("click", () => {
+            wrapper.classList.toggle("open");
           });
 
-          document.getElementById("avail-count").textContent = availableItems.length;
+          const itemsContainer = document.createElement("div");
+          itemsContainer.className = "avail-category-items";
+
+          items.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "avail-item";
+            div.dataset.item = item.label;
+            div.dataset.category = item.category;
+            div.innerHTML = `<span class="avail-label">${item.label}</span><span class="add-icon">＋</span>`;
+            div.addEventListener("click", () => addToRanked(item));
+            itemsContainer.appendChild(div);
+          });
+
+          wrapper.appendChild(header);
+          wrapper.appendChild(itemsContainer);
+          ul.appendChild(wrapper);
+        });
+
+        document.getElementById("avail-count").textContent =
+          availableItems.length;
       }
 
       function buildRanked() {
-          const container = document.getElementById("rankedList");
-          const empty = document.getElementById("rankedEmpty");
-          container.querySelectorAll(".rank-block").forEach(el => el.remove());
+        const container = document.getElementById("rankedList");
+        const empty = document.getElementById("rankedEmpty");
+        container.querySelectorAll(".rank-block").forEach((el) => el.remove());
 
-          if (rankedCategories.length === 0) {
-              empty.style.display = "";
-              document.getElementById("dragHint").style.display = "none";
-              return;
-          }
-          empty.style.display = "none";
-          document.getElementById("dragHint").style.display = "block";
+        if (rankedCategories.length === 0) {
+          empty.style.display = "";
+          document.getElementById("dragHint").style.display = "none";
+          return;
+        }
+        empty.style.display = "none";
+        document.getElementById("dragHint").style.display = "block";
 
-          const bedOptions = [10, 20, 50, 100, 200, 400, 800];
+        const bedOptions = [10, 20, 50, 100, 200, 400, 800];
 
-          // Get current translations for the dropdown
-          const tMaxBeds = I18N[currentLang].label_max_beds;
-          const tUpTo = I18N[currentLang].opt_up_to;
-          const tSelect = I18N[currentLang].opt_select_limit;
-          const tBedsWord = I18N[currentLang].word_beds;
-          const tAddIdea = I18N[currentLang].placeholder_add_idea;
+        // Get current translations for the dropdown
+        const tMaxBeds = I18N[currentLang].label_max_beds;
+        const tUpTo = I18N[currentLang].opt_up_to;
+        const tSelect = I18N[currentLang].opt_select_limit;
+        const tBedsWord = I18N[currentLang].word_beds;
+        const tAddIdea = I18N[currentLang].placeholder_add_idea;
 
-          rankedCategories.forEach((catKey, index) => {
-              const translatedCat = I18N[currentLang].categories[catKey] || catKey;
-              const itemsInCat = rankedItems.filter(x => x.category === catKey);
+        rankedCategories.forEach((catKey, index) => {
+          const translatedCat = I18N[currentLang].categories[catKey] || catKey;
+          const itemsInCat = rankedItems.filter((x) => x.category === catKey);
 
-              const block = document.createElement("div");
-              block.className = "rank-block";
-              block.draggable = true;
-              block.dataset.category = catKey;
+          const block = document.createElement("div");
+          block.className = "rank-block";
+          block.draggable = true;
+          block.dataset.category = catKey;
 
-              block.innerHTML = `
+          block.innerHTML = `
                   <div class="rank-block-header">
                       <span class="rank-num">${index + 1}</span>
                       <span class="rank-block-handle">⋮⋮</span>
                       <span>${translatedCat}</span>
                   </div>
                   <div class="rank-block-items">
-                      ${itemsInCat.map(item => {
-                          const isOther = item.label.includes("Other") || 
-                                          item.label.includes("Otro") || 
-                                          item.label.includes("Lòt");
-                                          
-                          const isHousing = (item.category === "Housing");
-                          
+                      ${itemsInCat
+                        .map((item) => {
+                          const isOther =
+                            item.label.includes("Other") ||
+                            item.label.includes("Otro") ||
+                            item.label.includes("Lòt");
+
+                          const isHousing = item.category === "Housing";
+
                           return `
                               <div class="rank-sub-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0;">
                                   <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
@@ -2997,102 +3317,134 @@
                                       <button type="button" class="remove-btn" onclick='removeFromRanked(${JSON.stringify(item)})'>✕</button>
                                   </div>
                                   
-                                  ${isOther ? `
+                                  ${
+                                    isOther
+                                      ? `
                                       <input type="text" class="rank-other-input" 
                                           style="width: 100%; padding: 8px; border: 2px solid rgba(45,90,61,0.1); border-radius: 6px;"
-                                          placeholder="${tAddIdea}" value="${item.otherText || ''}"
+                                          placeholder="${tAddIdea}" value="${item.otherText || ""}"
                                           oninput="saveSpecificOtherText('${item.label}', this.value)">
-                                  ` : ''}
+                                  `
+                                      : ""
+                                  }
 
-                                  ${isHousing ? `
+                                  ${
+                                    isHousing
+                                      ? `
                                       <div style="width: 100%; background: rgba(74, 124, 89, 0.05); padding: 8px; border-radius: 8px;">
                                           <label style="font-size: 0.65rem; color: var(--sage); font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 4px;">
                                               ${tMaxBeds}
                                           </label>
                                           <select onchange="saveBedCount('${item.label}', this.value)" style="width: 100%; padding: 6px; font-size: 0.8rem; border: 1px solid rgba(45,90,61,0.2); border-radius: 4px; background: white;">
                                               <option value="">${tSelect}</option>
-                                              ${bedOptions.map(num => `
-                                                  <option value="${num}" ${item.maxBeds == num ? 'selected' : ''}>
+                                              ${bedOptions
+                                                .map(
+                                                  (num) => `
+                                                  <option value="${num}" ${item.maxBeds == num ? "selected" : ""}>
                                                       ${tUpTo} ${num} ${tBedsWord}
                                                   </option>
-                                              `).join('')}
+                                              `,
+                                                )
+                                                .join("")}
                                           </select>
                                       </div>
-                                  ` : ''}
+                                  `
+                                      : ""
+                                  }
                               </div>
                           `;
-                      }).join('')}
+                        })
+                        .join("")}
                   </div>
               `;
 
-              block.addEventListener("dragstart", (e) => { dragSrc = block; block.classList.add("dragging"); });
-              block.addEventListener("dragend", () => { 
-                  block.classList.remove("dragging"); 
-                  container.querySelectorAll(".rank-block").forEach(el => el.classList.remove("drag-over")); 
-                  syncCategoryOrder(); 
-              });
-              block.addEventListener("dragover", (e) => { e.preventDefault(); if (block !== dragSrc) block.classList.add("drag-over"); });
-              block.addEventListener("dragleave", () => block.classList.remove("drag-over"));
-              block.addEventListener("drop", (e) => {
-                  e.preventDefault();
-                  if (dragSrc && dragSrc !== block) {
-                      const nodes = [...container.querySelectorAll(".rank-block")];
-                      const si = nodes.indexOf(dragSrc), di = nodes.indexOf(block);
-                      if (si < di) container.insertBefore(dragSrc, block.nextSibling);
-                      else container.insertBefore(dragSrc, block);
-                  }
-              });
-
-              container.appendChild(block);
+          block.addEventListener("dragstart", (e) => {
+            dragSrc = block;
+            block.classList.add("dragging");
           });
+          block.addEventListener("dragend", () => {
+            block.classList.remove("dragging");
+            container
+              .querySelectorAll(".rank-block")
+              .forEach((el) => el.classList.remove("drag-over"));
+            syncCategoryOrder();
+          });
+          block.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            if (block !== dragSrc) block.classList.add("drag-over");
+          });
+          block.addEventListener("dragleave", () =>
+            block.classList.remove("drag-over"),
+          );
+          block.addEventListener("drop", (e) => {
+            e.preventDefault();
+            if (dragSrc && dragSrc !== block) {
+              const nodes = [...container.querySelectorAll(".rank-block")];
+              const si = nodes.indexOf(dragSrc),
+                di = nodes.indexOf(block);
+              if (si < di) container.insertBefore(dragSrc, block.nextSibling);
+              else container.insertBefore(dragSrc, block);
+            }
+          });
+
+          container.appendChild(block);
+        });
       }
 
       function saveOtherText(val) {
-          const otherItem = rankedItems.find(item => item.category === "Other");
-          if (otherItem) otherItem.otherText = val;
+        const otherItem = rankedItems.find((item) => item.category === "Other");
+        if (otherItem) otherItem.otherText = val;
       }
 
       function saveSpecificOtherText(itemLabel, val) {
-          const item = rankedItems.find(it => it.label === itemLabel);
-          if (item) item.otherText = val;
+        const item = rankedItems.find((it) => it.label === itemLabel);
+        if (item) item.otherText = val;
       }
 
       function saveBedCount(itemLabel, value) {
-          // Find the item in our ranked list
-          const item = rankedItems.find(it => it.label === itemLabel);
-          if (item) {
-              item.maxBeds = value; // Store the selection directly on the item
-          }
+        // Find the item in our ranked list
+        const item = rankedItems.find((it) => it.label === itemLabel);
+        if (item) {
+          item.maxBeds = value; // Store the selection directly on the item
+        }
       }
 
       function syncCategoryOrder() {
-          rankedCategories = [...document.querySelectorAll(".rank-block")].map(el => el.dataset.category);
-          document.querySelectorAll(".rank-block .rank-num").forEach((el, i) => el.textContent = i + 1);
+        rankedCategories = [...document.querySelectorAll(".rank-block")].map(
+          (el) => el.dataset.category,
+        );
+        document
+          .querySelectorAll(".rank-block .rank-num")
+          .forEach((el, i) => (el.textContent = i + 1));
       }
 
       function rebuildBoth() {
-          const rankedLabels = new Set(rankedItems.map(x => x.label));
-          availableItems = I18N[currentLang].priorities.filter(p => !rankedLabels.has(p.label));
-          buildAvailable();
-          buildRanked();
+        const rankedLabels = new Set(rankedItems.map((x) => x.label));
+        availableItems = I18N[currentLang].priorities.filter(
+          (p) => !rankedLabels.has(p.label),
+        );
+        buildAvailable();
+        buildRanked();
       }
 
       function addToRanked(item) {
-          if (!rankedItems.find(x => x.label === item.label)) {
-              rankedItems.push(item);
-              if (!rankedCategories.includes(item.category)) {
-                  rankedCategories.push(item.category);
-              }
-              rebuildBoth();
-          }
-      }
-      function removeFromRanked(item) {
-          rankedItems = rankedItems.filter(x => x.label !== item.label);
-          // If no items left in this category, remove the category from ranking
-          if (!rankedItems.some(x => x.category === item.category)) {
-              rankedCategories = rankedCategories.filter(c => c !== item.category);
+        if (!rankedItems.find((x) => x.label === item.label)) {
+          rankedItems.push(item);
+          if (!rankedCategories.includes(item.category)) {
+            rankedCategories.push(item.category);
           }
           rebuildBoth();
+        }
+      }
+      function removeFromRanked(item) {
+        rankedItems = rankedItems.filter((x) => x.label !== item.label);
+        // If no items left in this category, remove the category from ranking
+        if (!rankedItems.some((x) => x.category === item.category)) {
+          rankedCategories = rankedCategories.filter(
+            (c) => c !== item.category,
+          );
+        }
+        rebuildBoth();
       }
 
       // ═══════════════════════════════════════════════════════════════
@@ -3139,7 +3491,7 @@
               city: d.city || "",
               region: d.region || "",
               country: d.country_name || "",
-              org: d.org || "" // Helps identify if it's a home user or a business/bot
+              org: d.org || "", // Helps identify if it's a home user or a business/bot
             };
           }
         } catch (_) {
@@ -3172,6 +3524,11 @@
           { id: "first_name", msg: "Please enter your first name." },
           { id: "last_name", msg: "Please enter your last name." },
           { id: "street", msg: "Please enter your street address." },
+          {
+            id: "zip",
+            msg: "Please enter a valid 5-digit ZIP code.",
+            extra: (v) => /^[0-9]{5}$/.test(v),
+          }, // Added ZIP check
           {
             id: "email",
             msg: "Please enter a valid email address.",
@@ -3226,55 +3583,75 @@
       // DATA COLLECTION
       // ═══════════════════════════════════════════════════════════════
       function collectData() {
-          const fd = new FormData(document.getElementById("surveyForm"));
-          const data = {};
-          data.language_used = currentLang;
+        const fd = new FormData(document.getElementById("surveyForm"));
+        const data = {};
+        data.language_used = currentLang;
 
-          fd.forEach((v, k) => {
-              if (k.endsWith("[]")) {
-                  const key = k.replace("[]", "");
-                  if (!data[key]) data[key] = [];
-                  data[key].push(v);
-              } else {
-                  data[k] = v;
-              }
-          });
-
-          // 1. Handle URL Source logic
-          if (urlSource) {
-              data.referral_source = `URL Source: ${urlSource}`;
+        fd.forEach((v, k) => {
+          if (k.endsWith("[]")) {
+            const key = k.replace("[]", "");
+            if (!data[key]) data[key] = [];
+            data[key].push(v);
+          } else {
+            data[k] = v;
           }
+        });
 
-          // 2. Handle Priority Collection with Category-Specific "Other"
-          data.ranked_priorities = rankedCategories.map((catKey, i) => {
-              const itemsInThisCat = rankedItems.filter(item => item.category === catKey);
-              return {
-                  rank: i + 1,
-                  category: catKey,
-                  items: itemsInThisCat.map(it => {
-                      let finalName = it.label;
-                      
-                      // If it's an "Other" item, format it as "Category Other: [Text]"
-                      if (it.label.includes("Other") && it.otherText) {
-                          finalName = `${catKey} Other: ${it.otherText}`;
-                      }
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get("mode");
+        const source = urlParams.get("source");
 
-                      const itemData = { name: finalName };
-                      if (it.category === "Housing" && it.maxBeds) {
-                          itemData.max_beds = it.maxBeds;
-                      }
-                      return itemData;
-                  })
-              };
-          });
+        if (source) {
+          // Priority 1: Specific URL Source
+          data.referral_source = `URL Source: ${source}`;
+        } else if (mode === "canvas") {
+          // Priority 2: Canvassing Mode
+          data.referral_source = "Community canvasser / tablet";
+        } else {
+          // Priority 3: User Selection from dropdown
+          data.referral_source =
+            document.getElementById("referral_source").value;
+        }
 
-          // Standard metadata
-          data.geo = geoData;
-          data.submitted_at = new Date().toISOString();
-          data.user_agent = navigator.userAgent;
+        // 2. Handle Priority Collection with Category-Specific "Other"
+        data.ranked_priorities = rankedCategories.map((catKey, i) => {
+          const itemsInThisCat = rankedItems.filter(
+            (item) => item.category === catKey,
+          );
+          return {
+            rank: i + 1,
+            category: catKey,
+            items: itemsInThisCat.map((it) => {
+              let finalName = it.label;
 
-          delete data.captcha_answer; delete data.website; delete data.phone_confirm; delete data.consent;
-          return data;
+              // If it's an "Other" item, format it as "Category Other: [Text]"
+              if (it.label.includes("Other") && it.otherText) {
+                finalName = `${catKey} Other: ${it.otherText}`;
+              }
+
+              const itemData = { name: finalName };
+              if (it.category === "Housing" && it.maxBeds) {
+                itemData.max_beds = it.maxBeds;
+              }
+              return itemData;
+            }),
+          };
+        });
+
+        const secondsOnPage = Math.round((Date.now() - pageLoadTime) / 1000);
+        data.seconds_on_page = secondsOnPage;
+        data.session_id = sessionId;
+
+        // Standard metadata
+        data.geo = geoData;
+        data.submitted_at = new Date().toISOString();
+        data.user_agent = navigator.userAgent;
+
+        delete data.captcha_answer;
+        delete data.website;
+        delete data.phone_confirm;
+        delete data.consent;
+        return data;
       }
 
       // ═══════════════════════════════════════════════════════════════
@@ -3313,18 +3690,21 @@
           console.log("Survey payload:", JSON.stringify(payload, null, 2));
 
           // ── CONNECT YOUR BACKEND ──────────────────────────────────────
-          const ENDPOINT = 'https://dwwu9rnixh.execute-api.us-east-2.amazonaws.com/submit';
+          const ENDPOINT =
+            "https://dwwu9rnixh.execute-api.us-east-2.amazonaws.com/submit";
           try {
             const res = await fetch(ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
             });
-            if (!res.ok) throw new Error('Server error');
-          } catch(err) {
-            btn.disabled = false; btn.textContent = 'Submit My Response →';
-            banner.textContent = 'Submission failed — please try again.';
-            banner.style.display = 'block'; return;
+            if (!res.ok) throw new Error("Server error");
+          } catch (err) {
+            btn.disabled = false;
+            btn.textContent = "Submit My Response →";
+            banner.textContent = "Submission failed — please try again.";
+            banner.style.display = "block";
+            return;
           }
           // ─────────────────────────────────────────────────────────────
 
@@ -3353,39 +3733,39 @@
       }
 
       function skipHistory() {
-          document.getElementById('contactSection').scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById("contactSection")
+          .scrollIntoView({ behavior: "smooth" });
       }
 
       function checkCanvasserMode() {
         const urlParams = new URLSearchParams(window.location.search);
-        const isCanvasser = urlParams.get('mode') === 'canvas';
-        
-        const btnAnother = document.getElementById('btnAnother');
-        const tabletHint = document.querySelector('.tablet-hint');
+        const isCanvasser = urlParams.get("mode") === "canvas";
 
-        // Logic for the "Submit Another" button
-        if (btnAnother) {
-          btnAnother.style.display = isCanvasser ? 'inline-block' : 'none';
-        }
+        const btnAnother = document.getElementById("btnAnother");
+        const tabletHint = document.querySelector(".tablet-hint");
+        const referralField = document
+          .getElementById("referral_source")
+          .closest(".field");
 
-        // Logic for the Tablet Hint
-        if (tabletHint) {
-          tabletHint.style.display = isCanvasser ? 'block' : 'none';
+        if (isCanvasser) {
+          if (btnAnother) btnAnother.style.display = "inline-block";
+          if (tabletHint) tabletHint.style.display = "block";
+          if (referralField) referralField.style.display = "none";
         }
       }
 
       function checkUrlSource() {
-          const params = new URLSearchParams(window.location.search);
-          const source = params.get('source');
-          if (source) {
-              urlSource = source;
-              // Hide the referral question field
-              const referralField = document.getElementById('referral_source').closest('.field');
-              if (referralField) referralField.style.display = 'none';
-          }
+        const params = new URLSearchParams(window.location.search);
+        const source = params.get("source");
+        if (source) {
+          // Hide the referral question field
+          const referralField = document
+            .getElementById("referral_source")
+            .closest(".field");
+          if (referralField) referralField.style.display = "none";
+        }
       }
-
-
 
       // ═══════════════════════════════════════════════════════════════
       // INIT
@@ -3393,7 +3773,7 @@
 
       checkCanvasserMode();
       checkUrlSource();
-      setLanguage('en');
+      setLanguage("en");
       buildAvailable();
       buildRanked();
       newChallenge();
@@ -3401,7 +3781,6 @@
 
       // Wire up local autocomplete dropdowns (Boston-biased, no API key)
       setupLocalAutocomplete("street", "streetDropdown", BOSTON_STREETS);
-      setupLocalAutocomplete("city", "cityDropdown", BOSTON_CITIES);
       setupLocalAutocomplete(
         "neighborhood",
         "neighborhoodDropdown",
